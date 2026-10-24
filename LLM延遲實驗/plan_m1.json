@@ -1,0 +1,43 @@
+{
+ "seed": 5,
+ "max_tokens": 16,
+ "prompt_file": "medium.txt",
+ "base_url": "http://192.168.0.164:8080",
+ "local": null,
+ "probe_b": "probe_m1",
+ "probe_d": "probe_m1",
+ "b": 3.8761,
+ "iso": 3.8778,
+ "runs": [
+  {
+   "tag": "m1_rho30",
+   "rate": 0.0774,
+   "n": 150,
+   "pred": 0.705,
+   "lo": 0.678,
+   "hi": 0.748,
+   "naive_pk": 0.832,
+   "minutes": 33.8
+  },
+  {
+   "tag": "m1_rho50",
+   "rate": 0.129,
+   "n": 200,
+   "pred": 2.147,
+   "lo": 2.085,
+   "hi": 2.239,
+   "naive_pk": 1.941,
+   "minutes": 25.7
+  },
+  {
+   "tag": "m1_rho70",
+   "rate": 0.1806,
+   "n": 200,
+   "pred": 4.458,
+   "lo": 4.255,
+   "hi": 4.805,
+   "naive_pk": 4.532,
+   "minutes": 18.4
+  }
+ ]
+}

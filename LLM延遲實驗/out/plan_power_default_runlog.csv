@@ -1,0 +1,2 @@
+order,tag,lambda,n,start,end,minutes,max_lateness_s,late_gt_1s,ok,total,usable,rtt_before_med,rtt_before_max,rtt_after_med,rtt_after_max,net_flag
+1,power_default_rho20,0.10885,180,09:58:17,10:28:12,29.9,0.002,0,180,180,True,,,,,

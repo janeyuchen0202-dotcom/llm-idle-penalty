@@ -1,0 +1,28 @@
+{
+ "zip": "閒置測試結果_排隊_GPU_RTX-2060_20261019-2059.zip",
+ "pred_made_at": "2026-10-20T00:36:19",
+ "compared_at": "2026-10-20T01:00:29",
+ "runs": [
+  {
+   "tag": "rho70",
+   "measured_wait": 4.4568,
+   "in_range": false,
+   "closer_to_model": false,
+   "usable": true
+  },
+  {
+   "tag": "rho50",
+   "measured_wait": 0.7096,
+   "in_range": false,
+   "closer_to_model": true,
+   "usable": true
+  },
+  {
+   "tag": "rho30",
+   "measured_wait": 0.6573,
+   "in_range": true,
+   "closer_to_model": true,
+   "usable": true
+  }
+ ]
+}

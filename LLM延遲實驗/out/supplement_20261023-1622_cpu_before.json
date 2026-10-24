@@ -1,0 +1,18 @@
+{
+ "PROCTHROTTLEMIN": {
+  "ac": 5,
+  "dc": 5
+ },
+ "PROCTHROTTLEMAX": {
+  "ac": 99,
+  "dc": 100
+ },
+ "PROCTHROTTLEMAX1": {
+  "ac": 99,
+  "dc": 100
+ },
+ "PERFBOOSTMODE": {
+  "ac": 0,
+  "dc": 2
+ }
+}

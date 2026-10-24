@@ -1,0 +1,4 @@
+order,tag,lambda,n,start,end,minutes,max_lateness_s,late_gt_1s,ok,total,usable,rtt_before_med,rtt_before_max,rtt_after_med,rtt_after_max,net_flag
+1,m1_rho70,0.1806,200,21:55:43,22:14:12,18.5,0.002,0,200,200,True,29.4,54.0,21.2,37.0,網路不穩
+2,m1_rho30,0.0774,150,22:14:16,22:48:06,33.8,0.002,0,150,150,True,22.1,46.7,11.0,32.3,網路不穩
+3,m1_rho50,0.129,200,22:48:11,23:13:59,25.8,0.002,0,200,200,True,21.2,34.1,23.7,35.8,網路不穩

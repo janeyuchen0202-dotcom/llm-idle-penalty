@@ -1,0 +1,4 @@
+req_id,prompt_type,prompt_chars,t_scheduled,t_send,t_first_token,t_done,ttft,total,out_tokens,status,error
+0,medium,4489,37.2121,37.2138,39.7824,41.3516,2.5686,4.1378,128,ok,
+1,medium,4489,48.1264,48.127,50.7113,52.274,2.5843,4.147,128,ok,
+2,medium,4489,62.4455,62.4461,64.9186,66.4891,2.4724,4.043,128,ok,

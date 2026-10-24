@@ -1,0 +1,3 @@
+short.txt  目標 100 tokens  實際 118 tokens  (612 字元)
+medium.txt  目標 800 tokens  實際 838 tokens  (4473 字元)
+long.txt  目標 1500 tokens  實際 1478 tokens  (7905 字元)

@@ -1,0 +1,41 @@
+{
+ "seed": 4,
+ "max_tokens": 16,
+ "prompt_file": "medium.txt",
+ "base_url": "http://127.0.0.1:8080",
+ "local": "7b",
+ "probe_b": "probe_idle_7b16",
+ "probe_d": "probe_idle_7b",
+ "runs": [
+  {
+   "tag": "b7s4_rho30",
+   "rate": 0.07069,
+   "n": 200,
+   "pred": 0.988,
+   "lo": 0.958,
+   "hi": 1.022,
+   "naive_pk": 1.406,
+   "minutes": 50.4
+  },
+  {
+   "tag": "b7s4_rho50",
+   "rate": 0.11782,
+   "n": 300,
+   "pred": 2.564,
+   "lo": 2.455,
+   "hi": 2.694,
+   "naive_pk": 3.724,
+   "minutes": 44.2
+  },
+  {
+   "tag": "b7s4_rho70",
+   "rate": 0.16495,
+   "n": 300,
+   "pred": 7.352,
+   "lo": 6.837,
+   "hi": 8.147,
+   "naive_pk": 12.692,
+   "minutes": 31.6
+  }
+ ]
+}

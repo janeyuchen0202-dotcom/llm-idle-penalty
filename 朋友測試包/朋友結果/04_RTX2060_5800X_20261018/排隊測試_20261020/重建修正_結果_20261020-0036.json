@@ -1,0 +1,33 @@
+{
+ "zip": "閒置測試結果_排隊_GPU_RTX-2060_20261019-2059.zip",
+ "pred_made_at": "2026-10-20T00:36:19",
+ "compared_at": "2026-10-22T21:17:36",
+ "runs": [
+  {
+   "tag": "rho70",
+   "measured_wait": 4.4568,
+   "in_range": false,
+   "closer_to_model": false,
+   "usable": true,
+   "error_pct": -28.42
+  },
+  {
+   "tag": "rho50",
+   "measured_wait": 0.6967,
+   "in_range": false,
+   "closer_to_model": true,
+   "usable": true,
+   "error_pct": -13.6
+  },
+  {
+   "tag": "rho30",
+   "measured_wait": 0.6573,
+   "in_range": true,
+   "closer_to_model": true,
+   "usable": true,
+   "error_pct": -3.39
+  }
+ ],
+ "mean_abs_error_pct": 15.14,
+ "note": "10/22 資料稽核後：實測等待改照做完的順序重建（第 85、86 個請求相差 15 毫秒送出，伺服器先處理第 86 個）。預測不變（預測_20261020-0036.json）；原本照送出順序的結果在 結果_20261020-0036.json"
+}

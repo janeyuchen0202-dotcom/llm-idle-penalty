@@ -1,0 +1,43 @@
+{
+ "seed": 6,
+ "max_tokens": 16,
+ "prompt_file": "short.txt",
+ "base_url": "http://192.168.0.173:8080",
+ "local": null,
+ "probe_b": "probe_wingpu",
+ "probe_d": "probe_wingpu",
+ "b": 3.122,
+ "iso": 3.0478,
+ "runs": [
+  {
+   "tag": "win_rho30",
+   "rate": 0.09609,
+   "n": 150,
+   "pred": 0.75,
+   "lo": 0.659,
+   "hi": 0.878,
+   "naive_pk": 0.631,
+   "minutes": 24.4
+  },
+  {
+   "tag": "win_rho50",
+   "rate": 0.16015,
+   "n": 200,
+   "pred": 2.086,
+   "lo": 1.782,
+   "hi": 2.508,
+   "naive_pk": 1.453,
+   "minutes": 19.5
+  },
+  {
+   "tag": "win_rho70",
+   "rate": 0.22421,
+   "n": 200,
+   "pred": 6.322,
+   "lo": 4.962,
+   "hi": 8.206,
+   "naive_pk": 3.29,
+   "minutes": 13.9
+  }
+ ]
+}

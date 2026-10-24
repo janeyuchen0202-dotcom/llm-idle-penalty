@@ -1,0 +1,2 @@
+order,rho,lambda,n,start,end,minutes,csv
+1,0.7,0.34988,400,02:12:52,02:32:13,19.3,out/long70_rho70.csv

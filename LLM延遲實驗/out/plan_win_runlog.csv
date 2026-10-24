@@ -1,0 +1,4 @@
+order,tag,lambda,n,start,end,minutes,max_lateness_s,late_gt_1s,ok,total,usable,rtt_before_med,rtt_before_max,rtt_after_med,rtt_after_max,net_flag
+1,win_rho30,0.09609,150,22:40:48,23:05:21,24.5,0.002,0,150,150,True,22.1,42.8,21.4,29.6,網路不穩
+2,win_rho50,0.16015,200,23:05:25,23:24:57,19.5,0.002,0,200,200,True,13.3,31.5,14.1,28.3,合格
+3,win_rho70,0.22421,200,23:25:02,23:39:00,14.0,0.002,0,200,200,True,13.3,38.0,23.2,27.2,網路不穩

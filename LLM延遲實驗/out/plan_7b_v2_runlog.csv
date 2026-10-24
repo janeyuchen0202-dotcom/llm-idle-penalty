@@ -1,0 +1,4 @@
+order,tag,lambda,n,start,end,minutes,max_lateness_s,late_gt_1s,ok,total,usable,rtt_before_med,rtt_before_max,rtt_after_med,rtt_after_max,net_flag
+1,b7v2_rho50,0.41657,300,23:46:55,23:59:00,12.1,0.002,0,300,300,True,17.1,25.9,23.5,26.1,網路不穩
+2,b7v2_rho70,0.5832,300,23:59:05,00:07:47,8.7,0.002,0,300,300,True,23.3,25.9,24.0,25.5,網路不穩
+3,b7v2_rho30,0.24994,200,00:07:51,00:21:58,14.1,0.002,0,200,200,True,23.5,26.6,14.8,25.7,網路不穩

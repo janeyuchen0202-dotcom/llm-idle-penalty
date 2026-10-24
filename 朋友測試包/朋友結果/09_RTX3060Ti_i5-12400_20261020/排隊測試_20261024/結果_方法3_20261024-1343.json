@@ -1,0 +1,32 @@
+{
+ "zip": "閒置測試結果_排隊_GPU_RTX-3060-Ti_20261024-0357.zip",
+ "pred_made_at": "2026-10-24T13:43:20",
+ "compared_at": "2026-10-24T13:43:57",
+ "runs": [
+  {
+   "tag": "rho70",
+   "measured_wait": 2.4856,
+   "in_range": false,
+   "closer_to_model": true,
+   "usable": true,
+   "error_pct": 12.49
+  },
+  {
+   "tag": "rho50",
+   "measured_wait": 0.4142,
+   "in_range": false,
+   "closer_to_model": true,
+   "usable": true,
+   "error_pct": 10.33
+  },
+  {
+   "tag": "rho30",
+   "measured_wait": 0.4289,
+   "in_range": false,
+   "closer_to_model": false,
+   "usable": true,
+   "error_pct": 9.58
+  }
+ ],
+ "mean_abs_error_pct": 10.8
+}

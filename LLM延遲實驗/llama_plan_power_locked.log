@@ -1,0 +1,1823 @@
+llama.cpp: <home>\LLM
+model: <home>\LLM\models\qwen2.5-coder-3b-instruct-q4_k_m.gguf
+ctx=4096 threads=4 parallel=1 port=8080
+
+Wait for "server is listening", then leave this window open.
+
+0.00.127.800 I log_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.127.805 I device_info:
+0.00.128.276 I   - Vulkan0 : NVIDIA GeForce RTX 4050 Laptop GPU (5920 MiB, 5152 MiB free)
+0.00.128.637 I   - Vulkan1 : Intel(R) Iris(R) Xe Graphics (16197 MiB, 15429 MiB free)
+0.00.128.645 I   - CPU     : 13th Gen Intel(R) Core(TM) i9-13900H (32394 MiB, 16748 MiB free)
+0.00.128.681 I system_info: n_threads = 4 (n_threads_batch = 4) / 20 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | BMI2 = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+0.00.128.723 I srv          init: running without SSL
+0.00.128.745 I srv          init: using 19 threads for HTTP server
+0.00.128.865 I srv         start: binding port with default address family
+0.00.130.997 I srv  llama_server: loading model
+0.00.131.005 I srv    load_model: loading model '<home>\LLM\models\qwen2.5-coder-3b-instruct-q4_k_m.gguf'
+0.00.131.054 I common_init_result: fitting params to device memory ...
+0.00.131.056 I common_init_result: (for bugs during this step try to reproduce them with -fit off, or provide --verbose logs if the bug only occurs with -fit on)
+0.00.563.481 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.01.866.384 W llama_context: n_ctx_seq (4096) < n_ctx_train (32768) -- the full capacity of the model will not be utilized
+0.01.941.223 I common_init_from_params: warming up the model with an empty run - please wait ... (--no-warmup to disable)
+0.01.993.834 I srv    load_model: initializing slots, n_slots = 1
+0.02.010.087 W common_speculative_init: no implementations specified for speculative decoding
+0.02.010.091 I slot   load_model: id  0 | task -1 | new slot, n_ctx = 4096
+0.02.010.167 I srv    load_model: prompt cache is disabled - use `--cache-ram N` to enable it
+0.02.010.170 I srv    load_model: for more info see https://github.com/ggml-org/llama.cpp/pull/16391
+0.02.010.171 I srv    load_model: context checkpoints enabled, max = 32, min spacing = 256
+0.02.010.198 W srv          init: --cache-idle-slots requires --kv-unified, disabling
+0.02.015.477 I init: chat template, example_format: '<|im_start|>system
+You are a helpful assistant<|im_end|>
+<|im_start|>user
+Hello<|im_end|>
+<|im_start|>assistant
+Hi there<|im_end|>
+<|im_start|>user
+How are you?<|im_end|>
+<|im_start|>assistant
+'
+0.02.018.808 I srv          init: init: chat template, thinking = 0
+0.02.018.832 I srv  llama_server: model loaded
+0.02.018.835 I srv  llama_server: server is listening on http://127.0.0.1:8080
+0.02.018.843 I srv  update_slots: all slots are idle
+0.03.003.152 I srv  params_from_: Chat format: peg-native
+0.03.003.302 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+0.03.003.345 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.04.517.144 I slot print_timing: id  0 | task 0 | n_decoded =    100, tg =  81.57 t/s
+0.04.860.763 I slot print_timing: id  0 | task 0 | prompt eval time =     287.82 ms /   873 tokens (    0.33 ms per token,  3033.15 tokens per second)
+0.04.860.768 I slot print_timing: id  0 | task 0 |        eval time =    1569.58 ms /   128 tokens (   12.26 ms per token,    81.55 tokens per second)
+0.04.860.769 I slot print_timing: id  0 | task 0 |       total time =    1857.40 ms /  1001 tokens
+0.04.860.770 I slot print_timing: id  0 | task 0 |    graphs reused =        127
+0.04.860.800 I slot      release: id  0 | task 0 | stop processing: n_tokens = 1000, truncated = 0
+0.04.860.805 I srv  update_slots: all slots are idle
+0.04.877.461 I srv  params_from_: Chat format: peg-native
+0.04.877.547 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 4466576
+0.04.877.713 I slot launch_slot_: id  0 | task 130 | processing task, is_child = 0
+0.06.688.432 I slot print_timing: id  0 | task 130 | prompt eval time =     243.06 ms /   846 tokens (    0.29 ms per token,  3480.58 tokens per second)
+0.06.688.437 I slot print_timing: id  0 | task 130 |        eval time =    1567.64 ms /   128 tokens (   12.25 ms per token,    81.65 tokens per second)
+0.06.688.437 I slot print_timing: id  0 | task 130 |       total time =    1810.70 ms /   974 tokens
+0.06.688.438 I slot print_timing: id  0 | task 130 |    graphs reused =        253
+0.06.688.462 I slot      release: id  0 | task 130 | stop processing: n_tokens = 1000, truncated = 0
+0.06.688.473 I srv  update_slots: all slots are idle
+0.06.705.075 I srv  params_from_: Chat format: peg-native
+0.06.705.225 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 6294237
+0.06.705.446 I slot launch_slot_: id  0 | task 259 | processing task, is_child = 0
+0.08.173.139 I slot print_timing: id  0 | task 259 | n_decoded =    100, tg =  82.01 t/s
+0.08.520.607 I slot print_timing: id  0 | task 259 | prompt eval time =     248.28 ms /   845 tokens (    0.29 ms per token,  3403.40 tokens per second)
+0.08.520.611 I slot print_timing: id  0 | task 259 |        eval time =    1566.86 ms /   128 tokens (   12.24 ms per token,    81.69 tokens per second)
+0.08.520.612 I slot print_timing: id  0 | task 259 |       total time =    1815.14 ms /   973 tokens
+0.08.520.613 I slot print_timing: id  0 | task 259 |    graphs reused =        379
+0.08.520.642 I slot      release: id  0 | task 259 | stop processing: n_tokens = 1000, truncated = 0
+0.08.520.654 I srv  update_slots: all slots are idle
+0.08.536.744 I srv  params_from_: Chat format: peg-native
+0.08.536.826 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 8126417
+0.08.536.982 I slot launch_slot_: id  0 | task 388 | processing task, is_child = 0
+0.10.361.590 I slot print_timing: id  0 | task 388 | prompt eval time =     247.11 ms /   845 tokens (    0.29 ms per token,  3419.54 tokens per second)
+0.10.361.594 I slot print_timing: id  0 | task 388 |        eval time =    1577.47 ms /   128 tokens (   12.32 ms per token,    81.14 tokens per second)
+0.10.361.596 I slot print_timing: id  0 | task 388 |       total time =    1824.58 ms /   973 tokens
+0.10.361.597 I slot print_timing: id  0 | task 388 |    graphs reused =        505
+0.10.361.626 I slot      release: id  0 | task 388 | stop processing: n_tokens = 1000, truncated = 0
+0.10.361.643 I srv  update_slots: all slots are idle
+0.16.029.449 I srv  params_from_: Chat format: peg-native
+0.16.029.683 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 9967401
+0.16.029.865 I slot launch_slot_: id  0 | task 517 | processing task, is_child = 0
+0.17.498.417 I slot print_timing: id  0 | task 517 | n_decoded =    100, tg =  81.65 t/s
+0.17.845.043 I slot print_timing: id  0 | task 517 | prompt eval time =     243.73 ms /   852 tokens (    0.29 ms per token,  3495.71 tokens per second)
+0.17.845.048 I slot print_timing: id  0 | task 517 |        eval time =    1571.43 ms /   128 tokens (   12.28 ms per token,    81.45 tokens per second)
+0.17.845.049 I slot print_timing: id  0 | task 517 |       total time =    1815.16 ms /   980 tokens
+0.17.845.049 I slot print_timing: id  0 | task 517 |    graphs reused =        631
+0.17.845.079 I slot      release: id  0 | task 517 | stop processing: n_tokens = 1003, truncated = 0
+0.17.845.086 I srv  update_slots: all slots are idle
+0.21.782.707 I srv  params_from_: Chat format: peg-native
+0.21.782.904 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 17450854
+0.21.783.101 I slot launch_slot_: id  0 | task 646 | processing task, is_child = 0
+0.23.249.368 I slot print_timing: id  0 | task 646 | n_decoded =    100, tg =  81.73 t/s
+0.23.596.355 I slot print_timing: id  0 | task 646 | prompt eval time =     242.66 ms /   845 tokens (    0.29 ms per token,  3482.18 tokens per second)
+0.23.596.360 I slot print_timing: id  0 | task 646 |        eval time =    1570.57 ms /   128 tokens (   12.27 ms per token,    81.50 tokens per second)
+0.23.596.360 I slot print_timing: id  0 | task 646 |       total time =    1813.24 ms /   973 tokens
+0.23.596.361 I slot print_timing: id  0 | task 646 |    graphs reused =        757
+0.23.596.388 I slot      release: id  0 | task 646 | stop processing: n_tokens = 1003, truncated = 0
+0.23.596.397 I srv  update_slots: all slots are idle
+0.23.658.177 I srv  params_from_: Chat format: peg-native
+0.23.658.348 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 23202164
+0.23.658.497 I slot launch_slot_: id  0 | task 775 | processing task, is_child = 0
+0.25.472.625 I slot print_timing: id  0 | task 775 | prompt eval time =     243.07 ms /   845 tokens (    0.29 ms per token,  3476.38 tokens per second)
+0.25.472.629 I slot print_timing: id  0 | task 775 |        eval time =    1571.04 ms /   128 tokens (   12.27 ms per token,    81.47 tokens per second)
+0.25.472.630 I slot print_timing: id  0 | task 775 |       total time =    1814.11 ms /   973 tokens
+0.25.472.630 I slot print_timing: id  0 | task 775 |    graphs reused =        883
+0.25.472.652 I slot      release: id  0 | task 775 | stop processing: n_tokens = 1003, truncated = 0
+0.25.472.666 I srv  update_slots: all slots are idle
+0.38.128.119 I srv  params_from_: Chat format: peg-native
+0.38.128.207 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 25078428
+0.38.128.358 I slot launch_slot_: id  0 | task 904 | processing task, is_child = 0
+0.39.001.770 I srv  params_from_: Chat format: peg-native
+0.39.394.078 I srv  params_from_: Chat format: peg-native
+0.39.609.158 I slot print_timing: id  0 | task 904 | n_decoded =    100, tg =  80.81 t/s
+0.39.965.505 I slot print_timing: id  0 | task 904 | prompt eval time =     243.28 ms /   845 tokens (    0.29 ms per token,  3473.39 tokens per second)
+0.39.965.509 I slot print_timing: id  0 | task 904 |        eval time =    1593.85 ms /   128 tokens (   12.45 ms per token,    80.31 tokens per second)
+0.39.965.510 I slot print_timing: id  0 | task 904 |       total time =    1837.13 ms /   973 tokens
+0.39.965.511 I slot print_timing: id  0 | task 904 |    graphs reused =       1009
+0.39.965.537 I slot      release: id  0 | task 904 | stop processing: n_tokens = 1003, truncated = 0
+0.39.965.547 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 39571313
+0.39.965.737 I slot launch_slot_: id  0 | task 957 | processing task, is_child = 0
+0.41.796.815 I slot print_timing: id  0 | task 957 | prompt eval time =     243.45 ms /   845 tokens (    0.29 ms per token,  3471.00 tokens per second)
+0.41.796.820 I slot print_timing: id  0 | task 957 |        eval time =    1587.61 ms /   128 tokens (   12.40 ms per token,    80.62 tokens per second)
+0.41.796.821 I slot print_timing: id  0 | task 957 |       total time =    1831.06 ms /   973 tokens
+0.41.796.822 I slot print_timing: id  0 | task 957 |    graphs reused =       1135
+0.41.796.846 I slot      release: id  0 | task 957 | stop processing: n_tokens = 1003, truncated = 0
+0.41.796.858 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 41402622
+0.41.797.030 I slot launch_slot_: id  0 | task 989 | processing task, is_child = 0
+0.43.274.595 I slot print_timing: id  0 | task 989 | n_decoded =    100, tg =  81.09 t/s
+0.43.623.787 I slot print_timing: id  0 | task 989 | prompt eval time =     244.41 ms /   845 tokens (    0.29 ms per token,  3457.23 tokens per second)
+0.43.623.797 I slot print_timing: id  0 | task 989 |        eval time =    1582.30 ms /   128 tokens (   12.36 ms per token,    80.90 tokens per second)
+0.43.623.799 I slot print_timing: id  0 | task 989 |       total time =    1826.71 ms /   973 tokens
+0.43.623.801 I slot print_timing: id  0 | task 989 |    graphs reused =       1261
+0.43.623.868 I slot      release: id  0 | task 989 | stop processing: n_tokens = 1003, truncated = 0
+0.43.623.902 I srv  update_slots: all slots are idle
+0.49.141.433 I srv  params_from_: Chat format: peg-native
+0.49.141.531 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 43229644
+0.49.141.689 I slot launch_slot_: id  0 | task 1291 | processing task, is_child = 0
+0.49.281.376 I srv  params_from_: Chat format: peg-native
+0.50.622.363 I slot print_timing: id  0 | task 1291 | n_decoded =    100, tg =  80.93 t/s
+0.50.972.202 I slot print_timing: id  0 | task 1291 | prompt eval time =     245.02 ms /   845 tokens (    0.29 ms per token,  3448.70 tokens per second)
+0.50.972.206 I slot print_timing: id  0 | task 1291 |        eval time =    1585.47 ms /   128 tokens (   12.39 ms per token,    80.73 tokens per second)
+0.50.972.207 I slot print_timing: id  0 | task 1291 |       total time =    1830.49 ms /   973 tokens
+0.50.972.208 I slot print_timing: id  0 | task 1291 |    graphs reused =       1387
+0.50.972.235 I slot      release: id  0 | task 1291 | stop processing: n_tokens = 1003, truncated = 0
+0.50.972.246 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 50578010
+0.50.972.409 I slot launch_slot_: id  0 | task 1293 | processing task, is_child = 0
+0.51.219.709 I srv  params_from_: Chat format: peg-native
+0.52.807.259 I slot print_timing: id  0 | task 1293 | prompt eval time =     245.11 ms /   845 tokens (    0.29 ms per token,  3447.47 tokens per second)
+0.52.807.264 I slot print_timing: id  0 | task 1293 |        eval time =    1589.72 ms /   128 tokens (   12.42 ms per token,    80.52 tokens per second)
+0.52.807.264 I slot print_timing: id  0 | task 1293 |       total time =    1834.83 ms /   973 tokens
+0.52.807.265 I slot print_timing: id  0 | task 1293 |    graphs reused =       1513
+0.52.807.288 I slot      release: id  0 | task 1293 | stop processing: n_tokens = 1003, truncated = 0
+0.52.807.298 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 52413063
+0.52.807.465 I slot launch_slot_: id  0 | task 1423 | processing task, is_child = 0
+0.54.298.271 I slot print_timing: id  0 | task 1423 | n_decoded =    100, tg =  80.24 t/s
+0.54.647.912 I slot print_timing: id  0 | task 1423 | prompt eval time =     244.57 ms /   845 tokens (    0.29 ms per token,  3455.06 tokens per second)
+0.54.647.917 I slot print_timing: id  0 | task 1423 |        eval time =    1595.86 ms /   128 tokens (   12.47 ms per token,    80.21 tokens per second)
+0.54.647.918 I slot print_timing: id  0 | task 1423 |       total time =    1840.42 ms /   973 tokens
+0.54.647.919 I slot print_timing: id  0 | task 1423 |    graphs reused =       1639
+0.54.647.949 I slot      release: id  0 | task 1423 | stop processing: n_tokens = 1003, truncated = 0
+0.54.647.964 I srv  update_slots: all slots are idle
+0.56.946.504 I srv  params_from_: Chat format: peg-native
+0.56.946.672 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 54253724
+0.56.946.901 I slot launch_slot_: id  0 | task 1678 | processing task, is_child = 0
+0.58.417.179 I slot print_timing: id  0 | task 1678 | n_decoded =    100, tg =  81.55 t/s
+0.58.764.330 I slot print_timing: id  0 | task 1678 | prompt eval time =     243.95 ms /   845 tokens (    0.29 ms per token,  3463.85 tokens per second)
+0.58.764.334 I slot print_timing: id  0 | task 1678 |        eval time =    1573.46 ms /   128 tokens (   12.29 ms per token,    81.35 tokens per second)
+0.58.764.335 I slot print_timing: id  0 | task 1678 |       total time =    1817.41 ms /   973 tokens
+0.58.764.336 I slot print_timing: id  0 | task 1678 |    graphs reused =       1765
+0.58.764.363 I slot      release: id  0 | task 1678 | stop processing: n_tokens = 1003, truncated = 0
+0.58.764.373 I srv  update_slots: all slots are idle
+1.03.673.695 I srv  params_from_: Chat format: peg-native
+1.03.673.866 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 58370138
+1.03.674.128 I slot launch_slot_: id  0 | task 1807 | processing task, is_child = 0
+1.05.142.990 I slot print_timing: id  0 | task 1807 | n_decoded =    100, tg =  81.64 t/s
+1.05.488.925 I slot print_timing: id  0 | task 1807 | prompt eval time =     243.88 ms /   846 tokens (    0.29 ms per token,  3468.86 tokens per second)
+1.05.488.929 I slot print_timing: id  0 | task 1807 |        eval time =    1570.89 ms /   128 tokens (   12.27 ms per token,    81.48 tokens per second)
+1.05.488.930 I slot print_timing: id  0 | task 1807 |       total time =    1814.78 ms /   974 tokens
+1.05.488.931 I slot print_timing: id  0 | task 1807 |    graphs reused =       1891
+1.05.488.955 I slot      release: id  0 | task 1807 | stop processing: n_tokens = 1003, truncated = 0
+1.05.488.963 I srv  update_slots: all slots are idle
+1.13.653.817 I srv  params_from_: Chat format: peg-native
+1.13.653.981 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 65094730
+1.13.654.154 I slot launch_slot_: id  0 | task 1936 | processing task, is_child = 0
+1.15.121.900 I slot print_timing: id  0 | task 1936 | n_decoded =    100, tg =  81.63 t/s
+1.15.468.222 I slot print_timing: id  0 | task 1936 | prompt eval time =     242.72 ms /   845 tokens (    0.29 ms per token,  3481.38 tokens per second)
+1.15.468.227 I slot print_timing: id  0 | task 1936 |        eval time =    1571.32 ms /   128 tokens (   12.28 ms per token,    81.46 tokens per second)
+1.15.468.228 I slot print_timing: id  0 | task 1936 |       total time =    1814.04 ms /   973 tokens
+1.15.468.229 I slot print_timing: id  0 | task 1936 |    graphs reused =       2017
+1.15.468.255 I slot      release: id  0 | task 1936 | stop processing: n_tokens = 1003, truncated = 0
+1.15.468.270 I srv  update_slots: all slots are idle
+2.09.287.846 I srv  params_from_: Chat format: peg-native
+2.09.288.005 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 75074031
+2.09.288.236 I slot launch_slot_: id  0 | task 2065 | processing task, is_child = 0
+2.10.769.224 I slot print_timing: id  0 | task 2065 | n_decoded =    100, tg =  80.74 t/s
+2.11.113.602 I slot print_timing: id  0 | task 2065 | prompt eval time =     242.42 ms /   845 tokens (    0.29 ms per token,  3485.71 tokens per second)
+2.11.113.606 I slot print_timing: id  0 | task 2065 |        eval time =    1582.93 ms /   128 tokens (   12.37 ms per token,    80.86 tokens per second)
+2.11.113.607 I slot print_timing: id  0 | task 2065 |       total time =    1825.34 ms /   973 tokens
+2.11.113.608 I slot print_timing: id  0 | task 2065 |    graphs reused =       2143
+2.11.113.631 I slot      release: id  0 | task 2065 | stop processing: n_tokens = 1003, truncated = 0
+2.11.113.639 I srv  update_slots: all slots are idle
+2.20.589.624 I srv  params_from_: Chat format: peg-native
+2.20.589.857 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 130719406
+2.20.590.042 I slot launch_slot_: id  0 | task 2194 | processing task, is_child = 0
+2.22.053.763 I slot print_timing: id  0 | task 2194 | n_decoded =    100, tg =  81.94 t/s
+2.22.400.573 I slot print_timing: id  0 | task 2194 | prompt eval time =     243.31 ms /   845 tokens (    0.29 ms per token,  3472.86 tokens per second)
+2.22.400.577 I slot print_timing: id  0 | task 2194 |        eval time =    1567.20 ms /   128 tokens (   12.24 ms per token,    81.67 tokens per second)
+2.22.400.578 I slot print_timing: id  0 | task 2194 |       total time =    1810.51 ms /   973 tokens
+2.22.400.579 I slot print_timing: id  0 | task 2194 |    graphs reused =       2269
+2.22.400.601 I slot      release: id  0 | task 2194 | stop processing: n_tokens = 1003, truncated = 0
+2.22.400.609 I srv  update_slots: all slots are idle
+2.23.724.119 I srv  params_from_: Chat format: peg-native
+2.23.724.273 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 142006376
+2.23.724.614 I slot launch_slot_: id  0 | task 2323 | processing task, is_child = 0
+2.25.193.057 I slot print_timing: id  0 | task 2323 | n_decoded =    100, tg =  81.86 t/s
+2.25.540.060 I slot print_timing: id  0 | task 2323 | prompt eval time =     246.76 ms /   845 tokens (    0.29 ms per token,  3424.39 tokens per second)
+2.25.540.064 I slot print_timing: id  0 | task 2323 |        eval time =    1568.65 ms /   128 tokens (   12.26 ms per token,    81.60 tokens per second)
+2.25.540.065 I slot print_timing: id  0 | task 2323 |       total time =    1815.41 ms /   973 tokens
+2.25.540.066 I slot print_timing: id  0 | task 2323 |    graphs reused =       2395
+2.25.540.091 I slot      release: id  0 | task 2323 | stop processing: n_tokens = 1003, truncated = 0
+2.25.540.101 I srv  update_slots: all slots are idle
+2.28.423.103 I srv  params_from_: Chat format: peg-native
+2.28.423.246 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 145145866
+2.28.423.571 I slot launch_slot_: id  0 | task 2452 | processing task, is_child = 0
+2.29.893.332 I slot print_timing: id  0 | task 2452 | n_decoded =    100, tg =  81.59 t/s
+2.30.239.546 I slot print_timing: id  0 | task 2452 | prompt eval time =     244.07 ms /   845 tokens (    0.29 ms per token,  3462.18 tokens per second)
+2.30.239.550 I slot print_timing: id  0 | task 2452 |        eval time =    1571.88 ms /   128 tokens (   12.28 ms per token,    81.43 tokens per second)
+2.30.239.551 I slot print_timing: id  0 | task 2452 |       total time =    1815.94 ms /   973 tokens
+2.30.239.552 I slot print_timing: id  0 | task 2452 |    graphs reused =       2521
+2.30.239.577 I slot      release: id  0 | task 2452 | stop processing: n_tokens = 1003, truncated = 0
+2.30.239.588 I srv  update_slots: all slots are idle
+2.57.545.822 I srv  params_from_: Chat format: peg-native
+2.57.545.971 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 149845352
+2.57.546.298 I slot launch_slot_: id  0 | task 2581 | processing task, is_child = 0
+2.59.030.382 I slot print_timing: id  0 | task 2581 | n_decoded =    100, tg =  80.82 t/s
+2.59.378.259 I slot print_timing: id  0 | task 2581 | prompt eval time =     246.69 ms /   845 tokens (    0.29 ms per token,  3425.41 tokens per second)
+2.59.378.263 I slot print_timing: id  0 | task 2581 |        eval time =    1585.25 ms /   128 tokens (   12.38 ms per token,    80.74 tokens per second)
+2.59.378.264 I slot print_timing: id  0 | task 2581 |       total time =    1831.93 ms /   973 tokens
+2.59.378.265 I slot print_timing: id  0 | task 2581 |    graphs reused =       2647
+2.59.378.286 I slot      release: id  0 | task 2581 | stop processing: n_tokens = 1003, truncated = 0
+2.59.378.295 I srv  update_slots: all slots are idle
+2.59.720.629 I srv  params_from_: Chat format: peg-native
+2.59.720.825 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 178984061
+2.59.721.084 I slot launch_slot_: id  0 | task 2710 | processing task, is_child = 0
+3.01.534.999 I slot print_timing: id  0 | task 2710 | prompt eval time =     242.55 ms /   845 tokens (    0.29 ms per token,  3483.79 tokens per second)
+3.01.535.003 I slot print_timing: id  0 | task 2710 |        eval time =    1571.34 ms /   128 tokens (   12.28 ms per token,    81.46 tokens per second)
+3.01.535.004 I slot print_timing: id  0 | task 2710 |       total time =    1813.89 ms /   973 tokens
+3.01.535.004 I slot print_timing: id  0 | task 2710 |    graphs reused =       2773
+3.01.535.028 I slot      release: id  0 | task 2710 | stop processing: n_tokens = 1003, truncated = 0
+3.01.535.037 I srv  update_slots: all slots are idle
+3.35.823.229 I srv  params_from_: Chat format: peg-native
+3.35.823.466 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 181140804
+3.35.823.646 I slot launch_slot_: id  0 | task 2839 | processing task, is_child = 0
+3.37.301.700 I slot print_timing: id  0 | task 2839 | n_decoded =    100, tg =  81.02 t/s
+3.37.649.274 I slot print_timing: id  0 | task 2839 | prompt eval time =     243.74 ms /   845 tokens (    0.29 ms per token,  3466.87 tokens per second)
+3.37.649.278 I slot print_timing: id  0 | task 2839 |        eval time =    1581.87 ms /   128 tokens (   12.36 ms per token,    80.92 tokens per second)
+3.37.649.279 I slot print_timing: id  0 | task 2839 |       total time =    1825.61 ms /   973 tokens
+3.37.649.280 I slot print_timing: id  0 | task 2839 |    graphs reused =       2899
+3.37.649.305 I slot      release: id  0 | task 2839 | stop processing: n_tokens = 1003, truncated = 0
+3.37.649.329 I srv  update_slots: all slots are idle
+3.44.946.388 I srv  params_from_: Chat format: peg-native
+3.44.946.642 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 217255081
+3.44.946.855 I slot launch_slot_: id  0 | task 2968 | processing task, is_child = 0
+3.45.781.991 I srv  params_from_: Chat format: peg-native
+3.46.414.686 I slot print_timing: id  0 | task 2968 | n_decoded =    100, tg =  81.62 t/s
+3.46.762.924 I slot print_timing: id  0 | task 2968 | prompt eval time =     242.69 ms /   845 tokens (    0.29 ms per token,  3481.78 tokens per second)
+3.46.762.929 I slot print_timing: id  0 | task 2968 |        eval time =    1573.36 ms /   128 tokens (   12.29 ms per token,    81.35 tokens per second)
+3.46.762.930 I slot print_timing: id  0 | task 2968 |       total time =    1816.05 ms /   973 tokens
+3.46.762.930 I slot print_timing: id  0 | task 2968 |    graphs reused =       3025
+3.46.762.954 I slot      release: id  0 | task 2968 | stop processing: n_tokens = 1003, truncated = 0
+3.46.762.966 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 226368729
+3.46.763.138 I slot launch_slot_: id  0 | task 3018 | processing task, is_child = 0
+3.48.580.984 I slot print_timing: id  0 | task 3018 | prompt eval time =     242.87 ms /   846 tokens (    0.29 ms per token,  3483.34 tokens per second)
+3.48.580.988 I slot print_timing: id  0 | task 3018 |        eval time =    1574.96 ms /   128 tokens (   12.30 ms per token,    81.27 tokens per second)
+3.48.580.989 I slot print_timing: id  0 | task 3018 |       total time =    1817.83 ms /   974 tokens
+3.48.580.990 I slot print_timing: id  0 | task 3018 |    graphs reused =       3151
+3.48.581.014 I slot      release: id  0 | task 3018 | stop processing: n_tokens = 1003, truncated = 0
+3.48.581.022 I srv  update_slots: all slots are idle
+3.58.818.276 I srv  params_from_: Chat format: peg-native
+3.58.818.499 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 228186789
+3.58.818.665 I slot launch_slot_: id  0 | task 3226 | processing task, is_child = 0
+3.59.798.062 I srv  params_from_: Chat format: peg-native
+4.00.284.801 I slot print_timing: id  0 | task 3226 | n_decoded =    100, tg =  81.73 t/s
+4.00.631.098 I slot print_timing: id  0 | task 3226 | prompt eval time =     242.57 ms /   845 tokens (    0.29 ms per token,  3483.53 tokens per second)
+4.00.631.102 I slot print_timing: id  0 | task 3226 |        eval time =    1569.84 ms /   128 tokens (   12.26 ms per token,    81.54 tokens per second)
+4.00.631.103 I slot print_timing: id  0 | task 3226 |       total time =    1812.41 ms /   973 tokens
+4.00.631.103 I slot print_timing: id  0 | task 3226 |    graphs reused =       3277
+4.00.631.126 I slot      release: id  0 | task 3226 | stop processing: n_tokens = 1003, truncated = 0
+4.00.631.136 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 240236901
+4.00.631.299 I slot launch_slot_: id  0 | task 3288 | processing task, is_child = 0
+4.01.594.288 I srv  params_from_: Chat format: peg-native
+4.02.446.990 I slot print_timing: id  0 | task 3288 | prompt eval time =     242.99 ms /   845 tokens (    0.29 ms per token,  3477.50 tokens per second)
+4.02.446.994 I slot print_timing: id  0 | task 3288 |        eval time =    1572.68 ms /   128 tokens (   12.29 ms per token,    81.39 tokens per second)
+4.02.446.995 I slot print_timing: id  0 | task 3288 |       total time =    1815.67 ms /   973 tokens
+4.02.446.995 I slot print_timing: id  0 | task 3288 |    graphs reused =       3403
+4.02.447.018 I slot      release: id  0 | task 3288 | stop processing: n_tokens = 1003, truncated = 0
+4.02.447.029 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 242052794
+4.02.447.195 I slot launch_slot_: id  0 | task 3415 | processing task, is_child = 0
+4.03.527.968 I srv  params_from_: Chat format: peg-native
+4.03.916.509 I slot print_timing: id  0 | task 3415 | n_decoded =    100, tg =  81.54 t/s
+4.04.262.825 I slot print_timing: id  0 | task 3415 | prompt eval time =     242.87 ms /   845 tokens (    0.29 ms per token,  3479.23 tokens per second)
+4.04.262.829 I slot print_timing: id  0 | task 3415 |        eval time =    1572.74 ms /   128 tokens (   12.29 ms per token,    81.39 tokens per second)
+4.04.262.830 I slot print_timing: id  0 | task 3415 |       total time =    1815.61 ms /   973 tokens
+4.04.262.831 I slot print_timing: id  0 | task 3415 |    graphs reused =       3529
+4.04.262.860 I slot      release: id  0 | task 3415 | stop processing: n_tokens = 1003, truncated = 0
+4.04.262.871 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 243868635
+4.04.263.104 I slot launch_slot_: id  0 | task 3554 | processing task, is_child = 0
+4.06.082.261 I slot print_timing: id  0 | task 3554 | prompt eval time =     243.27 ms /   845 tokens (    0.29 ms per token,  3473.54 tokens per second)
+4.06.082.265 I slot print_timing: id  0 | task 3554 |        eval time =    1575.87 ms /   128 tokens (   12.31 ms per token,    81.22 tokens per second)
+4.06.082.266 I slot print_timing: id  0 | task 3554 |       total time =    1819.14 ms /   973 tokens
+4.06.082.267 I slot print_timing: id  0 | task 3554 |    graphs reused =       3655
+4.06.082.290 I slot      release: id  0 | task 3554 | stop processing: n_tokens = 1003, truncated = 0
+4.06.082.300 I srv  update_slots: all slots are idle
+4.13.020.158 I srv  params_from_: Chat format: peg-native
+4.13.020.316 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 245688066
+4.13.020.679 I slot launch_slot_: id  0 | task 3742 | processing task, is_child = 0
+4.14.495.423 I slot print_timing: id  0 | task 3742 | n_decoded =    100, tg =  81.27 t/s
+4.14.843.012 I slot print_timing: id  0 | task 3742 | prompt eval time =     244.24 ms /   845 tokens (    0.29 ms per token,  3459.68 tokens per second)
+4.14.843.016 I slot print_timing: id  0 | task 3742 |        eval time =    1578.06 ms /   128 tokens (   12.33 ms per token,    81.11 tokens per second)
+4.14.843.017 I slot print_timing: id  0 | task 3742 |       total time =    1822.30 ms /   973 tokens
+4.14.843.018 I slot print_timing: id  0 | task 3742 |    graphs reused =       3781
+4.14.843.043 I slot      release: id  0 | task 3742 | stop processing: n_tokens = 1003, truncated = 0
+4.14.843.053 I srv  update_slots: all slots are idle
+4.15.218.137 I srv  params_from_: Chat format: peg-native
+4.15.218.305 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 254448819
+4.15.218.698 I slot launch_slot_: id  0 | task 3871 | processing task, is_child = 0
+4.17.036.772 I slot print_timing: id  0 | task 3871 | prompt eval time =     242.91 ms /   845 tokens (    0.29 ms per token,  3478.71 tokens per second)
+4.17.036.776 I slot print_timing: id  0 | task 3871 |        eval time =    1575.14 ms /   128 tokens (   12.31 ms per token,    81.26 tokens per second)
+4.17.036.777 I slot print_timing: id  0 | task 3871 |       total time =    1818.05 ms /   973 tokens
+4.17.036.778 I slot print_timing: id  0 | task 3871 |    graphs reused =       3907
+4.17.036.805 I slot      release: id  0 | task 3871 | stop processing: n_tokens = 1003, truncated = 0
+4.17.036.815 I srv  update_slots: all slots are idle
+4.30.162.311 I srv  params_from_: Chat format: peg-native
+4.30.162.532 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 256642581
+4.30.162.779 I slot launch_slot_: id  0 | task 4000 | processing task, is_child = 0
+4.31.632.052 I slot print_timing: id  0 | task 4000 | n_decoded =    100, tg =  81.54 t/s
+4.31.979.434 I slot print_timing: id  0 | task 4000 | prompt eval time =     242.79 ms /   845 tokens (    0.29 ms per token,  3480.30 tokens per second)
+4.31.979.438 I slot print_timing: id  0 | task 4000 |        eval time =    1573.84 ms /   128 tokens (   12.30 ms per token,    81.33 tokens per second)
+4.31.979.439 I slot print_timing: id  0 | task 4000 |       total time =    1816.63 ms /   973 tokens
+4.31.979.440 I slot print_timing: id  0 | task 4000 |    graphs reused =       4033
+4.31.979.466 I slot      release: id  0 | task 4000 | stop processing: n_tokens = 1003, truncated = 0
+4.31.979.476 I srv  update_slots: all slots are idle
+4.32.336.009 I srv  params_from_: Chat format: peg-native
+4.32.336.179 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 271585241
+4.32.336.490 I slot launch_slot_: id  0 | task 4129 | processing task, is_child = 0
+4.34.153.104 I slot print_timing: id  0 | task 4129 | prompt eval time =     243.11 ms /   845 tokens (    0.29 ms per token,  3475.82 tokens per second)
+4.34.153.109 I slot print_timing: id  0 | task 4129 |        eval time =    1573.47 ms /   128 tokens (   12.29 ms per token,    81.35 tokens per second)
+4.34.153.110 I slot print_timing: id  0 | task 4129 |       total time =    1816.58 ms /   973 tokens
+4.34.153.111 I slot print_timing: id  0 | task 4129 |    graphs reused =       4159
+4.34.153.139 I slot      release: id  0 | task 4129 | stop processing: n_tokens = 1003, truncated = 0
+4.34.153.149 I srv  update_slots: all slots are idle
+4.41.770.383 I srv  params_from_: Chat format: peg-native
+4.41.770.598 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 273758914
+4.41.770.779 I slot launch_slot_: id  0 | task 4258 | processing task, is_child = 0
+4.43.237.940 I slot print_timing: id  0 | task 4258 | n_decoded =    100, tg =  81.69 t/s
+4.43.585.099 I slot print_timing: id  0 | task 4258 | prompt eval time =     243.04 ms /   845 tokens (    0.29 ms per token,  3476.81 tokens per second)
+4.43.585.103 I slot print_timing: id  0 | task 4258 |        eval time =    1571.26 ms /   128 tokens (   12.28 ms per token,    81.46 tokens per second)
+4.43.585.104 I slot print_timing: id  0 | task 4258 |       total time =    1814.30 ms /   973 tokens
+4.43.585.104 I slot print_timing: id  0 | task 4258 |    graphs reused =       4285
+4.43.585.129 I slot      release: id  0 | task 4258 | stop processing: n_tokens = 1003, truncated = 0
+4.43.585.139 I srv  update_slots: all slots are idle
+4.43.973.800 I srv  params_from_: Chat format: peg-native
+4.43.974.029 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 283190904
+4.43.974.256 I slot launch_slot_: id  0 | task 4387 | processing task, is_child = 0
+4.45.791.484 I slot print_timing: id  0 | task 4387 | prompt eval time =     242.95 ms /   846 tokens (    0.29 ms per token,  3482.20 tokens per second)
+4.45.791.488 I slot print_timing: id  0 | task 4387 |        eval time =    1574.25 ms /   128 tokens (   12.30 ms per token,    81.31 tokens per second)
+4.45.791.489 I slot print_timing: id  0 | task 4387 |       total time =    1817.20 ms /   974 tokens
+4.45.791.489 I slot print_timing: id  0 | task 4387 |    graphs reused =       4411
+4.45.791.514 I slot      release: id  0 | task 4387 | stop processing: n_tokens = 1003, truncated = 0
+4.45.791.525 I srv  update_slots: all slots are idle
+4.47.637.237 I srv  params_from_: Chat format: peg-native
+4.47.637.333 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 285397290
+4.47.637.495 I slot launch_slot_: id  0 | task 4516 | processing task, is_child = 0
+4.48.507.631 I srv  params_from_: Chat format: peg-native
+4.49.110.295 I slot print_timing: id  0 | task 4516 | n_decoded =    100, tg =  81.34 t/s
+4.49.457.502 I slot print_timing: id  0 | task 4516 | prompt eval time =     243.30 ms /   845 tokens (    0.29 ms per token,  3473.12 tokens per second)
+4.49.457.507 I slot print_timing: id  0 | task 4516 |        eval time =    1576.69 ms /   128 tokens (   12.32 ms per token,    81.18 tokens per second)
+4.49.457.508 I slot print_timing: id  0 | task 4516 |       total time =    1819.99 ms /   973 tokens
+4.49.457.509 I slot print_timing: id  0 | task 4516 |    graphs reused =       4537
+4.49.457.542 I slot      release: id  0 | task 4516 | stop processing: n_tokens = 1003, truncated = 0
+4.49.457.555 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 289063317
+4.49.457.775 I slot launch_slot_: id  0 | task 4569 | processing task, is_child = 0
+4.51.275.637 I slot print_timing: id  0 | task 4569 | prompt eval time =     243.79 ms /   845 tokens (    0.29 ms per token,  3466.07 tokens per second)
+4.51.275.642 I slot print_timing: id  0 | task 4569 |        eval time =    1574.05 ms /   128 tokens (   12.30 ms per token,    81.32 tokens per second)
+4.51.275.642 I slot print_timing: id  0 | task 4569 |       total time =    1817.84 ms /   973 tokens
+4.51.275.643 I slot print_timing: id  0 | task 4569 |    graphs reused =       4663
+4.51.275.669 I slot      release: id  0 | task 4569 | stop processing: n_tokens = 1003, truncated = 0
+4.51.275.678 I srv  update_slots: all slots are idle
+4.56.951.475 I srv  params_from_: Chat format: peg-native
+4.56.951.687 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 290881445
+4.56.951.846 I slot launch_slot_: id  0 | task 4774 | processing task, is_child = 0
+4.58.421.929 I slot print_timing: id  0 | task 4774 | n_decoded =    100, tg =  81.50 t/s
+4.58.771.636 I slot print_timing: id  0 | task 4774 | prompt eval time =     243.14 ms /   845 tokens (    0.29 ms per token,  3475.31 tokens per second)
+4.58.771.641 I slot print_timing: id  0 | task 4774 |        eval time =    1576.62 ms /   128 tokens (   12.32 ms per token,    81.19 tokens per second)
+4.58.771.642 I slot print_timing: id  0 | task 4774 |       total time =    1819.76 ms /   973 tokens
+4.58.771.643 I slot print_timing: id  0 | task 4774 |    graphs reused =       4789
+4.58.771.672 I slot      release: id  0 | task 4774 | stop processing: n_tokens = 1003, truncated = 0
+4.58.771.686 I srv  update_slots: all slots are idle
+5.26.328.663 I srv  params_from_: Chat format: peg-native
+5.26.328.897 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 298377447
+5.26.329.181 I slot launch_slot_: id  0 | task 4903 | processing task, is_child = 0
+5.27.812.748 I slot print_timing: id  0 | task 4903 | n_decoded =    100, tg =  80.59 t/s
+5.28.159.175 I slot print_timing: id  0 | task 4903 | prompt eval time =     242.74 ms /   845 tokens (    0.29 ms per token,  3481.16 tokens per second)
+5.28.159.180 I slot print_timing: id  0 | task 4903 |        eval time =    1587.24 ms /   128 tokens (   12.40 ms per token,    80.64 tokens per second)
+5.28.159.180 I slot print_timing: id  0 | task 4903 |       total time =    1829.97 ms /   973 tokens
+5.28.159.181 I slot print_timing: id  0 | task 4903 |    graphs reused =       4915
+5.28.159.207 I slot      release: id  0 | task 4903 | stop processing: n_tokens = 1003, truncated = 0
+5.28.159.218 I srv  update_slots: all slots are idle
+5.44.828.999 I srv  params_from_: Chat format: peg-native
+5.44.829.167 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 327764983
+5.44.829.406 I slot launch_slot_: id  0 | task 5032 | processing task, is_child = 0
+5.46.310.062 I slot print_timing: id  0 | task 5032 | n_decoded =    100, tg =  80.80 t/s
+5.46.657.264 I slot print_timing: id  0 | task 5032 | prompt eval time =     242.98 ms /   845 tokens (    0.29 ms per token,  3477.67 tokens per second)
+5.46.657.268 I slot print_timing: id  0 | task 5032 |        eval time =    1584.86 ms /   128 tokens (   12.38 ms per token,    80.76 tokens per second)
+5.46.657.269 I slot print_timing: id  0 | task 5032 |       total time =    1827.84 ms /   973 tokens
+5.46.657.269 I slot print_timing: id  0 | task 5032 |    graphs reused =       5041
+5.46.657.300 I slot      release: id  0 | task 5032 | stop processing: n_tokens = 1003, truncated = 0
+5.46.657.311 I srv  update_slots: all slots are idle
+6.06.789.909 I srv  params_from_: Chat format: peg-native
+6.06.790.053 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 346263075
+6.06.790.399 I slot launch_slot_: id  0 | task 5161 | processing task, is_child = 0
+6.08.271.491 I slot print_timing: id  0 | task 5161 | n_decoded =    100, tg =  80.81 t/s
+6.08.618.582 I slot print_timing: id  0 | task 5161 | prompt eval time =     243.60 ms /   845 tokens (    0.29 ms per token,  3468.73 tokens per second)
+6.08.618.586 I slot print_timing: id  0 | task 5161 |        eval time =    1584.55 ms /   128 tokens (   12.38 ms per token,    80.78 tokens per second)
+6.08.618.586 I slot print_timing: id  0 | task 5161 |       total time =    1828.15 ms /   973 tokens
+6.08.618.587 I slot print_timing: id  0 | task 5161 |    graphs reused =       5167
+6.08.618.623 I slot      release: id  0 | task 5161 | stop processing: n_tokens = 1003, truncated = 0
+6.08.618.635 I srv  update_slots: all slots are idle
+6.08.724.322 I srv  params_from_: Chat format: peg-native
+6.08.724.473 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 368224398
+6.08.724.676 I slot launch_slot_: id  0 | task 5290 | processing task, is_child = 0
+6.10.537.688 I slot print_timing: id  0 | task 5290 | prompt eval time =     242.99 ms /   845 tokens (    0.29 ms per token,  3477.48 tokens per second)
+6.10.537.693 I slot print_timing: id  0 | task 5290 |        eval time =    1570.00 ms /   128 tokens (   12.27 ms per token,    81.53 tokens per second)
+6.10.537.694 I slot print_timing: id  0 | task 5290 |       total time =    1812.99 ms /   973 tokens
+6.10.537.695 I slot print_timing: id  0 | task 5290 |    graphs reused =       5293
+6.10.537.718 I slot      release: id  0 | task 5290 | stop processing: n_tokens = 1003, truncated = 0
+6.10.537.727 I srv  update_slots: all slots are idle
+6.10.734.725 I srv  params_from_: Chat format: peg-native
+6.10.734.839 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 370143493
+6.10.734.986 I slot launch_slot_: id  0 | task 5419 | processing task, is_child = 0
+6.12.206.693 I slot print_timing: id  0 | task 5419 | n_decoded =    100, tg =  81.39 t/s
+6.12.554.317 I slot print_timing: id  0 | task 5419 | prompt eval time =     243.09 ms /   845 tokens (    0.29 ms per token,  3476.06 tokens per second)
+6.12.554.321 I slot print_timing: id  0 | task 5419 |        eval time =    1576.22 ms /   128 tokens (   12.31 ms per token,    81.21 tokens per second)
+6.12.554.322 I slot print_timing: id  0 | task 5419 |       total time =    1819.31 ms /   973 tokens
+6.12.554.322 I slot print_timing: id  0 | task 5419 |    graphs reused =       5419
+6.12.554.347 I slot      release: id  0 | task 5419 | stop processing: n_tokens = 1003, truncated = 0
+6.12.554.357 I srv  update_slots: all slots are idle
+6.19.236.199 I srv  params_from_: Chat format: peg-native
+6.19.236.360 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 372160122
+6.19.236.591 I slot launch_slot_: id  0 | task 5548 | processing task, is_child = 0
+6.19.596.777 I srv  params_from_: Chat format: peg-native
+6.20.703.851 I slot print_timing: id  0 | task 5548 | n_decoded =    100, tg =  81.66 t/s
+6.21.052.615 I slot print_timing: id  0 | task 5548 | prompt eval time =     242.66 ms /   845 tokens (    0.29 ms per token,  3482.24 tokens per second)
+6.21.052.619 I slot print_timing: id  0 | task 5548 |        eval time =    1573.34 ms /   128 tokens (   12.29 ms per token,    81.36 tokens per second)
+6.21.052.620 I slot print_timing: id  0 | task 5548 |       total time =    1816.00 ms /   973 tokens
+6.21.052.621 I slot print_timing: id  0 | task 5548 |    graphs reused =       5545
+6.21.052.647 I slot      release: id  0 | task 5548 | stop processing: n_tokens = 1003, truncated = 0
+6.21.052.656 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 380658422
+6.21.052.822 I slot launch_slot_: id  0 | task 5560 | processing task, is_child = 0
+6.22.869.652 I slot print_timing: id  0 | task 5560 | prompt eval time =     243.31 ms /   846 tokens (    0.29 ms per token,  3477.03 tokens per second)
+6.22.869.657 I slot print_timing: id  0 | task 5560 |        eval time =    1573.49 ms /   128 tokens (   12.29 ms per token,    81.35 tokens per second)
+6.22.869.658 I slot print_timing: id  0 | task 5560 |       total time =    1816.80 ms /   974 tokens
+6.22.869.659 I slot print_timing: id  0 | task 5560 |    graphs reused =       5671
+6.22.869.691 I slot      release: id  0 | task 5560 | stop processing: n_tokens = 1003, truncated = 0
+6.22.869.706 I srv  update_slots: all slots are idle
+6.30.799.041 I srv  params_from_: Chat format: peg-native
+6.30.799.128 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 382475466
+6.30.799.310 I slot launch_slot_: id  0 | task 5806 | processing task, is_child = 0
+6.32.271.021 I slot print_timing: id  0 | task 5806 | n_decoded =    100, tg =  81.40 t/s
+6.32.616.882 I slot print_timing: id  0 | task 5806 | prompt eval time =     243.26 ms /   845 tokens (    0.29 ms per token,  3473.59 tokens per second)
+6.32.616.886 I slot print_timing: id  0 | task 5806 |        eval time =    1574.28 ms /   128 tokens (   12.30 ms per token,    81.31 tokens per second)
+6.32.616.887 I slot print_timing: id  0 | task 5806 |       total time =    1817.55 ms /   973 tokens
+6.32.616.888 I slot print_timing: id  0 | task 5806 |    graphs reused =       5797
+6.32.616.915 I slot      release: id  0 | task 5806 | stop processing: n_tokens = 1003, truncated = 0
+6.32.616.928 I srv  update_slots: all slots are idle
+6.39.126.630 I srv  params_from_: Chat format: peg-native
+6.39.126.727 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 392222690
+6.39.126.883 I slot launch_slot_: id  0 | task 5935 | processing task, is_child = 0
+6.40.603.171 I slot print_timing: id  0 | task 5935 | n_decoded =    100, tg =  81.13 t/s
+6.40.952.308 I slot print_timing: id  0 | task 5935 | prompt eval time =     243.64 ms /   845 tokens (    0.29 ms per token,  3468.26 tokens per second)
+6.40.952.313 I slot print_timing: id  0 | task 5935 |        eval time =    1581.77 ms /   128 tokens (   12.36 ms per token,    80.92 tokens per second)
+6.40.952.313 I slot print_timing: id  0 | task 5935 |       total time =    1825.41 ms /   973 tokens
+6.40.952.314 I slot print_timing: id  0 | task 5935 |    graphs reused =       5923
+6.40.952.343 I slot      release: id  0 | task 5935 | stop processing: n_tokens = 1003, truncated = 0
+6.40.952.353 I srv  update_slots: all slots are idle
+6.50.841.528 I srv  params_from_: Chat format: peg-native
+6.50.841.758 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 400558118
+6.50.842.016 I slot launch_slot_: id  0 | task 6064 | processing task, is_child = 0
+6.52.313.951 I slot print_timing: id  0 | task 6064 | n_decoded =    100, tg =  81.40 t/s
+6.52.661.255 I slot print_timing: id  0 | task 6064 | prompt eval time =     243.45 ms /   845 tokens (    0.29 ms per token,  3471.00 tokens per second)
+6.52.661.259 I slot print_timing: id  0 | task 6064 |        eval time =    1575.77 ms /   128 tokens (   12.31 ms per token,    81.23 tokens per second)
+6.52.661.260 I slot print_timing: id  0 | task 6064 |       total time =    1819.21 ms /   973 tokens
+6.52.661.261 I slot print_timing: id  0 | task 6064 |    graphs reused =       6049
+6.52.661.285 I slot      release: id  0 | task 6064 | stop processing: n_tokens = 1003, truncated = 0
+6.52.661.294 I srv  update_slots: all slots are idle
+6.58.372.691 I srv  params_from_: Chat format: peg-native
+6.58.372.914 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 412267060
+6.58.373.100 I slot launch_slot_: id  0 | task 6193 | processing task, is_child = 0
+6.59.855.072 I slot print_timing: id  0 | task 6193 | n_decoded =    100, tg =  80.72 t/s
+7.00.203.705 I slot print_timing: id  0 | task 6193 | prompt eval time =     243.11 ms /   845 tokens (    0.29 ms per token,  3475.85 tokens per second)
+7.00.203.710 I slot print_timing: id  0 | task 6193 |        eval time =    1587.48 ms /   128 tokens (   12.40 ms per token,    80.63 tokens per second)
+7.00.203.711 I slot print_timing: id  0 | task 6193 |       total time =    1830.58 ms /   973 tokens
+7.00.203.712 I slot print_timing: id  0 | task 6193 |    graphs reused =       6175
+7.00.203.741 I slot      release: id  0 | task 6193 | stop processing: n_tokens = 1003, truncated = 0
+7.00.203.751 I srv  update_slots: all slots are idle
+7.01.397.052 I srv  params_from_: Chat format: peg-native
+7.01.397.221 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 419809516
+7.01.397.450 I slot launch_slot_: id  0 | task 6322 | processing task, is_child = 0
+7.01.545.951 I srv  params_from_: Chat format: peg-native
+7.02.118.880 I srv  params_from_: Chat format: peg-native
+7.02.875.165 I slot print_timing: id  0 | task 6322 | n_decoded =    100, tg =  80.99 t/s
+7.03.222.683 I slot print_timing: id  0 | task 6322 | prompt eval time =     242.95 ms /   845 tokens (    0.29 ms per token,  3478.07 tokens per second)
+7.03.222.688 I slot print_timing: id  0 | task 6322 |        eval time =    1582.25 ms /   128 tokens (   12.36 ms per token,    80.90 tokens per second)
+7.03.222.689 I slot print_timing: id  0 | task 6322 |       total time =    1825.20 ms /   973 tokens
+7.03.222.689 I slot print_timing: id  0 | task 6322 |    graphs reused =       6301
+7.03.222.715 I slot      release: id  0 | task 6322 | stop processing: n_tokens = 1003, truncated = 0
+7.03.222.725 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 422828490
+7.03.222.914 I slot launch_slot_: id  0 | task 6324 | processing task, is_child = 0
+7.05.040.411 I slot print_timing: id  0 | task 6324 | prompt eval time =     243.83 ms /   845 tokens (    0.29 ms per token,  3465.54 tokens per second)
+7.05.040.416 I slot print_timing: id  0 | task 6324 |        eval time =    1573.65 ms /   128 tokens (   12.29 ms per token,    81.34 tokens per second)
+7.05.040.417 I slot print_timing: id  0 | task 6324 |       total time =    1817.48 ms /   973 tokens
+7.05.040.417 I slot print_timing: id  0 | task 6324 |    graphs reused =       6427
+7.05.040.444 I slot      release: id  0 | task 6324 | stop processing: n_tokens = 1003, truncated = 0
+7.05.040.455 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 424646219
+7.05.040.646 I slot launch_slot_: id  0 | task 6363 | processing task, is_child = 0
+7.06.509.367 I slot print_timing: id  0 | task 6363 | n_decoded =    100, tg =  81.62 t/s
+7.06.857.713 I slot print_timing: id  0 | task 6363 | prompt eval time =     243.52 ms /   845 tokens (    0.29 ms per token,  3469.96 tokens per second)
+7.06.857.718 I slot print_timing: id  0 | task 6363 |        eval time =    1573.52 ms /   128 tokens (   12.29 ms per token,    81.35 tokens per second)
+7.06.857.718 I slot print_timing: id  0 | task 6363 |       total time =    1817.04 ms /   973 tokens
+7.06.857.719 I slot print_timing: id  0 | task 6363 |    graphs reused =       6553
+7.06.857.748 I slot      release: id  0 | task 6363 | stop processing: n_tokens = 1003, truncated = 0
+7.06.857.762 I srv  update_slots: all slots are idle
+7.09.918.921 I srv  params_from_: Chat format: peg-native
+7.09.919.016 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 426463523
+7.09.919.190 I slot launch_slot_: id  0 | task 6709 | processing task, is_child = 0
+7.11.387.589 I slot print_timing: id  0 | task 6709 | n_decoded =    100, tg =  81.61 t/s
+7.11.734.089 I slot print_timing: id  0 | task 6709 | prompt eval time =     243.11 ms /   845 tokens (    0.29 ms per token,  3475.75 tokens per second)
+7.11.734.093 I slot print_timing: id  0 | task 6709 |        eval time =    1571.76 ms /   128 tokens (   12.28 ms per token,    81.44 tokens per second)
+7.11.734.094 I slot print_timing: id  0 | task 6709 |       total time =    1814.88 ms /   973 tokens
+7.11.734.095 I slot print_timing: id  0 | task 6709 |    graphs reused =       6679
+7.11.734.120 I slot      release: id  0 | task 6709 | stop processing: n_tokens = 1003, truncated = 0
+7.11.734.132 I srv  update_slots: all slots are idle
+7.30.277.386 I srv  params_from_: Chat format: peg-native
+7.30.277.488 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 431339896
+7.30.277.657 I slot launch_slot_: id  0 | task 6838 | processing task, is_child = 0
+7.31.760.305 I slot print_timing: id  0 | task 6838 | n_decoded =    100, tg =  80.66 t/s
+7.32.107.717 I slot print_timing: id  0 | task 6838 | prompt eval time =     242.83 ms /   845 tokens (    0.29 ms per token,  3479.84 tokens per second)
+7.32.107.722 I slot print_timing: id  0 | task 6838 |        eval time =    1587.21 ms /   128 tokens (   12.40 ms per token,    80.64 tokens per second)
+7.32.107.722 I slot print_timing: id  0 | task 6838 |       total time =    1830.04 ms /   973 tokens
+7.32.107.723 I slot print_timing: id  0 | task 6838 |    graphs reused =       6805
+7.32.107.753 I slot      release: id  0 | task 6838 | stop processing: n_tokens = 1003, truncated = 0
+7.32.107.765 I srv  update_slots: all slots are idle
+7.41.071.995 I srv  params_from_: Chat format: peg-native
+7.41.072.155 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 451713529
+7.41.072.345 I slot launch_slot_: id  0 | task 6967 | processing task, is_child = 0
+7.41.400.412 I srv  params_from_: Chat format: peg-native
+7.42.541.111 I slot print_timing: id  0 | task 6967 | n_decoded =    100, tg =  81.57 t/s
+7.42.888.951 I slot print_timing: id  0 | task 6967 | prompt eval time =     242.87 ms /   846 tokens (    0.29 ms per token,  3483.34 tokens per second)
+7.42.888.955 I slot print_timing: id  0 | task 6967 |        eval time =    1573.71 ms /   128 tokens (   12.29 ms per token,    81.34 tokens per second)
+7.42.888.957 I slot print_timing: id  0 | task 6967 |       total time =    1816.58 ms /   974 tokens
+7.42.888.958 I slot print_timing: id  0 | task 6967 |    graphs reused =       6931
+7.42.888.981 I slot      release: id  0 | task 6967 | stop processing: n_tokens = 1003, truncated = 0
+7.42.888.991 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 462494756
+7.42.889.157 I slot launch_slot_: id  0 | task 6976 | processing task, is_child = 0
+7.44.705.329 I slot print_timing: id  0 | task 6976 | prompt eval time =     243.71 ms /   845 tokens (    0.29 ms per token,  3467.21 tokens per second)
+7.44.705.334 I slot print_timing: id  0 | task 6976 |        eval time =    1572.44 ms /   128 tokens (   12.28 ms per token,    81.40 tokens per second)
+7.44.705.335 I slot print_timing: id  0 | task 6976 |       total time =    1816.15 ms /   973 tokens
+7.44.705.335 I slot print_timing: id  0 | task 6976 |    graphs reused =       7057
+7.44.705.361 I slot      release: id  0 | task 6976 | stop processing: n_tokens = 1003, truncated = 0
+7.44.705.374 I srv  update_slots: all slots are idle
+7.52.489.537 I srv  params_from_: Chat format: peg-native
+7.52.489.636 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 464311137
+7.52.489.798 I slot launch_slot_: id  0 | task 7225 | processing task, is_child = 0
+7.53.958.744 I slot print_timing: id  0 | task 7225 | n_decoded =    100, tg =  81.59 t/s
+7.54.305.735 I slot print_timing: id  0 | task 7225 | prompt eval time =     243.22 ms /   845 tokens (    0.29 ms per token,  3474.18 tokens per second)
+7.54.305.739 I slot print_timing: id  0 | task 7225 |        eval time =    1572.69 ms /   128 tokens (   12.29 ms per token,    81.39 tokens per second)
+7.54.305.740 I slot print_timing: id  0 | task 7225 |       total time =    1815.91 ms /   973 tokens
+7.54.305.741 I slot print_timing: id  0 | task 7225 |    graphs reused =       7183
+7.54.305.768 I slot      release: id  0 | task 7225 | stop processing: n_tokens = 1003, truncated = 0
+7.54.305.780 I srv  update_slots: all slots are idle
+8.01.769.781 I srv  params_from_: Chat format: peg-native
+8.01.769.900 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 473911543
+8.01.770.049 I slot launch_slot_: id  0 | task 7354 | processing task, is_child = 0
+8.03.241.180 I slot print_timing: id  0 | task 7354 | n_decoded =    100, tg =  81.44 t/s
+8.03.586.321 I slot print_timing: id  0 | task 7354 | prompt eval time =     243.18 ms /   845 tokens (    0.29 ms per token,  3474.86 tokens per second)
+8.03.586.325 I slot print_timing: id  0 | task 7354 |        eval time =    1573.08 ms /   128 tokens (   12.29 ms per token,    81.37 tokens per second)
+8.03.586.327 I slot print_timing: id  0 | task 7354 |       total time =    1816.25 ms /   973 tokens
+8.03.586.328 I slot print_timing: id  0 | task 7354 |    graphs reused =       7309
+8.03.586.354 I slot      release: id  0 | task 7354 | stop processing: n_tokens = 1003, truncated = 0
+8.03.586.367 I srv  update_slots: all slots are idle
+8.05.309.443 I srv  params_from_: Chat format: peg-native
+8.05.309.589 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 483192130
+8.05.309.763 I slot launch_slot_: id  0 | task 7483 | processing task, is_child = 0
+8.06.768.393 I slot print_timing: id  0 | task 7483 | n_decoded =    100, tg =  82.22 t/s
+8.07.112.450 I slot print_timing: id  0 | task 7483 | prompt eval time =     242.40 ms /   845 tokens (    0.29 ms per token,  3485.93 tokens per second)
+8.07.112.455 I slot print_timing: id  0 | task 7483 |        eval time =    1560.27 ms /   128 tokens (   12.19 ms per token,    82.04 tokens per second)
+8.07.112.456 I slot print_timing: id  0 | task 7483 |       total time =    1802.67 ms /   973 tokens
+8.07.112.457 I slot print_timing: id  0 | task 7483 |    graphs reused =       7435
+8.07.112.483 I slot      release: id  0 | task 7483 | stop processing: n_tokens = 1003, truncated = 0
+8.07.112.494 I srv  update_slots: all slots are idle
+8.12.562.726 I srv  params_from_: Chat format: peg-native
+8.12.562.883 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 486718259
+8.12.563.271 I slot launch_slot_: id  0 | task 7612 | processing task, is_child = 0
+8.14.034.021 I slot print_timing: id  0 | task 7612 | n_decoded =    100, tg =  81.46 t/s
+8.14.381.170 I slot print_timing: id  0 | task 7612 | prompt eval time =     243.12 ms /   845 tokens (    0.29 ms per token,  3475.71 tokens per second)
+8.14.381.173 I slot print_timing: id  0 | task 7612 |        eval time =    1574.75 ms /   128 tokens (   12.30 ms per token,    81.28 tokens per second)
+8.14.381.174 I slot print_timing: id  0 | task 7612 |       total time =    1817.87 ms /   973 tokens
+8.14.381.175 I slot print_timing: id  0 | task 7612 |    graphs reused =       7561
+8.14.381.197 I slot      release: id  0 | task 7612 | stop processing: n_tokens = 1003, truncated = 0
+8.14.381.204 I srv  update_slots: all slots are idle
+8.24.837.260 I srv  params_from_: Chat format: peg-native
+8.24.837.487 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 493986972
+8.24.837.650 I slot launch_slot_: id  0 | task 7741 | processing task, is_child = 0
+8.26.307.662 I slot print_timing: id  0 | task 7741 | n_decoded =    100, tg =  81.51 t/s
+8.26.654.759 I slot print_timing: id  0 | task 7741 | prompt eval time =     243.10 ms /   845 tokens (    0.29 ms per token,  3475.99 tokens per second)
+8.26.654.764 I slot print_timing: id  0 | task 7741 |        eval time =    1573.99 ms /   128 tokens (   12.30 ms per token,    81.32 tokens per second)
+8.26.654.765 I slot print_timing: id  0 | task 7741 |       total time =    1817.09 ms /   973 tokens
+8.26.654.766 I slot print_timing: id  0 | task 7741 |    graphs reused =       7687
+8.26.654.790 I slot      release: id  0 | task 7741 | stop processing: n_tokens = 1003, truncated = 0
+8.26.654.799 I srv  update_slots: all slots are idle
+8.47.484.413 I srv  params_from_: Chat format: peg-native
+8.47.484.633 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 506260566
+8.47.484.969 I slot launch_slot_: id  0 | task 7870 | processing task, is_child = 0
+8.48.967.180 I slot print_timing: id  0 | task 7870 | n_decoded =    100, tg =  80.70 t/s
+8.49.314.541 I slot print_timing: id  0 | task 7870 | prompt eval time =     242.98 ms /   845 tokens (    0.29 ms per token,  3477.65 tokens per second)
+8.49.314.545 I slot print_timing: id  0 | task 7870 |        eval time =    1586.57 ms /   128 tokens (   12.40 ms per token,    80.68 tokens per second)
+8.49.314.546 I slot print_timing: id  0 | task 7870 |       total time =    1829.55 ms /   973 tokens
+8.49.314.547 I slot print_timing: id  0 | task 7870 |    graphs reused =       7813
+8.49.314.571 I slot      release: id  0 | task 7870 | stop processing: n_tokens = 1003, truncated = 0
+8.49.314.580 I srv  update_slots: all slots are idle
+9.08.704.841 I srv  params_from_: Chat format: peg-native
+9.08.705.027 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 528920346
+9.08.705.182 I slot launch_slot_: id  0 | task 7999 | processing task, is_child = 0
+9.10.186.610 I slot print_timing: id  0 | task 7999 | n_decoded =    100, tg =  80.77 t/s
+9.10.534.988 I slot print_timing: id  0 | task 7999 | prompt eval time =     243.31 ms /   845 tokens (    0.29 ms per token,  3472.95 tokens per second)
+9.10.534.992 I slot print_timing: id  0 | task 7999 |        eval time =    1586.48 ms /   128 tokens (   12.39 ms per token,    80.68 tokens per second)
+9.10.534.993 I slot print_timing: id  0 | task 7999 |       total time =    1829.79 ms /   973 tokens
+9.10.534.993 I slot print_timing: id  0 | task 7999 |    graphs reused =       7939
+9.10.535.017 I slot      release: id  0 | task 7999 | stop processing: n_tokens = 1003, truncated = 0
+9.10.535.025 I srv  update_slots: all slots are idle
+9.23.066.214 I srv  params_from_: Chat format: peg-native
+9.23.066.360 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 550140792
+9.23.066.656 I slot launch_slot_: id  0 | task 8128 | processing task, is_child = 0
+9.24.534.197 I slot print_timing: id  0 | task 8128 | n_decoded =    100, tg =  81.80 t/s
+9.24.880.300 I slot print_timing: id  0 | task 8128 | prompt eval time =     244.99 ms /   845 tokens (    0.29 ms per token,  3449.06 tokens per second)
+9.24.880.304 I slot print_timing: id  0 | task 8128 |        eval time =    1568.63 ms /   128 tokens (   12.25 ms per token,    81.60 tokens per second)
+9.24.880.305 I slot print_timing: id  0 | task 8128 |       total time =    1813.62 ms /   973 tokens
+9.24.880.306 I slot print_timing: id  0 | task 8128 |    graphs reused =       8065
+9.24.880.329 I slot      release: id  0 | task 8128 | stop processing: n_tokens = 1003, truncated = 0
+9.24.880.340 I srv  update_slots: all slots are idle
+9.32.084.915 I srv  params_from_: Chat format: peg-native
+9.32.085.071 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 564486104
+9.32.085.451 I slot launch_slot_: id  0 | task 8257 | processing task, is_child = 0
+9.33.554.998 I slot print_timing: id  0 | task 8257 | n_decoded =    100, tg =  81.57 t/s
+9.33.901.479 I slot print_timing: id  0 | task 8257 | prompt eval time =     243.65 ms /   846 tokens (    0.29 ms per token,  3472.18 tokens per second)
+9.33.901.483 I slot print_timing: id  0 | task 8257 |        eval time =    1572.35 ms /   128 tokens (   12.28 ms per token,    81.41 tokens per second)
+9.33.901.484 I slot print_timing: id  0 | task 8257 |       total time =    1816.00 ms /   974 tokens
+9.33.901.485 I slot print_timing: id  0 | task 8257 |    graphs reused =       8191
+9.33.901.508 I slot      release: id  0 | task 8257 | stop processing: n_tokens = 1003, truncated = 0
+9.33.901.518 I srv  update_slots: all slots are idle
+9.40.708.719 I srv  params_from_: Chat format: peg-native
+9.40.708.962 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 573507283
+9.40.709.150 I slot launch_slot_: id  0 | task 8386 | processing task, is_child = 0
+9.42.176.816 I slot print_timing: id  0 | task 8386 | n_decoded =    100, tg =  81.66 t/s
+9.42.522.011 I slot print_timing: id  0 | task 8386 | prompt eval time =     243.04 ms /   845 tokens (    0.29 ms per token,  3476.82 tokens per second)
+9.42.522.015 I slot print_timing: id  0 | task 8386 |        eval time =    1569.81 ms /   128 tokens (   12.26 ms per token,    81.54 tokens per second)
+9.42.522.016 I slot print_timing: id  0 | task 8386 |       total time =    1812.84 ms /   973 tokens
+9.42.522.017 I slot print_timing: id  0 | task 8386 |    graphs reused =       8317
+9.42.522.040 I slot      release: id  0 | task 8386 | stop processing: n_tokens = 1003, truncated = 0
+9.42.522.048 I srv  update_slots: all slots are idle
+10.26.726.762 I srv  params_from_: Chat format: peg-native
+10.26.727.001 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 582127815
+10.26.727.366 I slot launch_slot_: id  0 | task 8515 | processing task, is_child = 0
+10.28.208.640 I slot print_timing: id  0 | task 8515 | n_decoded =    100, tg =  80.72 t/s
+10.28.555.454 I slot print_timing: id  0 | task 8515 | prompt eval time =     242.48 ms /   845 tokens (    0.29 ms per token,  3484.82 tokens per second)
+10.28.555.459 I slot print_timing: id  0 | task 8515 |        eval time =    1585.59 ms /   128 tokens (   12.39 ms per token,    80.73 tokens per second)
+10.28.555.460 I slot print_timing: id  0 | task 8515 |       total time =    1828.07 ms /   973 tokens
+10.28.555.460 I slot print_timing: id  0 | task 8515 |    graphs reused =       8443
+10.28.555.487 I slot      release: id  0 | task 8515 | stop processing: n_tokens = 1003, truncated = 0
+10.28.555.497 I srv  update_slots: all slots are idle
+10.31.244.860 I srv  params_from_: Chat format: peg-native
+10.31.245.062 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 628161263
+10.31.245.265 I slot launch_slot_: id  0 | task 8644 | processing task, is_child = 0
+10.32.714.550 I slot print_timing: id  0 | task 8644 | n_decoded =    100, tg =  81.56 t/s
+10.33.062.791 I slot print_timing: id  0 | task 8644 | prompt eval time =     243.23 ms /   845 tokens (    0.29 ms per token,  3474.08 tokens per second)
+10.33.062.796 I slot print_timing: id  0 | task 8644 |        eval time =    1574.28 ms /   128 tokens (   12.30 ms per token,    81.31 tokens per second)
+10.33.062.797 I slot print_timing: id  0 | task 8644 |       total time =    1817.51 ms /   973 tokens
+10.33.062.797 I slot print_timing: id  0 | task 8644 |    graphs reused =       8569
+10.33.062.824 I slot      release: id  0 | task 8644 | stop processing: n_tokens = 1003, truncated = 0
+10.33.062.836 I srv  update_slots: all slots are idle
+10.36.583.872 I srv  params_from_: Chat format: peg-native
+10.36.584.030 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 632668600
+10.36.584.277 I slot launch_slot_: id  0 | task 8773 | processing task, is_child = 0
+10.38.056.416 I slot print_timing: id  0 | task 8773 | n_decoded =    100, tg =  81.55 t/s
+10.38.404.612 I slot print_timing: id  0 | task 8773 | prompt eval time =     245.92 ms /   845 tokens (    0.29 ms per token,  3436.06 tokens per second)
+10.38.404.616 I slot print_timing: id  0 | task 8773 |        eval time =    1574.39 ms /   128 tokens (   12.30 ms per token,    81.30 tokens per second)
+10.38.404.617 I slot print_timing: id  0 | task 8773 |       total time =    1820.31 ms /   973 tokens
+10.38.404.618 I slot print_timing: id  0 | task 8773 |    graphs reused =       8695
+10.38.404.642 I slot      release: id  0 | task 8773 | stop processing: n_tokens = 1003, truncated = 0
+10.38.404.651 I srv  update_slots: all slots are idle
+10.49.323.922 I srv  params_from_: Chat format: peg-native
+10.49.324.077 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 638010417
+10.49.324.244 I slot launch_slot_: id  0 | task 8902 | processing task, is_child = 0
+10.50.794.200 I slot print_timing: id  0 | task 8902 | n_decoded =    100, tg =  81.53 t/s
+10.51.141.484 I slot print_timing: id  0 | task 8902 | prompt eval time =     243.36 ms /   845 tokens (    0.29 ms per token,  3472.19 tokens per second)
+10.51.141.488 I slot print_timing: id  0 | task 8902 |        eval time =    1573.86 ms /   128 tokens (   12.30 ms per token,    81.33 tokens per second)
+10.51.141.489 I slot print_timing: id  0 | task 8902 |       total time =    1817.22 ms /   973 tokens
+10.51.141.489 I slot print_timing: id  0 | task 8902 |    graphs reused =       8821
+10.51.141.512 I slot      release: id  0 | task 8902 | stop processing: n_tokens = 1003, truncated = 0
+10.51.141.522 I srv  update_slots: all slots are idle
+10.55.348.310 I srv  params_from_: Chat format: peg-native
+10.55.348.528 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 650747287
+10.55.348.725 I slot launch_slot_: id  0 | task 9031 | processing task, is_child = 0
+10.56.821.004 I slot print_timing: id  0 | task 9031 | n_decoded =    100, tg =  81.33 t/s
+10.57.169.342 I slot print_timing: id  0 | task 9031 | prompt eval time =     242.76 ms /   845 tokens (    0.29 ms per token,  3480.73 tokens per second)
+10.57.169.346 I slot print_timing: id  0 | task 9031 |        eval time =    1577.83 ms /   128 tokens (   12.33 ms per token,    81.12 tokens per second)
+10.57.169.347 I slot print_timing: id  0 | task 9031 |       total time =    1820.60 ms /   973 tokens
+10.57.169.348 I slot print_timing: id  0 | task 9031 |    graphs reused =       8947
+10.57.169.374 I slot      release: id  0 | task 9031 | stop processing: n_tokens = 1003, truncated = 0
+10.57.169.385 I srv  update_slots: all slots are idle
+11.01.656.267 I srv  params_from_: Chat format: peg-native
+11.01.656.448 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 656775149
+11.01.656.720 I slot launch_slot_: id  0 | task 9160 | processing task, is_child = 0
+11.03.128.380 I slot print_timing: id  0 | task 9160 | n_decoded =    100, tg =  81.39 t/s
+11.03.475.206 I slot print_timing: id  0 | task 9160 | prompt eval time =     242.93 ms /   845 tokens (    0.29 ms per token,  3478.31 tokens per second)
+11.03.475.210 I slot print_timing: id  0 | task 9160 |        eval time =    1575.53 ms /   128 tokens (   12.31 ms per token,    81.24 tokens per second)
+11.03.475.211 I slot print_timing: id  0 | task 9160 |       total time =    1818.46 ms /   973 tokens
+11.03.475.212 I slot print_timing: id  0 | task 9160 |    graphs reused =       9073
+11.03.475.235 I slot      release: id  0 | task 9160 | stop processing: n_tokens = 1003, truncated = 0
+11.03.475.245 I srv  update_slots: all slots are idle
+11.04.381.247 I srv  params_from_: Chat format: peg-native
+11.04.381.341 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 663081011
+11.04.381.497 I slot launch_slot_: id  0 | task 9289 | processing task, is_child = 0
+11.06.136.893 I slot print_timing: id  0 | task 9289 | n_decoded =    123, tg =  81.31 t/s
+11.06.198.928 I slot print_timing: id  0 | task 9289 | prompt eval time =     242.70 ms /   845 tokens (    0.29 ms per token,  3481.62 tokens per second)
+11.06.198.932 I slot print_timing: id  0 | task 9289 |        eval time =    1574.71 ms /   128 tokens (   12.30 ms per token,    81.28 tokens per second)
+11.06.198.933 I slot print_timing: id  0 | task 9289 |       total time =    1817.41 ms /   973 tokens
+11.06.198.933 I slot print_timing: id  0 | task 9289 |    graphs reused =       9199
+11.06.198.956 I slot      release: id  0 | task 9289 | stop processing: n_tokens = 1003, truncated = 0
+11.06.198.966 I srv  update_slots: all slots are idle
+11.14.801.438 I srv  params_from_: Chat format: peg-native
+11.14.801.569 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 665804732
+11.14.801.845 I slot launch_slot_: id  0 | task 9418 | processing task, is_child = 0
+11.16.272.795 I slot print_timing: id  0 | task 9418 | n_decoded =    100, tg =  81.47 t/s
+11.16.619.727 I slot print_timing: id  0 | task 9418 | prompt eval time =     243.45 ms /   845 tokens (    0.29 ms per token,  3470.95 tokens per second)
+11.16.619.732 I slot print_timing: id  0 | task 9418 |        eval time =    1574.41 ms /   128 tokens (   12.30 ms per token,    81.30 tokens per second)
+11.16.619.732 I slot print_timing: id  0 | task 9418 |       total time =    1817.86 ms /   973 tokens
+11.16.619.733 I slot print_timing: id  0 | task 9418 |    graphs reused =       9325
+11.16.619.759 I slot      release: id  0 | task 9418 | stop processing: n_tokens = 1003, truncated = 0
+11.16.619.772 I srv  update_slots: all slots are idle
+11.36.488.879 I srv  params_from_: Chat format: peg-native
+11.36.489.090 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 676225535
+11.36.489.244 I slot launch_slot_: id  0 | task 9547 | processing task, is_child = 0
+11.37.969.826 I slot print_timing: id  0 | task 9547 | n_decoded =    100, tg =  80.83 t/s
+11.38.316.953 I slot print_timing: id  0 | task 9547 | prompt eval time =     243.47 ms /   846 tokens (    0.29 ms per token,  3474.79 tokens per second)
+11.38.316.957 I slot print_timing: id  0 | task 9547 |        eval time =    1584.22 ms /   128 tokens (   12.38 ms per token,    80.80 tokens per second)
+11.38.316.958 I slot print_timing: id  0 | task 9547 |       total time =    1827.69 ms /   974 tokens
+11.38.316.959 I slot print_timing: id  0 | task 9547 |    graphs reused =       9451
+11.38.316.983 I slot      release: id  0 | task 9547 | stop processing: n_tokens = 1003, truncated = 0
+11.38.316.992 I srv  update_slots: all slots are idle
+11.56.913.148 I srv  params_from_: Chat format: peg-native
+11.56.913.240 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 697922758
+11.56.913.404 I slot launch_slot_: id  0 | task 9676 | processing task, is_child = 0
+11.58.381.680 I slot print_timing: id  0 | task 9676 | n_decoded =    100, tg =  81.57 t/s
+11.58.727.854 I slot print_timing: id  0 | task 9676 | prompt eval time =     242.36 ms /   845 tokens (    0.29 ms per token,  3486.55 tokens per second)
+11.58.727.858 I slot print_timing: id  0 | task 9676 |        eval time =    1572.07 ms /   128 tokens (   12.28 ms per token,    81.42 tokens per second)
+11.58.727.859 I slot print_timing: id  0 | task 9676 |       total time =    1814.43 ms /   973 tokens
+11.58.727.859 I slot print_timing: id  0 | task 9676 |    graphs reused =       9577
+11.58.727.885 I slot      release: id  0 | task 9676 | stop processing: n_tokens = 1003, truncated = 0
+11.58.727.898 I srv  update_slots: all slots are idle
+11.58.946.704 I srv  params_from_: Chat format: peg-native
+11.58.946.923 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 718333661
+11.58.947.154 I slot launch_slot_: id  0 | task 9805 | processing task, is_child = 0
+12.00.765.160 I slot print_timing: id  0 | task 9805 | prompt eval time =     244.00 ms /   845 tokens (    0.29 ms per token,  3463.09 tokens per second)
+12.00.765.165 I slot print_timing: id  0 | task 9805 |        eval time =    1573.98 ms /   128 tokens (   12.30 ms per token,    81.32 tokens per second)
+12.00.765.166 I slot print_timing: id  0 | task 9805 |       total time =    1817.98 ms /   973 tokens
+12.00.765.166 I slot print_timing: id  0 | task 9805 |    graphs reused =       9703
+12.00.765.191 I slot      release: id  0 | task 9805 | stop processing: n_tokens = 1003, truncated = 0
+12.00.765.202 I srv  update_slots: all slots are idle
+12.21.509.725 I srv  params_from_: Chat format: peg-native
+12.21.509.818 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 720370966
+12.21.509.995 I slot launch_slot_: id  0 | task 9934 | processing task, is_child = 0
+12.22.986.434 I slot print_timing: id  0 | task 9934 | n_decoded =    100, tg =  81.11 t/s
+12.23.354.219 I slot print_timing: id  0 | task 9934 | prompt eval time =     243.54 ms /   845 tokens (    0.29 ms per token,  3469.64 tokens per second)
+12.23.354.223 I slot print_timing: id  0 | task 9934 |        eval time =    1600.66 ms /   128 tokens (   12.51 ms per token,    79.97 tokens per second)
+12.23.354.224 I slot print_timing: id  0 | task 9934 |       total time =    1844.20 ms /   973 tokens
+12.23.354.225 I slot print_timing: id  0 | task 9934 |    graphs reused =       9829
+12.23.354.249 I slot      release: id  0 | task 9934 | stop processing: n_tokens = 1003, truncated = 0
+12.23.354.257 I srv  update_slots: all slots are idle
+12.29.552.344 I srv  params_from_: Chat format: peg-native
+12.29.552.585 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 742960024
+12.29.552.834 I slot launch_slot_: id  0 | task 10063 | processing task, is_child = 0
+12.31.025.344 I slot print_timing: id  0 | task 10063 | n_decoded =    100, tg =  81.50 t/s
+12.31.373.440 I slot print_timing: id  0 | task 10063 | prompt eval time =     245.43 ms /   845 tokens (    0.29 ms per token,  3442.95 tokens per second)
+12.31.373.445 I slot print_timing: id  0 | task 10063 |        eval time =    1575.15 ms /   128 tokens (   12.31 ms per token,    81.26 tokens per second)
+12.31.373.446 I slot print_timing: id  0 | task 10063 |       total time =    1820.58 ms /   973 tokens
+12.31.373.447 I slot print_timing: id  0 | task 10063 |    graphs reused =       9955
+12.31.373.473 I slot      release: id  0 | task 10063 | stop processing: n_tokens = 1003, truncated = 0
+12.31.373.484 I srv  update_slots: all slots are idle
+12.35.850.479 I srv  params_from_: Chat format: peg-native
+12.35.850.625 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 750979248
+12.35.850.909 I slot launch_slot_: id  0 | task 10192 | processing task, is_child = 0
+12.37.317.968 I slot print_timing: id  0 | task 10192 | n_decoded =    100, tg =  81.70 t/s
+12.37.662.924 I slot print_timing: id  0 | task 10192 | prompt eval time =     243.00 ms /   845 tokens (    0.29 ms per token,  3477.44 tokens per second)
+12.37.662.928 I slot print_timing: id  0 | task 10192 |        eval time =    1569.00 ms /   128 tokens (   12.26 ms per token,    81.58 tokens per second)
+12.37.662.929 I slot print_timing: id  0 | task 10192 |       total time =    1811.99 ms /   973 tokens
+12.37.662.929 I slot print_timing: id  0 | task 10192 |    graphs reused =      10081
+12.37.662.952 I slot      release: id  0 | task 10192 | stop processing: n_tokens = 1003, truncated = 0
+12.37.662.962 I srv  update_slots: all slots are idle
+12.47.261.220 I srv  params_from_: Chat format: peg-native
+12.47.261.444 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 757268728
+12.47.261.723 I slot launch_slot_: id  0 | task 10321 | processing task, is_child = 0
+12.48.729.210 I slot print_timing: id  0 | task 10321 | n_decoded =    100, tg =  81.66 t/s
+12.48.964.966 I srv  params_from_: Chat format: peg-native
+12.49.076.499 I slot print_timing: id  0 | task 10321 | prompt eval time =     242.91 ms /   845 tokens (    0.29 ms per token,  3478.60 tokens per second)
+12.49.076.503 I slot print_timing: id  0 | task 10321 |        eval time =    1571.84 ms /   128 tokens (   12.28 ms per token,    81.43 tokens per second)
+12.49.076.504 I slot print_timing: id  0 | task 10321 |       total time =    1814.75 ms /   973 tokens
+12.49.076.505 I slot print_timing: id  0 | task 10321 |    graphs reused =      10207
+12.49.076.529 I slot      release: id  0 | task 10321 | stop processing: n_tokens = 1003, truncated = 0
+12.49.076.539 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 768682304
+12.49.076.706 I slot launch_slot_: id  0 | task 10442 | processing task, is_child = 0
+12.50.894.833 I slot print_timing: id  0 | task 10442 | prompt eval time =     244.24 ms /   845 tokens (    0.29 ms per token,  3459.70 tokens per second)
+12.50.894.839 I slot print_timing: id  0 | task 10442 |        eval time =    1573.86 ms /   128 tokens (   12.30 ms per token,    81.33 tokens per second)
+12.50.894.840 I slot print_timing: id  0 | task 10442 |       total time =    1818.10 ms /   973 tokens
+12.50.894.841 I slot print_timing: id  0 | task 10442 |    graphs reused =      10333
+12.50.894.870 I slot      release: id  0 | task 10442 | stop processing: n_tokens = 1003, truncated = 0
+12.50.894.884 I srv  update_slots: all slots are idle
+12.51.176.378 I srv  params_from_: Chat format: peg-native
+12.51.176.475 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 770500645
+12.51.176.638 I slot launch_slot_: id  0 | task 10579 | processing task, is_child = 0
+12.52.643.646 I slot print_timing: id  0 | task 10579 | n_decoded =    100, tg =  81.73 t/s
+12.52.988.809 I slot print_timing: id  0 | task 10579 | prompt eval time =     243.41 ms /   845 tokens (    0.29 ms per token,  3471.48 tokens per second)
+12.52.988.814 I slot print_timing: id  0 | task 10579 |        eval time =    1568.74 ms /   128 tokens (   12.26 ms per token,    81.59 tokens per second)
+12.52.988.814 I slot print_timing: id  0 | task 10579 |       total time =    1812.15 ms /   973 tokens
+12.52.988.815 I slot print_timing: id  0 | task 10579 |    graphs reused =      10459
+12.52.988.839 I slot      release: id  0 | task 10579 | stop processing: n_tokens = 1003, truncated = 0
+12.52.988.849 I srv  update_slots: all slots are idle
+12.57.432.570 I srv  params_from_: Chat format: peg-native
+12.57.432.714 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 772594615
+12.57.433.036 I slot launch_slot_: id  0 | task 10708 | processing task, is_child = 0
+12.58.904.351 I slot print_timing: id  0 | task 10708 | n_decoded =    100, tg =  81.42 t/s
+12.59.250.442 I slot print_timing: id  0 | task 10708 | prompt eval time =     243.08 ms /   845 tokens (    0.29 ms per token,  3476.21 tokens per second)
+12.59.250.447 I slot print_timing: id  0 | task 10708 |        eval time =    1574.30 ms /   128 tokens (   12.30 ms per token,    81.31 tokens per second)
+12.59.250.447 I slot print_timing: id  0 | task 10708 |       total time =    1817.38 ms /   973 tokens
+12.59.250.448 I slot print_timing: id  0 | task 10708 |    graphs reused =      10585
+12.59.250.471 I slot      release: id  0 | task 10708 | stop processing: n_tokens = 1003, truncated = 0
+12.59.250.481 I srv  update_slots: all slots are idle
+13.34.359.066 I srv  params_from_: Chat format: peg-native
+13.34.359.242 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 778856247
+13.34.359.564 I slot launch_slot_: id  0 | task 10837 | processing task, is_child = 0
+13.34.652.046 I srv  params_from_: Chat format: peg-native
+13.35.829.093 I slot print_timing: id  0 | task 10837 | n_decoded =    100, tg =  81.52 t/s
+13.36.190.436 I slot print_timing: id  0 | task 10837 | prompt eval time =     242.84 ms /   846 tokens (    0.29 ms per token,  3483.72 tokens per second)
+13.36.190.440 I slot print_timing: id  0 | task 10837 |        eval time =    1588.00 ms /   128 tokens (   12.41 ms per token,    80.60 tokens per second)
+13.36.190.441 I slot print_timing: id  0 | task 10837 |       total time =    1830.84 ms /   974 tokens
+13.36.190.442 I slot print_timing: id  0 | task 10837 |    graphs reused =      10711
+13.36.190.468 I slot      release: id  0 | task 10837 | stop processing: n_tokens = 1003, truncated = 0
+13.36.190.479 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 815796243
+13.36.190.646 I slot launch_slot_: id  0 | task 10843 | processing task, is_child = 0
+13.38.005.991 I slot print_timing: id  0 | task 10843 | prompt eval time =     242.80 ms /   845 tokens (    0.29 ms per token,  3480.23 tokens per second)
+13.38.005.996 I slot print_timing: id  0 | task 10843 |        eval time =    1572.53 ms /   128 tokens (   12.29 ms per token,    81.40 tokens per second)
+13.38.005.996 I slot print_timing: id  0 | task 10843 |       total time =    1815.33 ms /   973 tokens
+13.38.005.997 I slot print_timing: id  0 | task 10843 |    graphs reused =      10837
+13.38.006.021 I slot      release: id  0 | task 10843 | stop processing: n_tokens = 1003, truncated = 0
+13.38.006.032 I srv  update_slots: all slots are idle
+13.45.970.637 I srv  params_from_: Chat format: peg-native
+13.45.970.725 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 817611796
+13.45.970.888 I slot launch_slot_: id  0 | task 11095 | processing task, is_child = 0
+13.47.442.700 I slot print_timing: id  0 | task 11095 | n_decoded =    100, tg =  81.37 t/s
+13.47.788.499 I slot print_timing: id  0 | task 11095 | prompt eval time =     242.84 ms /   845 tokens (    0.29 ms per token,  3479.63 tokens per second)
+13.47.788.504 I slot print_timing: id  0 | task 11095 |        eval time =    1574.75 ms /   128 tokens (   12.30 ms per token,    81.28 tokens per second)
+13.47.788.504 I slot print_timing: id  0 | task 11095 |       total time =    1817.59 ms /   973 tokens
+13.47.788.505 I slot print_timing: id  0 | task 11095 |    graphs reused =      10963
+13.47.788.528 I slot      release: id  0 | task 11095 | stop processing: n_tokens = 1003, truncated = 0
+13.47.788.536 I srv  update_slots: all slots are idle
+14.00.386.363 I srv  params_from_: Chat format: peg-native
+14.00.386.584 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 827394303
+14.00.386.994 I slot launch_slot_: id  0 | task 11224 | processing task, is_child = 0
+14.01.859.263 I slot print_timing: id  0 | task 11224 | n_decoded =    100, tg =  81.40 t/s
+14.02.208.740 I slot print_timing: id  0 | task 11224 | prompt eval time =     243.73 ms /   845 tokens (    0.29 ms per token,  3466.99 tokens per second)
+14.02.208.745 I slot print_timing: id  0 | task 11224 |        eval time =    1578.00 ms /   128 tokens (   12.33 ms per token,    81.12 tokens per second)
+14.02.208.746 I slot print_timing: id  0 | task 11224 |       total time =    1821.73 ms /   973 tokens
+14.02.208.747 I slot print_timing: id  0 | task 11224 |    graphs reused =      11089
+14.02.208.770 I slot      release: id  0 | task 11224 | stop processing: n_tokens = 1003, truncated = 0
+14.02.208.778 I srv  update_slots: all slots are idle
+14.05.959.220 I srv  params_from_: Chat format: peg-native
+14.05.959.451 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 841814546
+14.05.959.615 I slot launch_slot_: id  0 | task 11353 | processing task, is_child = 0
+14.07.428.941 I slot print_timing: id  0 | task 11353 | n_decoded =    100, tg =  81.55 t/s
+14.07.774.428 I slot print_timing: id  0 | task 11353 | prompt eval time =     243.04 ms /   845 tokens (    0.29 ms per token,  3476.78 tokens per second)
+14.07.774.432 I slot print_timing: id  0 | task 11353 |        eval time =    1571.75 ms /   128 tokens (   12.28 ms per token,    81.44 tokens per second)
+14.07.774.433 I slot print_timing: id  0 | task 11353 |       total time =    1814.79 ms /   973 tokens
+14.07.774.433 I slot print_timing: id  0 | task 11353 |    graphs reused =      11215
+14.07.774.455 I slot      release: id  0 | task 11353 | stop processing: n_tokens = 1003, truncated = 0
+14.07.774.465 I srv  update_slots: all slots are idle
+14.08.438.784 I srv  params_from_: Chat format: peg-native
+14.08.439.001 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 847380231
+14.08.439.398 I slot launch_slot_: id  0 | task 11482 | processing task, is_child = 0
+14.10.259.572 I slot print_timing: id  0 | task 11482 | prompt eval time =     242.98 ms /   845 tokens (    0.29 ms per token,  3477.64 tokens per second)
+14.10.259.577 I slot print_timing: id  0 | task 11482 |        eval time =    1577.17 ms /   128 tokens (   12.32 ms per token,    81.16 tokens per second)
+14.10.259.577 I slot print_timing: id  0 | task 11482 |       total time =    1820.15 ms /   973 tokens
+14.10.259.578 I slot print_timing: id  0 | task 11482 |    graphs reused =      11341
+14.10.259.604 I slot      release: id  0 | task 11482 | stop processing: n_tokens = 1003, truncated = 0
+14.10.259.614 I srv  update_slots: all slots are idle
+14.17.563.555 I srv  params_from_: Chat format: peg-native
+14.17.563.701 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 849865379
+14.17.564.065 I slot launch_slot_: id  0 | task 11611 | processing task, is_child = 0
+14.19.035.884 I slot print_timing: id  0 | task 11611 | n_decoded =    100, tg =  81.44 t/s
+14.19.382.894 I slot print_timing: id  0 | task 11611 | prompt eval time =     243.95 ms /   845 tokens (    0.29 ms per token,  3463.87 tokens per second)
+14.19.382.898 I slot print_timing: id  0 | task 11611 |        eval time =    1574.85 ms /   128 tokens (   12.30 ms per token,    81.28 tokens per second)
+14.19.382.899 I slot print_timing: id  0 | task 11611 |       total time =    1818.80 ms /   973 tokens
+14.19.382.900 I slot print_timing: id  0 | task 11611 |    graphs reused =      11467
+14.19.382.924 I slot      release: id  0 | task 11611 | stop processing: n_tokens = 1003, truncated = 0
+14.19.382.933 I srv  update_slots: all slots are idle
+14.27.340.308 I srv  params_from_: Chat format: peg-native
+14.27.340.463 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 858988699
+14.27.340.776 I slot launch_slot_: id  0 | task 11740 | processing task, is_child = 0
+14.28.808.629 I slot print_timing: id  0 | task 11740 | n_decoded =    100, tg =  81.62 t/s
+14.29.156.860 I slot print_timing: id  0 | task 11740 | prompt eval time =     242.68 ms /   845 tokens (    0.29 ms per token,  3482.02 tokens per second)
+14.29.156.865 I slot print_timing: id  0 | task 11740 |        eval time =    1573.38 ms /   128 tokens (   12.29 ms per token,    81.35 tokens per second)
+14.29.156.865 I slot print_timing: id  0 | task 11740 |       total time =    1816.06 ms /   973 tokens
+14.29.156.866 I slot print_timing: id  0 | task 11740 |    graphs reused =      11593
+14.29.156.903 I slot      release: id  0 | task 11740 | stop processing: n_tokens = 1003, truncated = 0
+14.29.156.913 I srv  update_slots: all slots are idle
+14.37.939.925 I srv  params_from_: Chat format: peg-native
+14.37.940.155 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 868762678
+14.37.940.312 I slot launch_slot_: id  0 | task 11869 | processing task, is_child = 0
+14.39.407.984 I slot print_timing: id  0 | task 11869 | n_decoded =    100, tg =  81.64 t/s
+14.39.749.056 I srv  params_from_: Chat format: peg-native
+14.39.755.143 I slot print_timing: id  0 | task 11869 | prompt eval time =     242.70 ms /   845 tokens (    0.29 ms per token,  3481.64 tokens per second)
+14.39.755.147 I slot print_timing: id  0 | task 11869 |        eval time =    1572.11 ms /   128 tokens (   12.28 ms per token,    81.42 tokens per second)
+14.39.755.148 I slot print_timing: id  0 | task 11869 |       total time =    1814.81 ms /   973 tokens
+14.39.755.149 I slot print_timing: id  0 | task 11869 |    graphs reused =      11719
+14.39.755.170 I slot      release: id  0 | task 11869 | stop processing: n_tokens = 1003, truncated = 0
+14.39.755.179 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 879360945
+14.39.755.337 I slot launch_slot_: id  0 | task 11998 | processing task, is_child = 0
+14.41.574.382 I slot print_timing: id  0 | task 11998 | prompt eval time =     242.78 ms /   845 tokens (    0.29 ms per token,  3480.52 tokens per second)
+14.41.574.387 I slot print_timing: id  0 | task 11998 |        eval time =    1576.25 ms /   128 tokens (   12.31 ms per token,    81.21 tokens per second)
+14.41.574.387 I slot print_timing: id  0 | task 11998 |       total time =    1819.03 ms /   973 tokens
+14.41.574.388 I slot print_timing: id  0 | task 11998 |    graphs reused =      11845
+14.41.574.415 I slot      release: id  0 | task 11998 | stop processing: n_tokens = 1003, truncated = 0
+14.41.574.425 I srv  update_slots: all slots are idle
+14.51.252.896 I srv  params_from_: Chat format: peg-native
+14.51.253.042 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 881180190
+14.51.253.222 I slot launch_slot_: id  0 | task 12127 | processing task, is_child = 0
+14.52.724.389 I slot print_timing: id  0 | task 12127 | n_decoded =    100, tg =  81.42 t/s
+14.53.073.054 I slot print_timing: id  0 | task 12127 | prompt eval time =     242.98 ms /   846 tokens (    0.29 ms per token,  3481.78 tokens per second)
+14.53.073.058 I slot print_timing: id  0 | task 12127 |        eval time =    1576.83 ms /   128 tokens (   12.32 ms per token,    81.18 tokens per second)
+14.53.073.059 I slot print_timing: id  0 | task 12127 |       total time =    1819.81 ms /   974 tokens
+14.53.073.060 I slot print_timing: id  0 | task 12127 |    graphs reused =      11971
+14.53.073.085 I slot      release: id  0 | task 12127 | stop processing: n_tokens = 1003, truncated = 0
+14.53.073.096 I srv  update_slots: all slots are idle
+14.55.148.527 I srv  params_from_: Chat format: peg-native
+14.55.148.618 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 892678861
+14.55.148.774 I slot launch_slot_: id  0 | task 12256 | processing task, is_child = 0
+14.56.619.740 I slot print_timing: id  0 | task 12256 | n_decoded =    100, tg =  81.45 t/s
+14.56.965.846 I slot print_timing: id  0 | task 12256 | prompt eval time =     243.23 ms /   845 tokens (    0.29 ms per token,  3474.08 tokens per second)
+14.56.965.851 I slot print_timing: id  0 | task 12256 |        eval time =    1573.82 ms /   128 tokens (   12.30 ms per token,    81.33 tokens per second)
+14.56.965.852 I slot print_timing: id  0 | task 12256 |       total time =    1817.05 ms /   973 tokens
+14.56.965.852 I slot print_timing: id  0 | task 12256 |    graphs reused =      12097
+14.56.965.878 I slot      release: id  0 | task 12256 | stop processing: n_tokens = 1003, truncated = 0
+14.56.965.889 I srv  update_slots: all slots are idle
+15.03.905.044 I srv  params_from_: Chat format: peg-native
+15.03.905.243 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 896571654
+15.03.905.535 I slot launch_slot_: id  0 | task 12385 | processing task, is_child = 0
+15.05.373.739 I slot print_timing: id  0 | task 12385 | n_decoded =    100, tg =  81.60 t/s
+15.05.719.290 I slot print_timing: id  0 | task 12385 | prompt eval time =     242.74 ms /   845 tokens (    0.29 ms per token,  3481.09 tokens per second)
+15.05.719.294 I slot print_timing: id  0 | task 12385 |        eval time =    1570.99 ms /   128 tokens (   12.27 ms per token,    81.48 tokens per second)
+15.05.719.295 I slot print_timing: id  0 | task 12385 |       total time =    1813.73 ms /   973 tokens
+15.05.719.296 I slot print_timing: id  0 | task 12385 |    graphs reused =      12223
+15.05.719.321 I slot      release: id  0 | task 12385 | stop processing: n_tokens = 1003, truncated = 0
+15.05.719.328 I srv  update_slots: all slots are idle
+15.18.329.535 I srv  params_from_: Chat format: peg-native
+15.18.329.759 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 905325096
+15.18.329.975 I slot launch_slot_: id  0 | task 12514 | processing task, is_child = 0
+15.19.803.953 I slot print_timing: id  0 | task 12514 | n_decoded =    100, tg =  81.22 t/s
+15.20.151.270 I slot print_timing: id  0 | task 12514 | prompt eval time =     242.77 ms /   845 tokens (    0.29 ms per token,  3480.70 tokens per second)
+15.20.151.274 I slot print_timing: id  0 | task 12514 |        eval time =    1578.50 ms /   128 tokens (   12.33 ms per token,    81.09 tokens per second)
+15.20.151.275 I slot print_timing: id  0 | task 12514 |       total time =    1821.27 ms /   973 tokens
+15.20.151.275 I slot print_timing: id  0 | task 12514 |    graphs reused =      12349
+15.20.151.300 I slot      release: id  0 | task 12514 | stop processing: n_tokens = 1003, truncated = 0
+15.20.151.309 I srv  update_slots: all slots are idle
+15.43.107.605 I srv  params_from_: Chat format: peg-native
+15.43.107.700 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 919757076
+15.43.107.871 I slot launch_slot_: id  0 | task 12643 | processing task, is_child = 0
+15.44.574.328 I slot print_timing: id  0 | task 12643 | n_decoded =    100, tg =  81.74 t/s
+15.44.945.746 I slot print_timing: id  0 | task 12643 | prompt eval time =     243.01 ms /   845 tokens (    0.29 ms per token,  3477.22 tokens per second)
+15.44.945.751 I slot print_timing: id  0 | task 12643 |        eval time =    1594.84 ms /   128 tokens (   12.46 ms per token,    80.26 tokens per second)
+15.44.945.751 I slot print_timing: id  0 | task 12643 |       total time =    1837.85 ms /   973 tokens
+15.44.945.752 I slot print_timing: id  0 | task 12643 |    graphs reused =      12475
+15.44.945.779 I slot      release: id  0 | task 12643 | stop processing: n_tokens = 1003, truncated = 0
+15.44.945.793 I srv  update_slots: all slots are idle
+15.48.660.065 I srv  params_from_: Chat format: peg-native
+15.48.660.286 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 944551555
+15.48.660.539 I slot launch_slot_: id  0 | task 12772 | processing task, is_child = 0
+15.50.131.465 I slot print_timing: id  0 | task 12772 | n_decoded =    100, tg =  81.41 t/s
+15.50.479.118 I slot print_timing: id  0 | task 12772 | prompt eval time =     242.53 ms /   845 tokens (    0.29 ms per token,  3484.05 tokens per second)
+15.50.479.122 I slot print_timing: id  0 | task 12772 |        eval time =    1576.02 ms /   128 tokens (   12.31 ms per token,    81.22 tokens per second)
+15.50.479.123 I slot print_timing: id  0 | task 12772 |       total time =    1818.56 ms /   973 tokens
+15.50.479.124 I slot print_timing: id  0 | task 12772 |    graphs reused =      12601
+15.50.479.148 I slot      release: id  0 | task 12772 | stop processing: n_tokens = 1003, truncated = 0
+15.50.479.156 I srv  update_slots: all slots are idle
+15.53.005.550 I srv  params_from_: Chat format: peg-native
+15.53.005.752 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 950084923
+15.53.006.027 I slot launch_slot_: id  0 | task 12901 | processing task, is_child = 0
+15.54.473.241 I slot print_timing: id  0 | task 12901 | n_decoded =    100, tg =  81.71 t/s
+15.54.820.417 I slot print_timing: id  0 | task 12901 | prompt eval time =     243.35 ms /   845 tokens (    0.29 ms per token,  3472.42 tokens per second)
+15.54.820.421 I slot print_timing: id  0 | task 12901 |        eval time =    1571.02 ms /   128 tokens (   12.27 ms per token,    81.48 tokens per second)
+15.54.820.422 I slot print_timing: id  0 | task 12901 |       total time =    1814.37 ms /   973 tokens
+15.54.820.422 I slot print_timing: id  0 | task 12901 |    graphs reused =      12727
+15.54.820.446 I slot      release: id  0 | task 12901 | stop processing: n_tokens = 1003, truncated = 0
+15.54.820.456 I srv  update_slots: all slots are idle
+16.07.643.027 I srv  params_from_: Chat format: peg-native
+16.07.643.231 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 954426221
+16.07.643.510 I slot launch_slot_: id  0 | task 13030 | processing task, is_child = 0
+16.09.114.584 I slot print_timing: id  0 | task 13030 | n_decoded =    100, tg =  81.52 t/s
+16.09.460.453 I slot print_timing: id  0 | task 13030 | prompt eval time =     244.41 ms /   845 tokens (    0.29 ms per token,  3457.31 tokens per second)
+16.09.460.458 I slot print_timing: id  0 | task 13030 |        eval time =    1572.51 ms /   128 tokens (   12.29 ms per token,    81.40 tokens per second)
+16.09.460.459 I slot print_timing: id  0 | task 13030 |       total time =    1816.92 ms /   973 tokens
+16.09.460.460 I slot print_timing: id  0 | task 13030 |    graphs reused =      12853
+16.09.460.488 I slot      release: id  0 | task 13030 | stop processing: n_tokens = 1003, truncated = 0
+16.09.460.505 I srv  update_slots: all slots are idle
+16.17.320.462 I srv  params_from_: Chat format: peg-native
+16.17.320.559 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 969066263
+16.17.320.723 I slot launch_slot_: id  0 | task 13159 | processing task, is_child = 0
+16.18.790.274 I slot print_timing: id  0 | task 13159 | n_decoded =    100, tg =  81.57 t/s
+16.19.136.453 I slot print_timing: id  0 | task 13159 | prompt eval time =     243.54 ms /   845 tokens (    0.29 ms per token,  3469.68 tokens per second)
+16.19.136.458 I slot print_timing: id  0 | task 13159 |        eval time =    1572.17 ms /   128 tokens (   12.28 ms per token,    81.42 tokens per second)
+16.19.136.459 I slot print_timing: id  0 | task 13159 |       total time =    1815.70 ms /   973 tokens
+16.19.136.460 I slot print_timing: id  0 | task 13159 |    graphs reused =      12979
+16.19.136.496 I slot      release: id  0 | task 13159 | stop processing: n_tokens = 1003, truncated = 0
+16.19.136.510 I srv  update_slots: all slots are idle
+16.32.989.800 I srv  params_from_: Chat format: peg-native
+16.32.990.016 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 978742272
+16.32.990.346 I slot launch_slot_: id  0 | task 13288 | processing task, is_child = 0
+16.34.458.794 I slot print_timing: id  0 | task 13288 | n_decoded =    100, tg =  81.69 t/s
+16.34.805.906 I slot print_timing: id  0 | task 13288 | prompt eval time =     244.26 ms /   845 tokens (    0.29 ms per token,  3459.49 tokens per second)
+16.34.805.910 I slot print_timing: id  0 | task 13288 |        eval time =    1571.28 ms /   128 tokens (   12.28 ms per token,    81.46 tokens per second)
+16.34.805.911 I slot print_timing: id  0 | task 13288 |       total time =    1815.53 ms /   973 tokens
+16.34.805.912 I slot print_timing: id  0 | task 13288 |    graphs reused =      13105
+16.34.805.940 I slot      release: id  0 | task 13288 | stop processing: n_tokens = 1003, truncated = 0
+16.34.805.949 I srv  update_slots: all slots are idle
+16.35.194.117 I srv  params_from_: Chat format: peg-native
+16.35.194.280 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 994411715
+16.35.194.591 I slot launch_slot_: id  0 | task 13417 | processing task, is_child = 0
+16.37.009.189 I slot print_timing: id  0 | task 13417 | prompt eval time =     243.06 ms /   847 tokens (    0.29 ms per token,  3484.81 tokens per second)
+16.37.009.193 I slot print_timing: id  0 | task 13417 |        eval time =    1571.52 ms /   128 tokens (   12.28 ms per token,    81.45 tokens per second)
+16.37.009.194 I slot print_timing: id  0 | task 13417 |       total time =    1814.57 ms /   975 tokens
+16.37.009.195 I slot print_timing: id  0 | task 13417 |    graphs reused =      13231
+16.37.009.218 I slot      release: id  0 | task 13417 | stop processing: n_tokens = 1003, truncated = 0
+16.37.009.226 I srv  update_slots: all slots are idle
+17.09.993.984 I srv  params_from_: Chat format: peg-native
+17.09.994.133 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 996614993
+17.09.994.458 I slot launch_slot_: id  0 | task 13546 | processing task, is_child = 0
+17.11.474.513 I slot print_timing: id  0 | task 13546 | n_decoded =    100, tg =  80.85 t/s
+17.11.819.833 I slot print_timing: id  0 | task 13546 | prompt eval time =     243.11 ms /   845 tokens (    0.29 ms per token,  3475.79 tokens per second)
+17.11.819.837 I slot print_timing: id  0 | task 13546 |        eval time =    1582.24 ms /   128 tokens (   12.36 ms per token,    80.90 tokens per second)
+17.11.819.838 I slot print_timing: id  0 | task 13546 |       total time =    1825.35 ms /   973 tokens
+17.11.819.839 I slot print_timing: id  0 | task 13546 |    graphs reused =      13357
+17.11.819.862 I slot      release: id  0 | task 13546 | stop processing: n_tokens = 1003, truncated = 0
+17.11.819.870 I srv  update_slots: all slots are idle
+17.13.544.794 I srv  params_from_: Chat format: peg-native
+17.13.544.991 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1031425637
+17.13.545.336 I slot launch_slot_: id  0 | task 13675 | processing task, is_child = 0
+17.15.009.204 I slot print_timing: id  0 | task 13675 | n_decoded =    100, tg =  82.14 t/s
+17.15.355.619 I slot print_timing: id  0 | task 13675 | prompt eval time =     246.42 ms /   845 tokens (    0.29 ms per token,  3429.12 tokens per second)
+17.15.355.623 I slot print_timing: id  0 | task 13675 |        eval time =    1563.83 ms /   128 tokens (   12.22 ms per token,    81.85 tokens per second)
+17.15.355.624 I slot print_timing: id  0 | task 13675 |       total time =    1810.25 ms /   973 tokens
+17.15.355.625 I slot print_timing: id  0 | task 13675 |    graphs reused =      13483
+17.15.355.650 I slot      release: id  0 | task 13675 | stop processing: n_tokens = 1003, truncated = 0
+17.15.355.661 I srv  update_slots: all slots are idle
+17.17.480.791 I srv  params_from_: Chat format: peg-native
+17.17.480.945 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1034961425
+17.17.481.100 I slot launch_slot_: id  0 | task 13804 | processing task, is_child = 0
+17.18.949.173 I slot print_timing: id  0 | task 13804 | n_decoded =    100, tg =  81.61 t/s
+17.19.297.453 I slot print_timing: id  0 | task 13804 | prompt eval time =     242.69 ms /   845 tokens (    0.29 ms per token,  3481.75 tokens per second)
+17.19.297.458 I slot print_timing: id  0 | task 13804 |        eval time =    1573.64 ms /   128 tokens (   12.29 ms per token,    81.34 tokens per second)
+17.19.297.459 I slot print_timing: id  0 | task 13804 |       total time =    1816.34 ms /   973 tokens
+17.19.297.460 I slot print_timing: id  0 | task 13804 |    graphs reused =      13609
+17.19.297.483 I slot      release: id  0 | task 13804 | stop processing: n_tokens = 1003, truncated = 0
+17.19.297.492 I srv  update_slots: all slots are idle
+17.24.822.045 I srv  params_from_: Chat format: peg-native
+17.24.822.231 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1038903258
+17.24.822.563 I slot launch_slot_: id  0 | task 13933 | processing task, is_child = 0
+17.25.086.971 I srv  params_from_: Chat format: peg-native
+17.26.293.309 I slot print_timing: id  0 | task 13933 | n_decoded =    100, tg =  81.51 t/s
+17.26.640.147 I slot print_timing: id  0 | task 13933 | prompt eval time =     243.95 ms /   845 tokens (    0.29 ms per token,  3463.87 tokens per second)
+17.26.640.151 I slot print_timing: id  0 | task 13933 |        eval time =    1573.61 ms /   128 tokens (   12.29 ms per token,    81.34 tokens per second)
+17.26.640.152 I slot print_timing: id  0 | task 13933 |       total time =    1817.55 ms /   973 tokens
+17.26.640.153 I slot print_timing: id  0 | task 13933 |    graphs reused =      13735
+17.26.640.178 I slot      release: id  0 | task 13933 | stop processing: n_tokens = 1003, truncated = 0
+17.26.640.188 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1046245953
+17.26.640.357 I slot launch_slot_: id  0 | task 13937 | processing task, is_child = 0
+17.28.460.229 I slot print_timing: id  0 | task 13937 | prompt eval time =     243.43 ms /   845 tokens (    0.29 ms per token,  3471.21 tokens per second)
+17.28.460.234 I slot print_timing: id  0 | task 13937 |        eval time =    1576.42 ms /   128 tokens (   12.32 ms per token,    81.20 tokens per second)
+17.28.460.235 I slot print_timing: id  0 | task 13937 |       total time =    1819.86 ms /   973 tokens
+17.28.460.235 I slot print_timing: id  0 | task 13937 |    graphs reused =      13861
+17.28.460.259 I slot      release: id  0 | task 13937 | stop processing: n_tokens = 1003, truncated = 0
+17.28.460.269 I srv  update_slots: all slots are idle
+17.39.866.838 I srv  params_from_: Chat format: peg-native
+17.39.866.994 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1048066035
+17.39.867.163 I slot launch_slot_: id  0 | task 14191 | processing task, is_child = 0
+17.41.338.642 I slot print_timing: id  0 | task 14191 | n_decoded =    100, tg =  81.39 t/s
+17.41.684.547 I slot print_timing: id  0 | task 14191 | prompt eval time =     242.74 ms /   845 tokens (    0.29 ms per token,  3481.12 tokens per second)
+17.41.684.551 I slot print_timing: id  0 | task 14191 |        eval time =    1574.63 ms /   128 tokens (   12.30 ms per token,    81.29 tokens per second)
+17.41.684.552 I slot print_timing: id  0 | task 14191 |       total time =    1817.36 ms /   973 tokens
+17.41.684.553 I slot print_timing: id  0 | task 14191 |    graphs reused =      13987
+17.41.684.577 I slot      release: id  0 | task 14191 | stop processing: n_tokens = 1003, truncated = 0
+17.41.684.587 I srv  update_slots: all slots are idle
+17.54.113.301 I srv  params_from_: Chat format: peg-native
+17.54.113.451 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1061290352
+17.54.113.861 I slot launch_slot_: id  0 | task 14320 | processing task, is_child = 0
+17.55.581.685 I slot print_timing: id  0 | task 14320 | n_decoded =    100, tg =  81.64 t/s
+17.55.928.975 I slot print_timing: id  0 | task 14320 | prompt eval time =     242.90 ms /   845 tokens (    0.29 ms per token,  3478.81 tokens per second)
+17.55.928.979 I slot print_timing: id  0 | task 14320 |        eval time =    1572.19 ms /   128 tokens (   12.28 ms per token,    81.41 tokens per second)
+17.55.928.980 I slot print_timing: id  0 | task 14320 |       total time =    1815.09 ms /   973 tokens
+17.55.928.981 I slot print_timing: id  0 | task 14320 |    graphs reused =      14113
+17.55.929.006 I slot      release: id  0 | task 14320 | stop processing: n_tokens = 1003, truncated = 0
+17.55.929.015 I srv  update_slots: all slots are idle
+18.00.788.303 I srv  params_from_: Chat format: peg-native
+18.00.788.399 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1075534781
+18.00.788.555 I slot launch_slot_: id  0 | task 14449 | processing task, is_child = 0
+18.02.258.176 I slot print_timing: id  0 | task 14449 | n_decoded =    100, tg =  81.55 t/s
+18.02.602.691 I slot print_timing: id  0 | task 14449 | prompt eval time =     243.30 ms /   845 tokens (    0.29 ms per token,  3473.05 tokens per second)
+18.02.602.696 I slot print_timing: id  0 | task 14449 |        eval time =    1570.82 ms /   128 tokens (   12.27 ms per token,    81.49 tokens per second)
+18.02.602.697 I slot print_timing: id  0 | task 14449 |       total time =    1814.12 ms /   973 tokens
+18.02.602.698 I slot print_timing: id  0 | task 14449 |    graphs reused =      14239
+18.02.602.726 I slot      release: id  0 | task 14449 | stop processing: n_tokens = 1003, truncated = 0
+18.02.602.736 I srv  update_slots: all slots are idle
+18.11.527.962 I srv  params_from_: Chat format: peg-native
+18.11.528.072 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1082208501
+18.11.528.297 I slot launch_slot_: id  0 | task 14578 | processing task, is_child = 0
+18.12.988.961 I slot print_timing: id  0 | task 14578 | n_decoded =    100, tg =  82.11 t/s
+18.13.338.871 I slot print_timing: id  0 | task 14578 | prompt eval time =     242.70 ms /   845 tokens (    0.29 ms per token,  3481.72 tokens per second)
+18.13.338.875 I slot print_timing: id  0 | task 14578 |        eval time =    1567.86 ms /   128 tokens (   12.25 ms per token,    81.64 tokens per second)
+18.13.338.876 I slot print_timing: id  0 | task 14578 |       total time =    1810.55 ms /   973 tokens
+18.13.338.876 I slot print_timing: id  0 | task 14578 |    graphs reused =      14365
+18.13.338.901 I slot      release: id  0 | task 14578 | stop processing: n_tokens = 1003, truncated = 0
+18.13.338.913 I srv  update_slots: all slots are idle
+18.38.902.235 I srv  params_from_: Chat format: peg-native
+18.38.902.387 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1092944677
+18.38.902.659 I slot launch_slot_: id  0 | task 14707 | processing task, is_child = 0
+18.40.373.194 I slot print_timing: id  0 | task 14707 | n_decoded =    100, tg =  81.50 t/s
+18.40.731.269 I slot print_timing: id  0 | task 14707 | prompt eval time =     243.53 ms /   846 tokens (    0.29 ms per token,  3473.95 tokens per second)
+18.40.731.272 I slot print_timing: id  0 | task 14707 |        eval time =    1585.06 ms /   128 tokens (   12.38 ms per token,    80.75 tokens per second)
+18.40.731.273 I slot print_timing: id  0 | task 14707 |       total time =    1828.59 ms /   974 tokens
+18.40.731.274 I slot print_timing: id  0 | task 14707 |    graphs reused =      14491
+18.40.731.298 I slot      release: id  0 | task 14707 | stop processing: n_tokens = 1003, truncated = 0
+18.40.731.307 I srv  update_slots: all slots are idle
+18.45.759.166 I srv  params_from_: Chat format: peg-native
+18.45.759.327 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1120337074
+18.45.759.641 I slot launch_slot_: id  0 | task 14836 | processing task, is_child = 0
+18.47.228.191 I slot print_timing: id  0 | task 14836 | n_decoded =    100, tg =  81.60 t/s
+18.47.576.007 I slot print_timing: id  0 | task 14836 | prompt eval time =     243.05 ms /   845 tokens (    0.29 ms per token,  3476.59 tokens per second)
+18.47.576.011 I slot print_timing: id  0 | task 14836 |        eval time =    1573.29 ms /   128 tokens (   12.29 ms per token,    81.36 tokens per second)
+18.47.576.012 I slot print_timing: id  0 | task 14836 |       total time =    1816.35 ms /   973 tokens
+18.47.576.013 I slot print_timing: id  0 | task 14836 |    graphs reused =      14617
+18.47.576.041 I slot      release: id  0 | task 14836 | stop processing: n_tokens = 1003, truncated = 0
+18.47.576.056 I srv  update_slots: all slots are idle
+18.55.116.408 I srv  params_from_: Chat format: peg-native
+18.55.116.574 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1127181816
+18.55.116.879 I slot launch_slot_: id  0 | task 14965 | processing task, is_child = 0
+18.56.586.811 I slot print_timing: id  0 | task 14965 | n_decoded =    100, tg =  81.49 t/s
+18.56.932.453 I slot print_timing: id  0 | task 14965 | prompt eval time =     242.77 ms /   845 tokens (    0.29 ms per token,  3480.69 tokens per second)
+18.56.932.457 I slot print_timing: id  0 | task 14965 |        eval time =    1572.77 ms /   128 tokens (   12.29 ms per token,    81.38 tokens per second)
+18.56.932.458 I slot print_timing: id  0 | task 14965 |       total time =    1815.54 ms /   973 tokens
+18.56.932.458 I slot print_timing: id  0 | task 14965 |    graphs reused =      14743
+18.56.932.482 I slot      release: id  0 | task 14965 | stop processing: n_tokens = 1003, truncated = 0
+18.56.932.492 I srv  update_slots: all slots are idle
+19.02.673.207 I srv  params_from_: Chat format: peg-native
+19.02.673.385 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1136538257
+19.02.673.648 I slot launch_slot_: id  0 | task 15094 | processing task, is_child = 0
+19.04.148.990 I slot print_timing: id  0 | task 15094 | n_decoded =    100, tg =  81.17 t/s
+19.04.495.268 I slot print_timing: id  0 | task 15094 | prompt eval time =     243.30 ms /   845 tokens (    0.29 ms per token,  3473.08 tokens per second)
+19.04.495.272 I slot print_timing: id  0 | task 15094 |        eval time =    1578.29 ms /   128 tokens (   12.33 ms per token,    81.10 tokens per second)
+19.04.495.273 I slot print_timing: id  0 | task 15094 |       total time =    1821.59 ms /   973 tokens
+19.04.495.274 I slot print_timing: id  0 | task 15094 |    graphs reused =      14869
+19.04.495.298 I slot      release: id  0 | task 15094 | stop processing: n_tokens = 1003, truncated = 0
+19.04.495.309 I srv  update_slots: all slots are idle
+19.19.811.780 I srv  params_from_: Chat format: peg-native
+19.19.811.873 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1144101073
+19.19.812.036 I slot launch_slot_: id  0 | task 15223 | processing task, is_child = 0
+19.21.292.784 I slot print_timing: id  0 | task 15223 | n_decoded =    100, tg =  80.78 t/s
+19.21.638.863 I slot print_timing: id  0 | task 15223 | prompt eval time =     242.85 ms /   845 tokens (    0.29 ms per token,  3479.50 tokens per second)
+19.21.638.867 I slot print_timing: id  0 | task 15223 |        eval time =    1583.96 ms /   128 tokens (   12.37 ms per token,    80.81 tokens per second)
+19.21.638.868 I slot print_timing: id  0 | task 15223 |       total time =    1826.81 ms /   973 tokens
+19.21.638.869 I slot print_timing: id  0 | task 15223 |    graphs reused =      14995
+19.21.638.897 I slot      release: id  0 | task 15223 | stop processing: n_tokens = 1003, truncated = 0
+19.21.638.909 I srv  update_slots: all slots are idle
+19.37.286.183 I srv  params_from_: Chat format: peg-native
+19.37.286.340 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1161244673
+19.37.286.618 I slot launch_slot_: id  0 | task 15352 | processing task, is_child = 0
+19.38.761.281 I slot print_timing: id  0 | task 15352 | n_decoded =    100, tg =  81.40 t/s
+19.39.121.748 I slot print_timing: id  0 | task 15352 | prompt eval time =     246.18 ms /   845 tokens (    0.29 ms per token,  3432.42 tokens per second)
+19.39.121.752 I slot print_timing: id  0 | task 15352 |        eval time =    1588.92 ms /   128 tokens (   12.41 ms per token,    80.56 tokens per second)
+19.39.121.753 I slot print_timing: id  0 | task 15352 |       total time =    1835.10 ms /   973 tokens
+19.39.121.754 I slot print_timing: id  0 | task 15352 |    graphs reused =      15121
+19.39.121.782 I slot      release: id  0 | task 15352 | stop processing: n_tokens = 1003, truncated = 0
+19.39.121.796 I srv  update_slots: all slots are idle
+19.45.106.581 I srv  params_from_: Chat format: peg-native
+19.45.106.726 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1178727557
+19.45.107.030 I slot launch_slot_: id  0 | task 15481 | processing task, is_child = 0
+19.46.572.582 I slot print_timing: id  0 | task 15481 | n_decoded =    100, tg =  81.84 t/s
+19.46.919.018 I slot print_timing: id  0 | task 15481 | prompt eval time =     243.61 ms /   845 tokens (    0.29 ms per token,  3468.72 tokens per second)
+19.46.919.023 I slot print_timing: id  0 | task 15481 |        eval time =    1568.36 ms /   128 tokens (   12.25 ms per token,    81.61 tokens per second)
+19.46.919.024 I slot print_timing: id  0 | task 15481 |       total time =    1811.96 ms /   973 tokens
+19.46.919.025 I slot print_timing: id  0 | task 15481 |    graphs reused =      15247
+19.46.919.049 I slot      release: id  0 | task 15481 | stop processing: n_tokens = 1003, truncated = 0
+19.46.919.062 I srv  update_slots: all slots are idle
+19.51.521.052 I srv  params_from_: Chat format: peg-native
+19.51.521.225 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1186524825
+19.51.521.412 I slot launch_slot_: id  0 | task 15610 | processing task, is_child = 0
+19.52.990.559 I slot print_timing: id  0 | task 15610 | n_decoded =    100, tg =  81.58 t/s
+19.53.338.292 I slot print_timing: id  0 | task 15610 | prompt eval time =     243.41 ms /   845 tokens (    0.29 ms per token,  3471.48 tokens per second)
+19.53.338.296 I slot print_timing: id  0 | task 15610 |        eval time =    1573.45 ms /   128 tokens (   12.29 ms per token,    81.35 tokens per second)
+19.53.338.298 I slot print_timing: id  0 | task 15610 |       total time =    1816.86 ms /   973 tokens
+19.53.338.298 I slot print_timing: id  0 | task 15610 |    graphs reused =      15373
+19.53.338.322 I slot      release: id  0 | task 15610 | stop processing: n_tokens = 1003, truncated = 0
+19.53.338.332 I srv  update_slots: all slots are idle
+20.23.564.627 I srv  params_from_: Chat format: peg-native
+20.23.564.805 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1192944097
+20.23.565.069 I slot launch_slot_: id  0 | task 15739 | processing task, is_child = 0
+20.25.046.089 I slot print_timing: id  0 | task 15739 | n_decoded =    100, tg =  80.75 t/s
+20.25.393.972 I slot print_timing: id  0 | task 15739 | prompt eval time =     242.59 ms /   845 tokens (    0.29 ms per token,  3483.29 tokens per second)
+20.25.393.976 I slot print_timing: id  0 | task 15739 |        eval time =    1586.29 ms /   128 tokens (   12.39 ms per token,    80.69 tokens per second)
+20.25.393.978 I slot print_timing: id  0 | task 15739 |       total time =    1828.88 ms /   973 tokens
+20.25.393.978 I slot print_timing: id  0 | task 15739 |    graphs reused =      15499
+20.25.394.003 I slot      release: id  0 | task 15739 | stop processing: n_tokens = 1003, truncated = 0
+20.25.394.013 I srv  update_slots: all slots are idle
+20.38.406.899 I srv  params_from_: Chat format: peg-native
+20.38.407.038 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1224999779
+20.38.407.255 I slot launch_slot_: id  0 | task 15868 | processing task, is_child = 0
+20.39.874.406 I slot print_timing: id  0 | task 15868 | n_decoded =    100, tg =  81.68 t/s
+20.40.221.866 I slot print_timing: id  0 | task 15868 | prompt eval time =     242.88 ms /   845 tokens (    0.29 ms per token,  3479.01 tokens per second)
+20.40.221.870 I slot print_timing: id  0 | task 15868 |        eval time =    1571.71 ms /   128 tokens (   12.28 ms per token,    81.44 tokens per second)
+20.40.221.871 I slot print_timing: id  0 | task 15868 |       total time =    1814.59 ms /   973 tokens
+20.40.221.871 I slot print_timing: id  0 | task 15868 |    graphs reused =      15625
+20.40.221.896 I slot      release: id  0 | task 15868 | stop processing: n_tokens = 1003, truncated = 0
+20.40.221.906 I srv  update_slots: all slots are idle
+20.49.178.616 I srv  params_from_: Chat format: peg-native
+20.49.178.764 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1239827671
+20.49.178.923 I slot launch_slot_: id  0 | task 15997 | processing task, is_child = 0
+20.50.652.274 I slot print_timing: id  0 | task 15997 | n_decoded =    100, tg =  81.27 t/s
+20.50.997.883 I slot print_timing: id  0 | task 15997 | prompt eval time =     242.84 ms /   846 tokens (    0.29 ms per token,  3483.80 tokens per second)
+20.50.997.888 I slot print_timing: id  0 | task 15997 |        eval time =    1576.10 ms /   128 tokens (   12.31 ms per token,    81.21 tokens per second)
+20.50.997.889 I slot print_timing: id  0 | task 15997 |       total time =    1818.94 ms /   974 tokens
+20.50.997.889 I slot print_timing: id  0 | task 15997 |    graphs reused =      15751
+20.50.997.913 I slot      release: id  0 | task 15997 | stop processing: n_tokens = 1003, truncated = 0
+20.50.997.923 I srv  update_slots: all slots are idle
+20.54.093.452 I srv  params_from_: Chat format: peg-native
+20.54.093.546 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1250603688
+20.54.093.746 I slot launch_slot_: id  0 | task 16126 | processing task, is_child = 0
+20.55.563.318 I slot print_timing: id  0 | task 16126 | n_decoded =    100, tg =  81.54 t/s
+20.55.910.131 I slot print_timing: id  0 | task 16126 | prompt eval time =     243.09 ms /   845 tokens (    0.29 ms per token,  3476.02 tokens per second)
+20.55.910.135 I slot print_timing: id  0 | task 16126 |        eval time =    1573.27 ms /   128 tokens (   12.29 ms per token,    81.36 tokens per second)
+20.55.910.136 I slot print_timing: id  0 | task 16126 |       total time =    1816.36 ms /   973 tokens
+20.55.910.136 I slot print_timing: id  0 | task 16126 |    graphs reused =      15877
+20.55.910.163 I slot      release: id  0 | task 16126 | stop processing: n_tokens = 1003, truncated = 0
+20.55.910.176 I srv  update_slots: all slots are idle
+20.56.977.158 I srv  params_from_: Chat format: peg-native
+20.56.977.297 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1255515938
+20.56.977.537 I slot launch_slot_: id  0 | task 16255 | processing task, is_child = 0
+20.58.569.522 I slot print_timing: id  0 | task 16255 | n_decoded =    110, tg =  81.56 t/s
+20.58.791.243 I slot print_timing: id  0 | task 16255 | prompt eval time =     243.28 ms /   845 tokens (    0.29 ms per token,  3473.38 tokens per second)
+20.58.791.247 I slot print_timing: id  0 | task 16255 |        eval time =    1570.41 ms /   128 tokens (   12.27 ms per token,    81.51 tokens per second)
+20.58.791.248 I slot print_timing: id  0 | task 16255 |       total time =    1813.69 ms /   973 tokens
+20.58.791.249 I slot print_timing: id  0 | task 16255 |    graphs reused =      16003
+20.58.791.277 I slot      release: id  0 | task 16255 | stop processing: n_tokens = 1003, truncated = 0
+20.58.791.289 I srv  update_slots: all slots are idle
+21.02.200.601 I srv  params_from_: Chat format: peg-native
+21.02.200.821 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1258397053
+21.02.200.981 I slot launch_slot_: id  0 | task 16384 | processing task, is_child = 0
+21.03.674.617 I slot print_timing: id  0 | task 16384 | n_decoded =    100, tg =  81.23 t/s
+21.04.022.238 I slot print_timing: id  0 | task 16384 | prompt eval time =     242.60 ms /   845 tokens (    0.29 ms per token,  3483.07 tokens per second)
+21.04.022.242 I slot print_timing: id  0 | task 16384 |        eval time =    1578.63 ms /   128 tokens (   12.33 ms per token,    81.08 tokens per second)
+21.04.022.243 I slot print_timing: id  0 | task 16384 |       total time =    1821.24 ms /   973 tokens
+21.04.022.244 I slot print_timing: id  0 | task 16384 |    graphs reused =      16129
+21.04.022.270 I slot      release: id  0 | task 16384 | stop processing: n_tokens = 1003, truncated = 0
+21.04.022.281 I srv  update_slots: all slots are idle
+21.08.146.903 I srv  params_from_: Chat format: peg-native
+21.08.146.995 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1263628045
+21.08.147.150 I slot launch_slot_: id  0 | task 16513 | processing task, is_child = 0
+21.09.617.789 I slot print_timing: id  0 | task 16513 | n_decoded =    100, tg =  81.45 t/s
+21.09.963.985 I slot print_timing: id  0 | task 16513 | prompt eval time =     242.84 ms /   845 tokens (    0.29 ms per token,  3479.71 tokens per second)
+21.09.963.989 I slot print_timing: id  0 | task 16513 |        eval time =    1573.97 ms /   128 tokens (   12.30 ms per token,    81.32 tokens per second)
+21.09.963.990 I slot print_timing: id  0 | task 16513 |       total time =    1816.81 ms /   973 tokens
+21.09.963.991 I slot print_timing: id  0 | task 16513 |    graphs reused =      16255
+21.09.964.026 I slot      release: id  0 | task 16513 | stop processing: n_tokens = 1003, truncated = 0
+21.09.964.043 I srv  update_slots: all slots are idle
+21.16.986.005 I srv  params_from_: Chat format: peg-native
+21.16.986.210 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1269569801
+21.16.986.514 I slot launch_slot_: id  0 | task 16642 | processing task, is_child = 0
+21.18.451.153 I slot print_timing: id  0 | task 16642 | n_decoded =    100, tg =  81.91 t/s
+21.18.795.975 I slot print_timing: id  0 | task 16642 | prompt eval time =     243.74 ms /   845 tokens (    0.29 ms per token,  3466.87 tokens per second)
+21.18.795.979 I slot print_timing: id  0 | task 16642 |        eval time =    1565.69 ms /   128 tokens (   12.23 ms per token,    81.75 tokens per second)
+21.18.795.980 I slot print_timing: id  0 | task 16642 |       total time =    1809.43 ms /   973 tokens
+21.18.795.981 I slot print_timing: id  0 | task 16642 |    graphs reused =      16381
+21.18.796.007 I slot      release: id  0 | task 16642 | stop processing: n_tokens = 1003, truncated = 0
+21.18.796.019 I srv  update_slots: all slots are idle
+21.30.865.499 I srv  params_from_: Chat format: peg-native
+21.30.865.708 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1278401783
+21.30.865.867 I slot launch_slot_: id  0 | task 16771 | processing task, is_child = 0
+21.32.336.825 I slot print_timing: id  0 | task 16771 | n_decoded =    100, tg =  81.42 t/s
+21.32.684.235 I slot print_timing: id  0 | task 16771 | prompt eval time =     242.75 ms /   845 tokens (    0.29 ms per token,  3480.89 tokens per second)
+21.32.684.240 I slot print_timing: id  0 | task 16771 |        eval time =    1575.59 ms /   128 tokens (   12.31 ms per token,    81.24 tokens per second)
+21.32.684.241 I slot print_timing: id  0 | task 16771 |       total time =    1818.35 ms /   973 tokens
+21.32.684.243 I slot print_timing: id  0 | task 16771 |    graphs reused =      16507
+21.32.684.269 I slot      release: id  0 | task 16771 | stop processing: n_tokens = 1003, truncated = 0
+21.32.684.280 I srv  update_slots: all slots are idle
+21.33.236.056 I srv  params_from_: Chat format: peg-native
+21.33.236.269 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1292290044
+21.33.236.456 I slot launch_slot_: id  0 | task 16900 | processing task, is_child = 0
+21.35.052.649 I slot print_timing: id  0 | task 16900 | prompt eval time =     243.23 ms /   845 tokens (    0.29 ms per token,  3474.11 tokens per second)
+21.35.052.653 I slot print_timing: id  0 | task 16900 |        eval time =    1572.95 ms /   128 tokens (   12.29 ms per token,    81.38 tokens per second)
+21.35.052.654 I slot print_timing: id  0 | task 16900 |       total time =    1816.17 ms /   973 tokens
+21.35.052.655 I slot print_timing: id  0 | task 16900 |    graphs reused =      16633
+21.35.052.677 I slot      release: id  0 | task 16900 | stop processing: n_tokens = 1003, truncated = 0
+21.35.052.686 I srv  update_slots: all slots are idle
+21.37.268.755 I srv  params_from_: Chat format: peg-native
+21.37.269.009 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1294658452
+21.37.269.228 I slot launch_slot_: id  0 | task 17029 | processing task, is_child = 0
+21.38.736.929 I slot print_timing: id  0 | task 17029 | n_decoded =    100, tg =  81.65 t/s
+21.39.082.965 I slot print_timing: id  0 | task 17029 | prompt eval time =     242.87 ms /   845 tokens (    0.29 ms per token,  3479.23 tokens per second)
+21.39.082.969 I slot print_timing: id  0 | task 17029 |        eval time =    1570.85 ms /   128 tokens (   12.27 ms per token,    81.48 tokens per second)
+21.39.082.970 I slot print_timing: id  0 | task 17029 |       total time =    1813.72 ms /   973 tokens
+21.39.082.971 I slot print_timing: id  0 | task 17029 |    graphs reused =      16759
+21.39.082.998 I slot      release: id  0 | task 17029 | stop processing: n_tokens = 1003, truncated = 0
+21.39.083.010 I srv  update_slots: all slots are idle
+21.49.327.117 I srv  params_from_: Chat format: peg-native
+21.49.327.348 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1298688773
+21.49.327.561 I slot launch_slot_: id  0 | task 17158 | processing task, is_child = 0
+21.50.797.082 I slot print_timing: id  0 | task 17158 | n_decoded =    100, tg =  81.53 t/s
+21.51.142.839 I slot print_timing: id  0 | task 17158 | prompt eval time =     243.02 ms /   845 tokens (    0.29 ms per token,  3477.02 tokens per second)
+21.51.142.843 I slot print_timing: id  0 | task 17158 |        eval time =    1572.23 ms /   128 tokens (   12.28 ms per token,    81.41 tokens per second)
+21.51.142.844 I slot print_timing: id  0 | task 17158 |       total time =    1815.26 ms /   973 tokens
+21.51.142.845 I slot print_timing: id  0 | task 17158 |    graphs reused =      16885
+21.51.142.872 I slot      release: id  0 | task 17158 | stop processing: n_tokens = 1003, truncated = 0
+21.51.142.883 I srv  update_slots: all slots are idle
+21.51.977.299 I srv  params_from_: Chat format: peg-native
+21.51.977.533 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1310748647
+21.51.977.745 I slot launch_slot_: id  0 | task 17287 | processing task, is_child = 0
+21.53.794.742 I slot print_timing: id  0 | task 17287 | prompt eval time =     243.13 ms /   846 tokens (    0.29 ms per token,  3479.56 tokens per second)
+21.53.794.746 I slot print_timing: id  0 | task 17287 |        eval time =    1573.84 ms /   128 tokens (   12.30 ms per token,    81.33 tokens per second)
+21.53.794.747 I slot print_timing: id  0 | task 17287 |       total time =    1816.98 ms /   974 tokens
+21.53.794.748 I slot print_timing: id  0 | task 17287 |    graphs reused =      17011
+21.53.794.772 I slot      release: id  0 | task 17287 | stop processing: n_tokens = 1003, truncated = 0
+21.53.794.781 I srv  update_slots: all slots are idle
+21.57.251.079 I srv  params_from_: Chat format: peg-native
+21.57.251.175 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1313400547
+21.57.251.334 I slot launch_slot_: id  0 | task 17416 | processing task, is_child = 0
+21.58.722.148 I slot print_timing: id  0 | task 17416 | n_decoded =    100, tg =  81.46 t/s
+21.59.067.736 I slot print_timing: id  0 | task 17416 | prompt eval time =     243.22 ms /   845 tokens (    0.29 ms per token,  3474.28 tokens per second)
+21.59.067.740 I slot print_timing: id  0 | task 17416 |        eval time =    1573.17 ms /   128 tokens (   12.29 ms per token,    81.36 tokens per second)
+21.59.067.747 I slot print_timing: id  0 | task 17416 |       total time =    1816.38 ms /   973 tokens
+21.59.067.747 I slot print_timing: id  0 | task 17416 |    graphs reused =      17137
+21.59.067.770 I slot      release: id  0 | task 17416 | stop processing: n_tokens = 1003, truncated = 0
+21.59.067.779 I srv  update_slots: all slots are idle
+22.04.174.678 I srv  params_from_: Chat format: peg-native
+22.04.174.903 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1318673545
+22.04.175.052 I slot launch_slot_: id  0 | task 17545 | processing task, is_child = 0
+22.05.641.354 I slot print_timing: id  0 | task 17545 | n_decoded =    100, tg =  81.74 t/s
+22.05.988.698 I slot print_timing: id  0 | task 17545 | prompt eval time =     242.86 ms /   845 tokens (    0.29 ms per token,  3479.41 tokens per second)
+22.05.988.702 I slot print_timing: id  0 | task 17545 |        eval time =    1570.77 ms /   128 tokens (   12.27 ms per token,    81.49 tokens per second)
+22.05.988.703 I slot print_timing: id  0 | task 17545 |       total time =    1813.63 ms /   973 tokens
+22.05.988.704 I slot print_timing: id  0 | task 17545 |    graphs reused =      17263
+22.05.988.726 I slot      release: id  0 | task 17545 | stop processing: n_tokens = 1003, truncated = 0
+22.05.988.755 I srv  update_slots: all slots are idle
+22.13.344.124 I srv  params_from_: Chat format: peg-native
+22.13.344.337 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1325594502
+22.13.344.492 I slot launch_slot_: id  0 | task 17674 | processing task, is_child = 0
+22.14.814.374 I slot print_timing: id  0 | task 17674 | n_decoded =    100, tg =  81.52 t/s
+22.15.162.072 I slot print_timing: id  0 | task 17674 | prompt eval time =     243.18 ms /   845 tokens (    0.29 ms per token,  3474.82 tokens per second)
+22.15.162.076 I slot print_timing: id  0 | task 17674 |        eval time =    1574.38 ms /   128 tokens (   12.30 ms per token,    81.30 tokens per second)
+22.15.162.077 I slot print_timing: id  0 | task 17674 |       total time =    1817.56 ms /   973 tokens
+22.15.162.078 I slot print_timing: id  0 | task 17674 |    graphs reused =      17389
+22.15.162.103 I slot      release: id  0 | task 17674 | stop processing: n_tokens = 1003, truncated = 0
+22.15.162.113 I srv  update_slots: all slots are idle
+22.30.848.206 I srv  params_from_: Chat format: peg-native
+22.30.848.338 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1334767878
+22.30.848.689 I slot launch_slot_: id  0 | task 17803 | processing task, is_child = 0
+22.32.320.822 I slot print_timing: id  0 | task 17803 | n_decoded =    100, tg =  81.37 t/s
+22.32.670.056 I slot print_timing: id  0 | task 17803 | prompt eval time =     243.13 ms /   845 tokens (    0.29 ms per token,  3475.55 tokens per second)
+22.32.670.061 I slot print_timing: id  0 | task 17803 |        eval time =    1578.22 ms /   128 tokens (   12.33 ms per token,    81.10 tokens per second)
+22.32.670.061 I slot print_timing: id  0 | task 17803 |       total time =    1821.35 ms /   973 tokens
+22.32.670.062 I slot print_timing: id  0 | task 17803 |    graphs reused =      17515
+22.32.670.085 I slot      release: id  0 | task 17803 | stop processing: n_tokens = 1003, truncated = 0
+22.32.670.095 I srv  update_slots: all slots are idle
+22.33.274.561 I srv  params_from_: Chat format: peg-native
+22.33.274.712 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1352275860
+22.33.274.985 I slot launch_slot_: id  0 | task 17932 | processing task, is_child = 0
+22.35.091.480 I slot print_timing: id  0 | task 17932 | prompt eval time =     243.57 ms /   845 tokens (    0.29 ms per token,  3469.29 tokens per second)
+22.35.091.485 I slot print_timing: id  0 | task 17932 |        eval time =    1572.90 ms /   128 tokens (   12.29 ms per token,    81.38 tokens per second)
+22.35.091.485 I slot print_timing: id  0 | task 17932 |       total time =    1816.47 ms /   973 tokens
+22.35.091.486 I slot print_timing: id  0 | task 17932 |    graphs reused =      17641
+22.35.091.510 I slot      release: id  0 | task 17932 | stop processing: n_tokens = 1003, truncated = 0
+22.35.091.522 I srv  update_slots: all slots are idle
+22.54.683.538 I srv  params_from_: Chat format: peg-native
+22.54.683.695 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1354697286
+22.54.684.015 I slot launch_slot_: id  0 | task 18061 | processing task, is_child = 0
+22.56.161.863 I slot print_timing: id  0 | task 18061 | n_decoded =    100, tg =  80.97 t/s
+22.56.506.352 I slot print_timing: id  0 | task 18061 | prompt eval time =     242.77 ms /   845 tokens (    0.29 ms per token,  3480.62 tokens per second)
+22.56.506.356 I slot print_timing: id  0 | task 18061 |        eval time =    1579.54 ms /   128 tokens (   12.34 ms per token,    81.04 tokens per second)
+22.56.506.357 I slot print_timing: id  0 | task 18061 |       total time =    1822.31 ms /   973 tokens
+22.56.506.357 I slot print_timing: id  0 | task 18061 |    graphs reused =      17767
+22.56.506.380 I slot      release: id  0 | task 18061 | stop processing: n_tokens = 1003, truncated = 0
+22.56.506.390 I srv  update_slots: all slots are idle
+23.18.210.754 I srv  params_from_: Chat format: peg-native
+23.18.210.903 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1376112155
+23.18.211.212 I slot launch_slot_: id  0 | task 18190 | processing task, is_child = 0
+23.19.690.293 I slot print_timing: id  0 | task 18190 | n_decoded =    100, tg =  80.96 t/s
+23.20.036.072 I slot print_timing: id  0 | task 18190 | prompt eval time =     243.88 ms /   845 tokens (    0.29 ms per token,  3464.80 tokens per second)
+23.20.036.076 I slot print_timing: id  0 | task 18190 |        eval time =    1580.95 ms /   128 tokens (   12.35 ms per token,    80.96 tokens per second)
+23.20.036.077 I slot print_timing: id  0 | task 18190 |       total time =    1824.83 ms /   973 tokens
+23.20.036.078 I slot print_timing: id  0 | task 18190 |    graphs reused =      17893
+23.20.036.101 I slot      release: id  0 | task 18190 | stop processing: n_tokens = 1003, truncated = 0
+23.20.036.110 I srv  update_slots: all slots are idle
+23.38.293.407 I srv  params_from_: Chat format: peg-native
+23.38.293.595 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1399641877
+23.38.293.835 I slot launch_slot_: id  0 | task 18319 | processing task, is_child = 0
+23.39.775.583 I slot print_timing: id  0 | task 18319 | n_decoded =    100, tg =  80.85 t/s
+23.40.121.134 I slot print_timing: id  0 | task 18319 | prompt eval time =     244.80 ms /   845 tokens (    0.29 ms per token,  3451.81 tokens per second)
+23.40.121.138 I slot print_timing: id  0 | task 18319 |        eval time =    1582.48 ms /   128 tokens (   12.36 ms per token,    80.89 tokens per second)
+23.40.121.139 I slot print_timing: id  0 | task 18319 |       total time =    1827.28 ms /   973 tokens
+23.40.121.140 I slot print_timing: id  0 | task 18319 |    graphs reused =      18019
+23.40.121.186 I slot      release: id  0 | task 18319 | stop processing: n_tokens = 1003, truncated = 0
+23.40.121.196 I srv  update_slots: all slots are idle
+23.50.199.892 I srv  params_from_: Chat format: peg-native
+23.50.200.046 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1419726962
+23.50.200.251 I slot launch_slot_: id  0 | task 18448 | processing task, is_child = 0
+23.51.672.034 I slot print_timing: id  0 | task 18448 | n_decoded =    100, tg =  81.38 t/s
+23.52.017.591 I slot print_timing: id  0 | task 18448 | prompt eval time =     242.98 ms /   845 tokens (    0.29 ms per token,  3477.62 tokens per second)
+23.52.017.596 I slot print_timing: id  0 | task 18448 |        eval time =    1574.34 ms /   128 tokens (   12.30 ms per token,    81.30 tokens per second)
+23.52.017.597 I slot print_timing: id  0 | task 18448 |       total time =    1817.32 ms /   973 tokens
+23.52.017.597 I slot print_timing: id  0 | task 18448 |    graphs reused =      18145
+23.52.017.622 I slot      release: id  0 | task 18448 | stop processing: n_tokens = 1003, truncated = 0
+23.52.017.632 I srv  update_slots: all slots are idle
+24.06.593.371 I srv  params_from_: Chat format: peg-native
+24.06.593.519 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1431623398
+24.06.593.779 I slot launch_slot_: id  0 | task 18577 | processing task, is_child = 0
+24.07.833.308 I srv  params_from_: Chat format: peg-native
+24.07.995.901 I srv  params_from_: Chat format: peg-native
+24.08.061.643 I slot print_timing: id  0 | task 18577 | n_decoded =    100, tg =  81.62 t/s
+24.08.408.794 I slot print_timing: id  0 | task 18577 | prompt eval time =     242.62 ms /   846 tokens (    0.29 ms per token,  3487.01 tokens per second)
+24.08.408.798 I slot print_timing: id  0 | task 18577 |        eval time =    1572.36 ms /   128 tokens (   12.28 ms per token,    81.41 tokens per second)
+24.08.408.799 I slot print_timing: id  0 | task 18577 |       total time =    1814.98 ms /   974 tokens
+24.08.408.800 I slot print_timing: id  0 | task 18577 |    graphs reused =      18271
+24.08.408.831 I slot      release: id  0 | task 18577 | stop processing: n_tokens = 1003, truncated = 0
+24.08.408.848 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1448014607
+24.08.409.047 I slot launch_slot_: id  0 | task 18660 | processing task, is_child = 0
+24.10.223.012 I slot print_timing: id  0 | task 18660 | prompt eval time =     243.11 ms /   845 tokens (    0.29 ms per token,  3475.84 tokens per second)
+24.10.223.017 I slot print_timing: id  0 | task 18660 |        eval time =    1570.83 ms /   128 tokens (   12.27 ms per token,    81.49 tokens per second)
+24.10.223.017 I slot print_timing: id  0 | task 18660 |       total time =    1813.94 ms /   973 tokens
+24.10.223.018 I slot print_timing: id  0 | task 18660 |    graphs reused =      18397
+24.10.223.047 I slot      release: id  0 | task 18660 | stop processing: n_tokens = 1003, truncated = 0
+24.10.223.061 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1449828822
+24.10.223.248 I slot launch_slot_: id  0 | task 18674 | processing task, is_child = 0
+24.11.694.378 I slot print_timing: id  0 | task 18674 | n_decoded =    100, tg =  81.47 t/s
+24.12.040.930 I slot print_timing: id  0 | task 18674 | prompt eval time =     243.73 ms /   845 tokens (    0.29 ms per token,  3466.97 tokens per second)
+24.12.040.934 I slot print_timing: id  0 | task 18674 |        eval time =    1573.93 ms /   128 tokens (   12.30 ms per token,    81.32 tokens per second)
+24.12.040.935 I slot print_timing: id  0 | task 18674 |       total time =    1817.66 ms /   973 tokens
+24.12.040.936 I slot print_timing: id  0 | task 18674 |    graphs reused =      18523
+24.12.040.959 I slot      release: id  0 | task 18674 | stop processing: n_tokens = 1003, truncated = 0
+24.12.040.969 I srv  update_slots: all slots are idle
+24.30.259.858 I srv  params_from_: Chat format: peg-native
+24.30.260.054 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1451646734
+24.30.260.334 I slot launch_slot_: id  0 | task 18964 | processing task, is_child = 0
+24.31.743.320 I slot print_timing: id  0 | task 18964 | n_decoded =    100, tg =  80.65 t/s
+24.32.088.595 I slot print_timing: id  0 | task 18964 | prompt eval time =     243.05 ms /   845 tokens (    0.29 ms per token,  3476.67 tokens per second)
+24.32.088.600 I slot print_timing: id  0 | task 18964 |        eval time =    1585.19 ms /   128 tokens (   12.38 ms per token,    80.75 tokens per second)
+24.32.088.600 I slot print_timing: id  0 | task 18964 |       total time =    1828.24 ms /   973 tokens
+24.32.088.601 I slot print_timing: id  0 | task 18964 |    graphs reused =      18649
+24.32.088.623 I slot      release: id  0 | task 18964 | stop processing: n_tokens = 1003, truncated = 0
+24.32.088.633 I srv  update_slots: all slots are idle
+24.36.733.326 I srv  params_from_: Chat format: peg-native
+24.36.733.489 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1471694399
+24.36.733.802 I slot launch_slot_: id  0 | task 19093 | processing task, is_child = 0
+24.38.211.187 I slot print_timing: id  0 | task 19093 | n_decoded =    100, tg =  81.36 t/s
+24.38.559.595 I slot print_timing: id  0 | task 19093 | prompt eval time =     248.19 ms /   845 tokens (    0.29 ms per token,  3404.68 tokens per second)
+24.38.559.600 I slot print_timing: id  0 | task 19093 |        eval time =    1577.58 ms /   128 tokens (   12.32 ms per token,    81.14 tokens per second)
+24.38.559.600 I slot print_timing: id  0 | task 19093 |       total time =    1825.76 ms /   973 tokens
+24.38.559.601 I slot print_timing: id  0 | task 19093 |    graphs reused =      18775
+24.38.559.632 I slot      release: id  0 | task 19093 | stop processing: n_tokens = 1003, truncated = 0
+24.38.559.644 I srv  update_slots: all slots are idle
+24.47.365.635 I srv  params_from_: Chat format: peg-native
+24.47.365.889 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1478165408
+24.47.366.072 I slot launch_slot_: id  0 | task 19222 | processing task, is_child = 0
+24.48.396.782 I srv  params_from_: Chat format: peg-native
+24.48.834.890 I slot print_timing: id  0 | task 19222 | n_decoded =    100, tg =  81.61 t/s
+24.49.182.821 I slot print_timing: id  0 | task 19222 | prompt eval time =     243.50 ms /   845 tokens (    0.29 ms per token,  3470.28 tokens per second)
+24.49.182.825 I slot print_timing: id  0 | task 19222 |        eval time =    1573.23 ms /   128 tokens (   12.29 ms per token,    81.36 tokens per second)
+24.49.182.826 I slot print_timing: id  0 | task 19222 |       total time =    1816.73 ms /   973 tokens
+24.49.182.827 I slot print_timing: id  0 | task 19222 |    graphs reused =      18901
+24.49.182.848 I slot      release: id  0 | task 19222 | stop processing: n_tokens = 1003, truncated = 0
+24.49.182.857 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1488788623
+24.49.183.020 I slot launch_slot_: id  0 | task 19288 | processing task, is_child = 0
+24.50.998.331 I slot print_timing: id  0 | task 19288 | prompt eval time =     242.49 ms /   845 tokens (    0.29 ms per token,  3484.67 tokens per second)
+24.50.998.335 I slot print_timing: id  0 | task 19288 |        eval time =    1572.80 ms /   128 tokens (   12.29 ms per token,    81.38 tokens per second)
+24.50.998.336 I slot print_timing: id  0 | task 19288 |       total time =    1815.29 ms /   973 tokens
+24.50.998.337 I slot print_timing: id  0 | task 19288 |    graphs reused =      19027
+24.50.998.360 I slot      release: id  0 | task 19288 | stop processing: n_tokens = 1003, truncated = 0
+24.50.998.372 I srv  update_slots: all slots are idle
+24.55.041.568 I srv  params_from_: Chat format: peg-native
+24.55.041.819 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1490604136
+24.55.042.015 I slot launch_slot_: id  0 | task 19480 | processing task, is_child = 0
+24.56.513.298 I slot print_timing: id  0 | task 19480 | n_decoded =    100, tg =  81.39 t/s
+24.56.859.752 I slot print_timing: id  0 | task 19480 | prompt eval time =     242.64 ms /   845 tokens (    0.29 ms per token,  3482.55 tokens per second)
+24.56.859.757 I slot print_timing: id  0 | task 19480 |        eval time =    1575.08 ms /   128 tokens (   12.31 ms per token,    81.27 tokens per second)
+24.56.859.758 I slot print_timing: id  0 | task 19480 |       total time =    1817.72 ms /   973 tokens
+24.56.859.759 I slot print_timing: id  0 | task 19480 |    graphs reused =      19153
+24.56.859.784 I slot      release: id  0 | task 19480 | stop processing: n_tokens = 1003, truncated = 0
+24.56.859.796 I srv  update_slots: all slots are idle
+24.56.916.359 I srv  params_from_: Chat format: peg-native
+24.56.916.561 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1496465559
+24.56.916.781 I slot launch_slot_: id  0 | task 19609 | processing task, is_child = 0
+24.58.741.725 I slot print_timing: id  0 | task 19609 | prompt eval time =     243.46 ms /   845 tokens (    0.29 ms per token,  3470.85 tokens per second)
+24.58.741.730 I slot print_timing: id  0 | task 19609 |        eval time =    1581.47 ms /   128 tokens (   12.36 ms per token,    80.94 tokens per second)
+24.58.741.731 I slot print_timing: id  0 | task 19609 |       total time =    1824.92 ms /   973 tokens
+24.58.741.732 I slot print_timing: id  0 | task 19609 |    graphs reused =      19279
+24.58.741.756 I slot      release: id  0 | task 19609 | stop processing: n_tokens = 1003, truncated = 0
+24.58.741.766 I srv  update_slots: all slots are idle
+25.39.504.163 I srv  params_from_: Chat format: peg-native
+25.39.504.330 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1498347531
+25.39.504.640 I slot launch_slot_: id  0 | task 19738 | processing task, is_child = 0
+25.40.091.257 I srv  params_from_: Chat format: peg-native
+25.40.985.897 I slot print_timing: id  0 | task 19738 | n_decoded =    100, tg =  80.76 t/s
+25.41.333.326 I slot print_timing: id  0 | task 19738 | prompt eval time =     242.94 ms /   845 tokens (    0.29 ms per token,  3478.20 tokens per second)
+25.41.333.330 I slot print_timing: id  0 | task 19738 |        eval time =    1585.71 ms /   128 tokens (   12.39 ms per token,    80.72 tokens per second)
+25.41.333.331 I slot print_timing: id  0 | task 19738 |       total time =    1828.66 ms /   973 tokens
+25.41.333.331 I slot print_timing: id  0 | task 19738 |    graphs reused =      19405
+25.41.333.354 I slot      release: id  0 | task 19738 | stop processing: n_tokens = 1003, truncated = 0
+25.41.333.364 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1540939129
+25.41.333.534 I slot launch_slot_: id  0 | task 19768 | processing task, is_child = 0
+25.43.149.096 I slot print_timing: id  0 | task 19768 | prompt eval time =     243.84 ms /   846 tokens (    0.29 ms per token,  3469.55 tokens per second)
+25.43.149.100 I slot print_timing: id  0 | task 19768 |        eval time =    1571.71 ms /   128 tokens (   12.28 ms per token,    81.44 tokens per second)
+25.43.149.101 I slot print_timing: id  0 | task 19768 |       total time =    1815.54 ms /   974 tokens
+25.43.149.102 I slot print_timing: id  0 | task 19768 |    graphs reused =      19531
+25.43.149.126 I slot      release: id  0 | task 19768 | stop processing: n_tokens = 1003, truncated = 0
+25.43.149.135 I srv  update_slots: all slots are idle
+25.53.389.698 I srv  params_from_: Chat format: peg-native
+25.53.389.831 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1542754901
+25.53.390.086 I slot launch_slot_: id  0 | task 19996 | processing task, is_child = 0
+25.54.858.792 I slot print_timing: id  0 | task 19996 | n_decoded =    100, tg =  81.60 t/s
+25.55.204.274 I slot print_timing: id  0 | task 19996 | prompt eval time =     243.14 ms /   845 tokens (    0.29 ms per token,  3475.31 tokens per second)
+25.55.204.278 I slot print_timing: id  0 | task 19996 |        eval time =    1571.02 ms /   128 tokens (   12.27 ms per token,    81.48 tokens per second)
+25.55.204.279 I slot print_timing: id  0 | task 19996 |       total time =    1814.16 ms /   973 tokens
+25.55.204.280 I slot print_timing: id  0 | task 19996 |    graphs reused =      19657
+25.55.204.303 I slot      release: id  0 | task 19996 | stop processing: n_tokens = 1003, truncated = 0
+25.55.204.315 I srv  update_slots: all slots are idle
+26.00.037.550 I srv  params_from_: Chat format: peg-native
+26.00.037.711 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1554810078
+26.00.037.891 I slot launch_slot_: id  0 | task 20125 | processing task, is_child = 0
+26.00.150.310 I srv  params_from_: Chat format: peg-native
+26.01.506.311 I slot print_timing: id  0 | task 20125 | n_decoded =    100, tg =  81.58 t/s
+26.01.852.743 I slot print_timing: id  0 | task 20125 | prompt eval time =     242.67 ms /   845 tokens (    0.29 ms per token,  3482.10 tokens per second)
+26.01.852.747 I slot print_timing: id  0 | task 20125 |        eval time =    1572.16 ms /   128 tokens (   12.28 ms per token,    81.42 tokens per second)
+26.01.852.748 I slot print_timing: id  0 | task 20125 |       total time =    1814.83 ms /   973 tokens
+26.01.852.749 I slot print_timing: id  0 | task 20125 |    graphs reused =      19783
+26.01.852.775 I slot      release: id  0 | task 20125 | stop processing: n_tokens = 1003, truncated = 0
+26.01.852.787 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1561458551
+26.01.853.018 I slot launch_slot_: id  0 | task 20127 | processing task, is_child = 0
+26.01.997.280 I srv  params_from_: Chat format: peg-native
+26.03.676.384 I slot print_timing: id  0 | task 20127 | prompt eval time =     243.19 ms /   845 tokens (    0.29 ms per token,  3474.65 tokens per second)
+26.03.676.389 I slot print_timing: id  0 | task 20127 |        eval time =    1580.15 ms /   128 tokens (   12.34 ms per token,    81.01 tokens per second)
+26.03.676.390 I slot print_timing: id  0 | task 20127 |       total time =    1823.34 ms /   973 tokens
+26.03.676.392 I slot print_timing: id  0 | task 20127 |    graphs reused =      19909
+26.03.676.421 I slot      release: id  0 | task 20127 | stop processing: n_tokens = 1003, truncated = 0
+26.03.676.437 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1563282197
+26.03.676.626 I slot launch_slot_: id  0 | task 20256 | processing task, is_child = 0
+26.05.162.722 I slot print_timing: id  0 | task 20256 | n_decoded =    100, tg =  80.78 t/s
+26.05.511.616 I slot print_timing: id  0 | task 20256 | prompt eval time =     248.12 ms /   845 tokens (    0.29 ms per token,  3405.58 tokens per second)
+26.05.511.620 I slot print_timing: id  0 | task 20256 |        eval time =    1586.85 ms /   128 tokens (   12.40 ms per token,    80.66 tokens per second)
+26.05.511.621 I slot print_timing: id  0 | task 20256 |       total time =    1834.97 ms /   973 tokens
+26.05.511.621 I slot print_timing: id  0 | task 20256 |    graphs reused =      20035
+26.05.511.647 I slot      release: id  0 | task 20256 | stop processing: n_tokens = 1003, truncated = 0
+26.05.511.659 I srv  update_slots: all slots are idle
+26.06.772.197 I srv  params_from_: Chat format: peg-native
+26.06.772.414 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1565117422
+26.06.772.739 I slot launch_slot_: id  0 | task 20512 | processing task, is_child = 0
+26.08.248.953 I slot print_timing: id  0 | task 20512 | n_decoded =    100, tg =  81.69 t/s
+26.08.598.273 I slot print_timing: id  0 | task 20512 | prompt eval time =     252.11 ms /   845 tokens (    0.30 ms per token,  3351.71 tokens per second)
+26.08.598.277 I slot print_timing: id  0 | task 20512 |        eval time =    1573.39 ms /   128 tokens (   12.29 ms per token,    81.35 tokens per second)
+26.08.598.278 I slot print_timing: id  0 | task 20512 |       total time =    1825.50 ms /   973 tokens
+26.08.598.279 I slot print_timing: id  0 | task 20512 |    graphs reused =      20161
+26.08.598.304 I slot      release: id  0 | task 20512 | stop processing: n_tokens = 1003, truncated = 0
+26.08.598.318 I srv  update_slots: all slots are idle
+26.13.374.769 I srv  params_from_: Chat format: peg-native
+26.13.374.930 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1568204079
+26.13.375.258 I slot launch_slot_: id  0 | task 20641 | processing task, is_child = 0
+26.14.859.092 I slot print_timing: id  0 | task 20641 | n_decoded =    100, tg =  80.78 t/s
+26.15.209.623 I slot print_timing: id  0 | task 20641 | prompt eval time =     245.88 ms /   845 tokens (    0.29 ms per token,  3436.59 tokens per second)
+26.15.209.628 I slot print_timing: id  0 | task 20641 |        eval time =    1588.44 ms /   128 tokens (   12.41 ms per token,    80.58 tokens per second)
+26.15.209.629 I slot print_timing: id  0 | task 20641 |       total time =    1834.33 ms /   973 tokens
+26.15.209.630 I slot print_timing: id  0 | task 20641 |    graphs reused =      20287
+26.15.209.655 I slot      release: id  0 | task 20641 | stop processing: n_tokens = 1003, truncated = 0
+26.15.209.669 I srv  update_slots: all slots are idle
+26.28.238.471 I srv  params_from_: Chat format: peg-native
+26.28.238.627 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1574815431
+26.28.238.951 I slot launch_slot_: id  0 | task 20770 | processing task, is_child = 0
+26.29.712.666 I slot print_timing: id  0 | task 20770 | n_decoded =    100, tg =  81.45 t/s
+26.30.057.977 I slot print_timing: id  0 | task 20770 | prompt eval time =     245.96 ms /   845 tokens (    0.29 ms per token,  3435.57 tokens per second)
+26.30.057.981 I slot print_timing: id  0 | task 20770 |        eval time =    1573.05 ms /   128 tokens (   12.29 ms per token,    81.37 tokens per second)
+26.30.057.982 I slot print_timing: id  0 | task 20770 |       total time =    1819.00 ms /   973 tokens
+26.30.057.982 I slot print_timing: id  0 | task 20770 |    graphs reused =      20413
+26.30.058.005 I slot      release: id  0 | task 20770 | stop processing: n_tokens = 1003, truncated = 0
+26.30.058.014 I srv  update_slots: all slots are idle
+26.37.346.898 I srv  params_from_: Chat format: peg-native
+26.37.347.110 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1589663780
+26.37.347.279 I slot launch_slot_: id  0 | task 20899 | processing task, is_child = 0
+26.38.816.361 I slot print_timing: id  0 | task 20899 | n_decoded =    100, tg =  81.52 t/s
+26.39.161.640 I slot print_timing: id  0 | task 20899 | prompt eval time =     242.42 ms /   845 tokens (    0.29 ms per token,  3485.69 tokens per second)
+26.39.161.645 I slot print_timing: id  0 | task 20899 |        eval time =    1571.92 ms /   128 tokens (   12.28 ms per token,    81.43 tokens per second)
+26.39.161.646 I slot print_timing: id  0 | task 20899 |       total time =    1814.34 ms /   973 tokens
+26.39.161.646 I slot print_timing: id  0 | task 20899 |    graphs reused =      20539
+26.39.161.671 I slot      release: id  0 | task 20899 | stop processing: n_tokens = 1003, truncated = 0
+26.39.161.679 I srv  update_slots: all slots are idle
+26.43.795.321 I srv  params_from_: Chat format: peg-native
+26.43.795.484 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1598767446
+26.43.795.671 I slot launch_slot_: id  0 | task 21028 | processing task, is_child = 0
+26.45.264.559 I slot print_timing: id  0 | task 21028 | n_decoded =    100, tg =  81.60 t/s
+26.45.613.165 I slot print_timing: id  0 | task 21028 | prompt eval time =     243.43 ms /   845 tokens (    0.29 ms per token,  3471.18 tokens per second)
+26.45.613.169 I slot print_timing: id  0 | task 21028 |        eval time =    1574.04 ms /   128 tokens (   12.30 ms per token,    81.32 tokens per second)
+26.45.613.170 I slot print_timing: id  0 | task 21028 |       total time =    1817.47 ms /   973 tokens
+26.45.613.170 I slot print_timing: id  0 | task 21028 |    graphs reused =      20665
+26.45.613.192 I slot      release: id  0 | task 21028 | stop processing: n_tokens = 1003, truncated = 0
+26.45.613.201 I srv  update_slots: all slots are idle
+26.46.553.126 I srv  params_from_: Chat format: peg-native
+26.46.553.281 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1605218967
+26.46.553.511 I slot launch_slot_: id  0 | task 21157 | processing task, is_child = 0
+26.48.272.692 I slot print_timing: id  0 | task 21157 | n_decoded =    120, tg =  81.36 t/s
+26.48.371.516 I slot print_timing: id  0 | task 21157 | prompt eval time =     244.24 ms /   846 tokens (    0.29 ms per token,  3463.76 tokens per second)
+26.48.371.521 I slot print_timing: id  0 | task 21157 |        eval time =    1573.74 ms /   128 tokens (   12.29 ms per token,    81.33 tokens per second)
+26.48.371.521 I slot print_timing: id  0 | task 21157 |       total time =    1817.98 ms /   974 tokens
+26.48.371.522 I slot print_timing: id  0 | task 21157 |    graphs reused =      20791
+26.48.371.544 I slot      release: id  0 | task 21157 | stop processing: n_tokens = 1003, truncated = 0
+26.48.371.555 I srv  update_slots: all slots are idle
+27.00.364.278 I srv  params_from_: Chat format: peg-native
+27.00.364.368 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1607977320
+27.00.364.531 I slot launch_slot_: id  0 | task 21286 | processing task, is_child = 0
+27.01.825.969 I slot print_timing: id  0 | task 21286 | n_decoded =    100, tg =  82.09 t/s
+27.02.170.702 I slot print_timing: id  0 | task 21286 | prompt eval time =     243.32 ms /   845 tokens (    0.29 ms per token,  3472.85 tokens per second)
+27.02.170.707 I slot print_timing: id  0 | task 21286 |        eval time =    1562.84 ms /   128 tokens (   12.21 ms per token,    81.90 tokens per second)
+27.02.170.708 I slot print_timing: id  0 | task 21286 |       total time =    1806.15 ms /   973 tokens
+27.02.170.709 I slot print_timing: id  0 | task 21286 |    graphs reused =      20917
+27.02.170.733 I slot      release: id  0 | task 21286 | stop processing: n_tokens = 1003, truncated = 0
+27.02.170.744 I srv  update_slots: all slots are idle
+27.21.218.142 I srv  params_from_: Chat format: peg-native
+27.21.218.302 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1621776508
+27.21.218.500 I slot launch_slot_: id  0 | task 21415 | processing task, is_child = 0
+27.22.702.719 I slot print_timing: id  0 | task 21415 | n_decoded =    100, tg =  80.57 t/s
+27.23.047.915 I slot print_timing: id  0 | task 21415 | prompt eval time =     243.04 ms /   845 tokens (    0.29 ms per token,  3476.84 tokens per second)
+27.23.047.920 I slot print_timing: id  0 | task 21415 |        eval time =    1586.36 ms /   128 tokens (   12.39 ms per token,    80.69 tokens per second)
+27.23.047.921 I slot print_timing: id  0 | task 21415 |       total time =    1829.40 ms /   973 tokens
+27.23.047.922 I slot print_timing: id  0 | task 21415 |    graphs reused =      21043
+27.23.047.948 I slot      release: id  0 | task 21415 | stop processing: n_tokens = 1003, truncated = 0
+27.23.047.959 I srv  update_slots: all slots are idle
+27.34.611.601 I srv  params_from_: Chat format: peg-native
+27.34.611.755 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1642653724
+27.34.612.070 I slot launch_slot_: id  0 | task 21544 | processing task, is_child = 0
+27.36.081.959 I slot print_timing: id  0 | task 21544 | n_decoded =    100, tg =  81.50 t/s
+27.36.428.928 I slot print_timing: id  0 | task 21544 | prompt eval time =     242.81 ms /   845 tokens (    0.29 ms per token,  3480.10 tokens per second)
+27.36.428.932 I slot print_timing: id  0 | task 21544 |        eval time =    1574.03 ms /   128 tokens (   12.30 ms per token,    81.32 tokens per second)
+27.36.428.933 I slot print_timing: id  0 | task 21544 |       total time =    1816.84 ms /   973 tokens
+27.36.428.934 I slot print_timing: id  0 | task 21544 |    graphs reused =      21169
+27.36.428.954 I slot      release: id  0 | task 21544 | stop processing: n_tokens = 1003, truncated = 0
+27.36.428.963 I srv  update_slots: all slots are idle
+27.46.393.811 I srv  params_from_: Chat format: peg-native
+27.46.393.976 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1656034730
+27.46.394.312 I slot launch_slot_: id  0 | task 21673 | processing task, is_child = 0
+27.47.865.690 I slot print_timing: id  0 | task 21673 | n_decoded =    100, tg =  81.44 t/s
+27.48.214.336 I slot print_timing: id  0 | task 21673 | prompt eval time =     243.52 ms /   845 tokens (    0.29 ms per token,  3469.94 tokens per second)
+27.48.214.341 I slot print_timing: id  0 | task 21673 |        eval time =    1576.49 ms /   128 tokens (   12.32 ms per token,    81.19 tokens per second)
+27.48.214.341 I slot print_timing: id  0 | task 21673 |       total time =    1820.01 ms /   973 tokens
+27.48.214.342 I slot print_timing: id  0 | task 21673 |    graphs reused =      21295
+27.48.214.363 I slot      release: id  0 | task 21673 | stop processing: n_tokens = 1003, truncated = 0
+27.48.214.373 I srv  update_slots: all slots are idle
+27.52.205.161 I srv  params_from_: Chat format: peg-native
+27.52.205.320 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1667820139
+27.52.205.633 I slot launch_slot_: id  0 | task 21802 | processing task, is_child = 0
+27.53.685.599 I slot print_timing: id  0 | task 21802 | n_decoded =    100, tg =  81.20 t/s
+27.54.034.180 I slot print_timing: id  0 | task 21802 | prompt eval time =     248.35 ms /   845 tokens (    0.29 ms per token,  3402.42 tokens per second)
+27.54.034.184 I slot print_timing: id  0 | task 21802 |        eval time =    1580.16 ms /   128 tokens (   12.35 ms per token,    81.00 tokens per second)
+27.54.034.185 I slot print_timing: id  0 | task 21802 |       total time =    1828.52 ms /   973 tokens
+27.54.034.186 I slot print_timing: id  0 | task 21802 |    graphs reused =      21421
+27.54.034.209 I slot      release: id  0 | task 21802 | stop processing: n_tokens = 1003, truncated = 0
+27.54.034.219 I srv  update_slots: all slots are idle
+28.01.558.640 I srv  params_from_: Chat format: peg-native
+28.01.558.795 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1673639984
+28.01.559.152 I slot launch_slot_: id  0 | task 21931 | processing task, is_child = 0
+28.03.029.197 I slot print_timing: id  0 | task 21931 | n_decoded =    100, tg =  81.54 t/s
+28.03.376.473 I slot print_timing: id  0 | task 21931 | prompt eval time =     243.55 ms /   845 tokens (    0.29 ms per token,  3469.57 tokens per second)
+28.03.376.477 I slot print_timing: id  0 | task 21931 |        eval time =    1573.74 ms /   128 tokens (   12.29 ms per token,    81.33 tokens per second)
+28.03.376.478 I slot print_timing: id  0 | task 21931 |       total time =    1817.29 ms /   973 tokens
+28.03.376.479 I slot print_timing: id  0 | task 21931 |    graphs reused =      21547
+28.03.376.502 I slot      release: id  0 | task 21931 | stop processing: n_tokens = 1003, truncated = 0
+28.03.376.512 I srv  update_slots: all slots are idle
+28.28.149.909 I srv  params_from_: Chat format: peg-native
+28.28.150.231 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1682982277
+28.28.150.393 I slot launch_slot_: id  0 | task 22060 | processing task, is_child = 0
+28.29.634.280 I slot print_timing: id  0 | task 22060 | n_decoded =    100, tg =  80.57 t/s
+28.29.979.743 I slot print_timing: id  0 | task 22060 | prompt eval time =     242.63 ms /   845 tokens (    0.29 ms per token,  3482.61 tokens per second)
+28.29.979.748 I slot print_timing: id  0 | task 22060 |        eval time =    1586.69 ms /   128 tokens (   12.40 ms per token,    80.67 tokens per second)
+28.29.979.749 I slot print_timing: id  0 | task 22060 |       total time =    1829.33 ms /   973 tokens
+28.29.979.750 I slot print_timing: id  0 | task 22060 |    graphs reused =      21673
+28.29.979.774 I slot      release: id  0 | task 22060 | stop processing: n_tokens = 1003, truncated = 0
+28.29.979.785 I srv  update_slots: all slots are idle
+28.38.044.238 I srv  params_from_: Chat format: peg-native
+28.38.044.353 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1709585549
+28.38.044.552 I slot launch_slot_: id  0 | task 22189 | processing task, is_child = 0
+28.39.505.079 I slot print_timing: id  0 | task 22189 | n_decoded =    100, tg =  82.13 t/s
+28.39.851.111 I slot print_timing: id  0 | task 22189 | prompt eval time =     242.89 ms /   845 tokens (    0.29 ms per token,  3478.97 tokens per second)
+28.39.851.116 I slot print_timing: id  0 | task 22189 |        eval time =    1563.65 ms /   128 tokens (   12.22 ms per token,    81.86 tokens per second)
+28.39.851.117 I slot print_timing: id  0 | task 22189 |       total time =    1806.54 ms /   973 tokens
+28.39.851.117 I slot print_timing: id  0 | task 22189 |    graphs reused =      21799
+28.39.851.140 I slot      release: id  0 | task 22189 | stop processing: n_tokens = 1003, truncated = 0
+28.39.851.150 I srv  update_slots: all slots are idle
+28.42.590.324 I srv  params_from_: Chat format: peg-native
+28.42.590.469 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1719456916
+28.42.590.661 I slot launch_slot_: id  0 | task 22318 | processing task, is_child = 0
+28.44.058.637 I slot print_timing: id  0 | task 22318 | n_decoded =    100, tg =  81.66 t/s
+28.44.405.210 I slot print_timing: id  0 | task 22318 | prompt eval time =     243.38 ms /   845 tokens (    0.29 ms per token,  3471.98 tokens per second)
+28.44.405.214 I slot print_timing: id  0 | task 22318 |        eval time =    1571.15 ms /   128 tokens (   12.27 ms per token,    81.47 tokens per second)
+28.44.405.215 I slot print_timing: id  0 | task 22318 |       total time =    1814.53 ms /   973 tokens
+28.44.405.216 I slot print_timing: id  0 | task 22318 |    graphs reused =      21925
+28.44.405.237 I slot      release: id  0 | task 22318 | stop processing: n_tokens = 1003, truncated = 0
+28.44.405.247 I srv  update_slots: all slots are idle
+28.53.689.009 I srv  params_from_: Chat format: peg-native
+28.53.689.141 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1724011013
+28.53.689.425 I slot launch_slot_: id  0 | task 22447 | processing task, is_child = 0
+28.53.901.708 I srv  params_from_: Chat format: peg-native
+28.55.158.991 I slot print_timing: id  0 | task 22447 | n_decoded =    100, tg =  81.54 t/s
+28.55.506.409 I slot print_timing: id  0 | task 22447 | prompt eval time =     243.13 ms /   846 tokens (    0.29 ms per token,  3479.66 tokens per second)
+28.55.506.414 I slot print_timing: id  0 | task 22447 |        eval time =    1573.83 ms /   128 tokens (   12.30 ms per token,    81.33 tokens per second)
+28.55.506.415 I slot print_timing: id  0 | task 22447 |       total time =    1816.96 ms /   974 tokens
+28.55.506.416 I slot print_timing: id  0 | task 22447 |    graphs reused =      22051
+28.55.506.441 I slot      release: id  0 | task 22447 | stop processing: n_tokens = 1003, truncated = 0
+28.55.506.453 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1735112216
+28.55.506.673 I slot launch_slot_: id  0 | task 22449 | processing task, is_child = 0
+28.56.625.973 I srv  params_from_: Chat format: peg-native
+28.57.322.820 I slot print_timing: id  0 | task 22449 | prompt eval time =     242.98 ms /   845 tokens (    0.29 ms per token,  3477.67 tokens per second)
+28.57.322.824 I slot print_timing: id  0 | task 22449 |        eval time =    1573.15 ms /   128 tokens (   12.29 ms per token,    81.37 tokens per second)
+28.57.322.824 I slot print_timing: id  0 | task 22449 |       total time =    1816.13 ms /   973 tokens
+28.57.322.825 I slot print_timing: id  0 | task 22449 |    graphs reused =      22177
+28.57.322.848 I slot      release: id  0 | task 22449 | stop processing: n_tokens = 1003, truncated = 0
+28.57.322.860 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1736928623
+28.57.323.029 I slot launch_slot_: id  0 | task 22649 | processing task, is_child = 0
+28.58.623.416 I srv  params_from_: Chat format: peg-native
+28.58.794.995 I slot print_timing: id  0 | task 22649 | n_decoded =    100, tg =  81.38 t/s
+28.59.141.089 I slot print_timing: id  0 | task 22649 | prompt eval time =     243.19 ms /   845 tokens (    0.29 ms per token,  3474.59 tokens per second)
+28.59.141.094 I slot print_timing: id  0 | task 22649 |        eval time =    1574.85 ms /   128 tokens (   12.30 ms per token,    81.28 tokens per second)
+28.59.141.095 I slot print_timing: id  0 | task 22649 |       total time =    1818.04 ms /   973 tokens
+28.59.141.095 I slot print_timing: id  0 | task 22649 |    graphs reused =      22303
+28.59.141.120 I slot      release: id  0 | task 22649 | stop processing: n_tokens = 1003, truncated = 0
+28.59.141.128 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1738746895
+28.59.141.297 I slot launch_slot_: id  0 | task 22793 | processing task, is_child = 0
+29.00.956.756 I slot print_timing: id  0 | task 22793 | prompt eval time =     243.36 ms /   845 tokens (    0.29 ms per token,  3472.22 tokens per second)
+29.00.956.760 I slot print_timing: id  0 | task 22793 |        eval time =    1572.08 ms /   128 tokens (   12.28 ms per token,    81.42 tokens per second)
+29.00.956.761 I slot print_timing: id  0 | task 22793 |       total time =    1815.44 ms /   973 tokens
+29.00.956.762 I slot print_timing: id  0 | task 22793 |    graphs reused =      22429
+29.00.956.783 I slot      release: id  0 | task 22793 | stop processing: n_tokens = 1003, truncated = 0
+29.00.956.793 I srv  update_slots: all slots are idle
+29.01.277.157 I srv  params_from_: Chat format: peg-native
+29.01.277.373 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1740562559
+29.01.277.538 I slot launch_slot_: id  0 | task 22963 | processing task, is_child = 0
+29.02.749.412 I slot print_timing: id  0 | task 22963 | n_decoded =    100, tg =  81.39 t/s
+29.03.095.996 I slot print_timing: id  0 | task 22963 | prompt eval time =     243.27 ms /   845 tokens (    0.29 ms per token,  3473.48 tokens per second)
+29.03.096.001 I slot print_timing: id  0 | task 22963 |        eval time =    1575.16 ms /   128 tokens (   12.31 ms per token,    81.26 tokens per second)
+29.03.096.001 I slot print_timing: id  0 | task 22963 |       total time =    1818.43 ms /   973 tokens
+29.03.096.002 I slot print_timing: id  0 | task 22963 |    graphs reused =      22555
+29.03.096.031 I slot      release: id  0 | task 22963 | stop processing: n_tokens = 1003, truncated = 0
+29.03.096.048 I srv  update_slots: all slots are idle
+29.07.794.646 I srv  params_from_: Chat format: peg-native
+29.07.794.793 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1742701806
+29.07.795.114 I slot launch_slot_: id  0 | task 23092 | processing task, is_child = 0
+29.09.267.144 I slot print_timing: id  0 | task 23092 | n_decoded =    100, tg =  81.49 t/s
+29.09.615.339 I slot print_timing: id  0 | task 23092 | prompt eval time =     244.83 ms /   845 tokens (    0.29 ms per token,  3451.36 tokens per second)
+29.09.615.343 I slot print_timing: id  0 | task 23092 |        eval time =    1575.37 ms /   128 tokens (   12.31 ms per token,    81.25 tokens per second)
+29.09.615.344 I slot print_timing: id  0 | task 23092 |       total time =    1820.20 ms /   973 tokens
+29.09.615.345 I slot print_timing: id  0 | task 23092 |    graphs reused =      22681
+29.09.615.368 I slot      release: id  0 | task 23092 | stop processing: n_tokens = 1003, truncated = 0
+29.09.615.380 I srv  update_slots: all slots are idle
+29.56.666.598 I srv  params_from_: Chat format: peg-native
+29.56.666.763 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1749221143
+29.56.666.993 I slot launch_slot_: id  0 | task 23221 | processing task, is_child = 0
+29.57.389.358 I srv  params_from_: Chat format: peg-native
+29.57.801.768 I srv  params_from_: Chat format: peg-native
+29.58.138.486 I slot print_timing: id  0 | task 23221 | n_decoded =    100, tg =  81.54 t/s
+29.58.497.398 I slot print_timing: id  0 | task 23221 | prompt eval time =     245.03 ms /   845 tokens (    0.29 ms per token,  3448.52 tokens per second)
+29.58.497.402 I slot print_timing: id  0 | task 23221 |        eval time =    1585.34 ms /   128 tokens (   12.39 ms per token,    80.74 tokens per second)
+29.58.497.403 I slot print_timing: id  0 | task 23221 |       total time =    1830.37 ms /   973 tokens
+29.58.497.404 I slot print_timing: id  0 | task 23221 |    graphs reused =      22807
+29.58.497.436 I slot      release: id  0 | task 23221 | stop processing: n_tokens = 1003, truncated = 0
+29.58.497.455 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1798103212
+29.58.497.696 I slot launch_slot_: id  0 | task 23262 | processing task, is_child = 0
+30.00.318.316 I slot print_timing: id  0 | task 23262 | prompt eval time =     248.31 ms /   845 tokens (    0.29 ms per token,  3402.98 tokens per second)
+30.00.318.319 I slot print_timing: id  0 | task 23262 |        eval time =    1572.26 ms /   128 tokens (   12.28 ms per token,    81.41 tokens per second)
+30.00.318.320 I slot print_timing: id  0 | task 23262 |       total time =    1820.57 ms /   973 tokens
+30.00.318.321 I slot print_timing: id  0 | task 23262 |    graphs reused =      22933
+30.00.318.346 I slot      release: id  0 | task 23262 | stop processing: n_tokens = 1003, truncated = 0
+30.00.318.362 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1799924122
+30.00.318.539 I slot launch_slot_: id  0 | task 23296 | processing task, is_child = 0
+30.01.788.875 I slot print_timing: id  0 | task 23296 | n_decoded =    100, tg =  81.48 t/s
+30.02.135.416 I slot print_timing: id  0 | task 23296 | prompt eval time =     242.99 ms /   845 tokens (    0.29 ms per token,  3477.47 tokens per second)
+30.02.135.420 I slot print_timing: id  0 | task 23296 |        eval time =    1573.86 ms /   128 tokens (   12.30 ms per token,    81.33 tokens per second)
+30.02.135.421 I slot print_timing: id  0 | task 23296 |       total time =    1816.86 ms /   973 tokens
+30.02.135.422 I slot print_timing: id  0 | task 23296 |    graphs reused =      23059
+30.02.135.450 I slot      release: id  0 | task 23296 | stop processing: n_tokens = 1003, truncated = 0
+30.02.135.461 I srv  update_slots: all slots are idle
+30.03.665.989 I srv  params_from_: Chat format: peg-native
+30.03.666.155 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 1801741225
+30.03.666.522 I slot launch_slot_: id  0 | task 23608 | processing task, is_child = 0
+30.05.135.979 I slot print_timing: id  0 | task 23608 | n_decoded =    100, tg =  81.58 t/s
+30.05.481.642 I slot print_timing: id  0 | task 23608 | prompt eval time =     243.66 ms /   845 tokens (    0.29 ms per token,  3467.92 tokens per second)
+30.05.481.646 I slot print_timing: id  0 | task 23608 |        eval time =    1571.44 ms /   128 tokens (   12.28 ms per token,    81.45 tokens per second)
+30.05.481.647 I slot print_timing: id  0 | task 23608 |       total time =    1815.10 ms /   973 tokens
+30.05.481.648 I slot print_timing: id  0 | task 23608 |    graphs reused =      23185
+30.05.481.671 I slot      release: id  0 | task 23608 | stop processing: n_tokens = 1003, truncated = 0
+30.05.481.679 I srv  update_slots: all slots are idle
+
+[server stopped] If it exited immediately, copy the message above to Claude.
+Press any key to continue . . . 

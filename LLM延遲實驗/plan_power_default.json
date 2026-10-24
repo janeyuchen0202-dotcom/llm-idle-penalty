@@ -1,0 +1,28 @@
+{
+ "seed": 11,
+ "max_tokens": 128,
+ "prompt_file": "medium.txt",
+ "base_url": "http://127.0.0.1:8080",
+ "local": "3b",
+ "probe_b": "probe_base_1011",
+ "probe_d": "probe_base_1011",
+ "b": 1.8374,
+ "condition": "default",
+ "runs": [
+  {
+   "tag": "power_default_rho20",
+   "rate": 0.10885,
+   "n": 180,
+   "pred": 0.189,
+   "lo": 0.184,
+   "hi": 0.195,
+   "resp_pred": 2.232,
+   "resp_lo": 2.205,
+   "resp_hi": 2.261,
+   "power_pred_W": 21.23,
+   "power_lo_W": 21.12,
+   "power_hi_W": 21.34,
+   "minutes": 29.9
+  }
+ ]
+}

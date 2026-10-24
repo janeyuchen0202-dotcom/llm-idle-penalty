@@ -1,0 +1,32 @@
+{
+ "zip": "閒置測試結果_排隊_GPU_RTX-2070-SUPER_20261021-1749.zip",
+ "pred_made_at": "2026-10-21T20:13:22",
+ "compared_at": "2026-10-21T20:13:22",
+ "runs": [
+  {
+   "tag": "rho70",
+   "measured_wait": 2.7829,
+   "in_range": false,
+   "closer_to_model": true,
+   "usable": true,
+   "error_pct": -15.23
+  },
+  {
+   "tag": "rho50",
+   "measured_wait": 0.4581,
+   "in_range": false,
+   "closer_to_model": true,
+   "usable": true,
+   "error_pct": -3.08
+  },
+  {
+   "tag": "rho30",
+   "measured_wait": 0.4868,
+   "in_range": false,
+   "closer_to_model": true,
+   "usable": true,
+   "error_pct": -0.98
+  }
+ ],
+ "mean_abs_error_pct": 6.43
+}

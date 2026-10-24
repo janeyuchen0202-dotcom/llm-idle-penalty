@@ -1,0 +1,22 @@
+{
+ "seed": 11,
+ "max_tokens": 128,
+ "prompt_file": "medium.txt",
+ "tau": "inf",
+ "condition": "keepwarm5_tauinf",
+ "made_at": "2026-10-22 03:03",
+ "runs": [
+  {
+   "tag": "kw5_tauinf",
+   "rate": 0.10885,
+   "n": 180,
+   "pred": 0.145,
+   "lo": 0.144,
+   "hi": 0.145,
+   "resp_pred": 1.94,
+   "resp_lo": 1.938,
+   "resp_hi": 1.942,
+   "power_pred_W": 34.5
+  }
+ ]
+}

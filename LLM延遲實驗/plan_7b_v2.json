@@ -1,0 +1,43 @@
+{
+ "seed": 7,
+ "max_tokens": 16,
+ "prompt_file": "medium.txt",
+ "base_url": "http://127.0.0.1:8080",
+ "local": null,
+ "probe_b": "probe_b7v2",
+ "probe_d": "probe_b7v2",
+ "b": 1.2003,
+ "iso": 1.8845,
+ "runs": [
+  {
+   "tag": "b7v2_rho30",
+   "rate": 0.24994,
+   "n": 200,
+   "pred": 0.332,
+   "lo": 0.311,
+   "hi": 0.351,
+   "naive_pk": 0.859,
+   "minutes": 14.1
+  },
+  {
+   "tag": "b7v2_rho50",
+   "rate": 0.41657,
+   "n": 300,
+   "pred": 0.767,
+   "lo": 0.733,
+   "hi": 0.799,
+   "naive_pk": 3.522,
+   "minutes": 12.0
+  },
+  {
+   "tag": "b7v2_rho70",
+   "rate": 0.5832,
+   "n": 300,
+   "pred": 1.519,
+   "lo": 1.456,
+   "hi": 1.591,
+   "naive_pk": Infinity,
+   "minutes": 8.6
+  }
+ ]
+}

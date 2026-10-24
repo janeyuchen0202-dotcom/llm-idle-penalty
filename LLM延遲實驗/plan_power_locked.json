@@ -1,0 +1,28 @@
+{
+ "seed": 11,
+ "max_tokens": 128,
+ "prompt_file": "medium.txt",
+ "base_url": "http://127.0.0.1:8080",
+ "local": "3b",
+ "probe_b": "probe_locked_1011",
+ "probe_d": "probe_locked_1011",
+ "b": 1.8292,
+ "condition": "locked",
+ "runs": [
+  {
+   "tag": "power_locked_rho20",
+   "rate": 0.10885,
+   "n": 180,
+   "pred": 0.151,
+   "lo": 0.149,
+   "hi": 0.153,
+   "resp_pred": 1.985,
+   "resp_lo": 1.973,
+   "resp_hi": 1.997,
+   "power_pred_W": 34.56,
+   "power_lo_W": 34.51,
+   "power_hi_W": 34.6,
+   "minutes": 29.9
+  }
+ ]
+}

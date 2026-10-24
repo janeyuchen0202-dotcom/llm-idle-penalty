@@ -1,0 +1,53 @@
+{
+ "zip": "閒置測試結果_排隊_GPU_RTX-2070-SUPER_20261021-1749.zip",
+ "made_at": "2026-10-21T18:52:15",
+ "method": "2：b 用每組前 1/3 的排隊請求",
+ "b_cal": 1.1908,
+ "delta_by_bin": {
+  "<1s": -0.005,
+  "1-2s": -0.007,
+  "2-5s": 0.215,
+  ">=5s": 0.279
+ },
+ "runs": [
+  {
+   "tag": "rho70",
+   "lambda": 0.58782,
+   "n": 300,
+   "seed": 2038,
+   "rho": 0.7,
+   "b_first_third": 1.2188,
+   "n_first_third_queued": 84,
+   "pred": 2.626,
+   "lo": 2.569,
+   "hi": 2.684,
+   "naive_pk": 4.686
+  },
+  {
+   "tag": "rho50",
+   "lambda": 0.41987,
+   "n": 200,
+   "seed": 2037,
+   "rho": 0.5,
+   "b_first_third": 1.2025,
+   "n_first_third_queued": 38,
+   "pred": 0.452,
+   "lo": 0.445,
+   "hi": 0.459,
+   "naive_pk": 1.187
+  },
+  {
+   "tag": "rho30",
+   "lambda": 0.25192,
+   "n": 150,
+   "seed": 2036,
+   "rho": 0.3,
+   "b_first_third": 1.1897,
+   "n_first_third_queued": 17,
+   "pred": 0.474,
+   "lo": 0.469,
+   "hi": 0.48,
+   "naive_pk": 0.433
+  }
+ ]
+}
