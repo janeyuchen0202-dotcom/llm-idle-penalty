@@ -228,9 +228,31 @@ def sec_probes():
             rounds.add(json.loads(zf.read(ri[0])).get("rounds"))
     rounds.discard(None)
     word = {"3": "three"}.get(warm, warm)
-    C("III-D", f"Each round restarted the server after {word} warm-up requests, and the volunteers chose "
-               f"{' or '.join(str(x) for x in sorted(rounds))} rounds before seeing any result",
-      "idle_test.py（WARMUP）、各測試包 run_info.json 的 rounds", "紀錄")
+    # 10/28：每輪先重開伺服器、再送暖機請求（Windows 版和 Mac 版都檢查）
+    src_w = open(os.path.join(KIT, "idle_test.py"), encoding="utf-8").read()
+    src_m = open(os.path.join(BASE, "朋友測試包", "Mac版", "mac_idle_test.sh"), encoding="utf-8").read()
+    order_ok = all(0 <= x.find("server.start()") < x.find("for i in range(WARMUP)") for x in (src_w, src_m))
+    C("III-D", f"Each round restarted the server and sent {word} warm-up requests, and the volunteers chose "
+               f"{' or '.join(str(x) for x in sorted(rounds))} rounds before seeing any result" if order_ok
+      else "（重開伺服器和暖機的順序不對）",
+      "idle_test.py、Mac版/mac_idle_test.sh（server.start() 在暖機迴圈之前；WARMUP）、各測試包 run_info.json 的 rounds", "紀錄")
+    # 10/28：CPU 測試用短的請求（和 HP 筆電同一個 short.txt）；看程式的設定，也看每份志願者 CPU 原始資料的 out_tokens
+    wl = re.search(r'"short": \("short\.txt", (\d+)\)', src_w).group(1)
+    cpu_short = re.search(r'workload = "main" if mode == "gpu" else "short"', src_w) is not None
+    same_prompt = (open(os.path.join(KIT, "..", "prompts", "short.txt"), "rb").read()
+                   == open(os.path.join(EXP, "prompts", "short.txt"), "rb").read())
+    tc = open(os.path.join(EXP, "prompts", "token_counts.txt"), encoding="utf-8").read()
+    n_short = re.search(r"short\.txt\s+目標 \d+ tokens\s+實際 (\d+) tokens", tc).group(1)
+    toks, n_cpu = set(), 0
+    for zp in glob.glob(os.path.join(FRIENDS, "*", "閒置測試結果_CPU_*.zip")):
+        zz = zipfile.ZipFile(zp)
+        rq = [n for n in zz.namelist() if n.endswith("requests.csv")]
+        toks |= {r["out_tokens"] for r in csv.DictReader(io.StringIO(zz.read(rq[0]).decode("utf-8-sig")))}
+        n_cpu += 1
+    C("III-D", f"the same requests (on CPUs, a {n_short}-token prompt and {wl} output tokens)"
+      if cpu_short and same_prompt and n_cpu > 0 and toks == {wl} else f"（CPU 測試的請求不對：{toks}）",
+      f"idle_test.py（CPU 測試用 short：WORKLOADS 和 workload 那一行）、_kit/prompts/short.txt 和 LLM延遲實驗/prompts/short.txt 相同、"
+      f"token_counts.txt、{n_cpu} 份志願者 CPU 測試 zip 的 out_tokens 全部是 {wl}", "紀錄")
     af = open(os.path.join(ANALYSIS, "analyze_friend.py"), encoding="utf-8").read()
     cpu = re.search(r"cpu > (\d+)", af).group(1)
     gpu = re.search(r"gpu_u > (\d+)", af).group(1)
@@ -264,7 +286,7 @@ def sec_statistics(waiting):
     fk = FAKE
     C("III-F", f"its mean waits of {f3(fk['w'][0])} s at ρ = 0.5 and {f3(fk['w'][1])} s at ρ = 0.8 fell inside the 95% ranges of "
                f"simulations with the same arrival times, whose means were {f3(fk['sim'][0])} and {f3(fk['sim'][1])} s "
-               f"(the P-K values are {f3(fk['pk'][0])} and {f3(fk['pk'][1])} s), and it showed an idle effect of only "
+               f"(the P-K values are {f3(fk['pk'][0])} and {f3(fk['pk'][1])} s); its idle effect was only "
                f"{f2(min(fk['pen']))}–{f2(max(fk['pen']))} s" if fk["inside"] else "（假伺服器有一組不在範圍內）",
       "out/my_rho50.csv、my_rho80.csv；稽核/check_outsample.py")
     rv = os.path.join(EXP, "run_validation.py")
@@ -399,11 +421,11 @@ def sec_idle():
         with contextlib.redirect_stdout(io.StringIO()):
             _, r = AF.analyze(os.path.join(OUT, f"backend_20261022-0041_{be}.zip"))
         pen[be] = float(r["d"])
-    C("V-A", f"the CUDA build of the same llama.cpp release showed {f3(pen['cuda'])} s against {f3(pen['vulkan'])} s for Vulkan, "
+    C("V-A", f"the CUDA build of the same release showed {f3(pen['cuda'])} s against {f3(pen['vulkan'])} s for Vulkan, "
              f"a ratio of {pen['cuda'] / pen['vulkan']:.2f}", "out/backend_20261022-0041_cuda.zip、_vulkan.zip（analyze_friend.analyze）")
     p7 = rc.per_gap("probe_idle_7b16")[5.0]
     d7 = rc.probe_extra("probe_b7v2")[1]
-    C("V-A", f"split between the GPU and the CPU ({f2(p7)} s after 5 s of idleness) and entirely on the GPU ({f2(d7)} s for 3 s or more)",
+    C("V-A", f"split between GPU and CPU ({f2(p7)} s after 5 s of idleness) and entirely on the GPU ({f2(d7)} s for 3 s or more)",
       "out/probe_idle_7b16.csv、probe_b7v2.csv")
     gaps, res, pools = [], [], {}
     for name in rc.A_RUNS + rc.C_RUNS:
@@ -622,10 +644,34 @@ def sec_slowdown():
             e2.append(abs(p2[tag]["pred"] - m) / m)
             h1 += p1[tag]["lo"] <= m <= p1[tag]["hi"]
             h2 += p2[tag]["lo"] <= m <= p2[tag]["hi"]
-    V.update(m2=(f"{100 * np.mean(e1):.1f}%", f"{100 * np.mean(e2):.1f}%"))
-    C("V-E", f"over the {WORDS[len(e1)]} runs it was registered for, it cut the mean error from {100 * np.mean(e1):.1f}% to "
+    V.update(m2=(f"{100 * np.mean(e1):.1f}%", f"{100 * np.mean(e2):.1f}%"), m2n=WORDS[len(e1)])
+    C("V-E", f"over the {WORDS[len(e1)]} later runs, it cut the mean error from {100 * np.mean(e1):.1f}% to "
              f"{100 * np.mean(e2):.1f}%, with {h2} of the {len(e1)} measurements inside their ranges against {h1}",
       "志願者排隊測試（第 6 台兩次、第 9 台）的方法 1、方法 2 預測檔和原始 zip")
+    # 10/28：登記時間（設計說明.md 各節標題寫的時間）和每次排隊測試的開始時間（run_info.json 的 start）
+    design = open(os.path.join(BASE, "朋友測試包", "排隊測試", "設計說明.md"), encoding="utf-8").read()
+    tm = lambda pat: "T".join(re.search(pat, design).groups())
+    t2 = tm(r"第二種預測方法（(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}) 寫")
+    t3 = tm(r"方法 3 的事前登記（(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}) 寫")
+    t5 = tm(r"## (\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}) 加：方法改成 1–5")
+    sess = []
+    for zp in glob.glob(os.path.join(FRIENDS, "*", "排隊測試_*", "*.zip")):
+        zz = zipfile.ZipFile(zp)
+        n_runs = len({n for n in zz.namelist() if n.startswith("queue_")})
+        sess.append((json.loads(zz.read("run_info.json"))["start"], n_runs, os.path.dirname(zp)))
+    sess.sort()
+    cmp1 = json.load(open(glob.glob(os.path.join(sess[0][2], "結果_2*.json"))[0], encoding="utf-8"))["compared_at"]
+    later = sess[1:]
+    ok2 = (os.path.basename(os.path.dirname(sess[0][2])).startswith("04_") and cmp1 < t2 < later[0][0]
+           and sum(n for _, n, _ in later) == len(e1))
+    C("V-E", "A variant registered after the first volunteer desktop's runs" if ok2 else "（方法 2 的登記時間不對）",
+      f"設計說明.md（方法 2 登記 {t2}）；第一次（第 4 台）打開結果 {cmp1}；之後各次開始 {later[0][0][:16]} 起，共 {len(e1)} 組", "紀錄")
+    last = [x for x in sess if x[0] > t5]
+    ok5 = len(last) == 2 and all(x[0] < t3 for x in sess if x not in last)
+    C("V-E", f"Three further refinements, registered before the last {WORDS[sum(n for _, n, _ in last)]} volunteer runs"
+      if ok5 else "（方法 3–5 的登記時間不對）",
+      f"設計說明.md（方法 3 登記 {t3}、方法 5 登記 {t5}，最晚的）；最後兩次測試開始 {last[0][0][:16]}、{last[-1][0][:16]}；"
+      f"之前各次都在 {t3} 之前", "紀錄")
 
 
 # ------------------------------------------------------------------ V-D 其他硬體、表 II
@@ -662,7 +708,7 @@ def sec_hardware():
     has = [g for g in nv if g["has"]]
     allsh = [s for g in has for s in g["share"]]
     V.update(nv=len(nv), nv_has=len(has), nv_vol=sum(g["machine"] != "author" for g in nv), sh_lo=pct(min(allsh)), sh_hi=pct(max(allsh)))
-    C("V-D", f"Of the {len(nv)} NVIDIA GPUs, {['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'][len(has)]} "
+    C("V-D", f"Of the {len(nv)} NVIDIA RTX GPUs, {['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'][len(has)]} "
              f"showed a penalty after idle periods of 3 s or more, from {pct(min(allsh))} to {pct(max(allsh))} of the back-to-back service time",
       "重跑 summarize_all.py（志願者 9 張，CI 下限 > 0.02 秒算有代價）＋ RTX 4050（三次閒置測試合併）")
     gen = lambda g: re.search(r"RTX (\d)0", g["name"]).group(1) if "RTX" in g["name"] else "Apple"
@@ -926,7 +972,7 @@ def sec_front():
     C("摘要", f"On an RTX 4050 laptop, a request arriving after 3 s or more of idleness took {V['pen']} s ({V['share']}) longer than one "
               "served back to back", "同 V-A")
     words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
-    C("摘要", f"{words[V['nv_has']].capitalize()} of the {V['nv']} NVIDIA GPUs we tested showed a similar penalty of {V['sh_lo']} to {V['sh_hi']} "
+    C("摘要", f"{words[V['nv_has']].capitalize()} of the {V['nv']} NVIDIA RTX GPUs we tested showed a similar penalty of {V['sh_lo']} to {V['sh_hi']} "
               "of the service time", "同 V-D")
     C("摘要", f"In {V['n_pre']} blind predictions, the median error was {V['median']}, the model was closer to the measurement than "
               f"the P-K formula in {V['closer']}, and {V['hits']} measurements fell inside the narrow simulation ranges", "同 V-C")
@@ -934,15 +980,15 @@ def sec_front():
     C("I", f"requests after 3 s or more of idleness took {V['pen']} s longer on average than requests served back to back", "同 V-A")
     C("I", f"This extra delay appeared at about {V['drop']} s of idleness", "同 V-A")
     C("I", f"but locking cost {V['energy']} more GPU energy per request", "同 VI")
-    C("I", f"Of the {V['nv']} NVIDIA GPUs we tested, {words[V['nv_vol']]} of them on volunteers' computers, {words[V['nv_has']]} showed a "
+    C("I", f"Of the {V['nv']} NVIDIA RTX GPUs we tested, {words[V['nv_vol']]} of them on volunteers' computers, {words[V['nv_has']]} showed a "
            f"similar penalty of {V['sh_lo']} to {V['sh_hi']} of the service time", "同 V-D")
     C("VII", f"{V['pen']} s after 3 s or more on our RTX 4050, and {V['sh_lo'].rstrip('%')}–{V['sh_hi']} of the service time on "
-             f"{V['nv_has']} of the {V['nv']} NVIDIA GPUs we tested", "同 V-A、V-D")
+             f"{V['nv_has']} of the {V['nv']} NVIDIA RTX GPUs we tested", "同 V-A、V-D")
     C("VII", f"predicted the mean wait of {V['n_pre']} runs blind, with a median error of {V['median']}, closer than the P-K formula in "
              f"{V['closer']} of them", "同 V-C")
     C("VII", f"Locking the clock nearly removes the penalty at {V['energy']} more GPU energy per request", "同 VI")
     C("VII", f"overstated the service time under load by {V['iso']} on the RTX 4050", "同 V-A（工作負載 A、C）")
-    C("VII", f"calibrating with queued requests cut the error from {V['m2'][0]} to {V['m2'][1]} on the volunteer desktops", "同 V-E")
+    C("VII", f"calibrating with queued requests cut the error from {V['m2'][0]} to {V['m2'][1]} on {V['m2n']} volunteer runs", "同 V-E")
 
 
 # ------------------------------------------------------------------ 志願者總表（重跑 summarize_all.py，輸出到暫存資料夾）
