@@ -34,7 +34,7 @@ plt.rcParams.update({"font.size": 8, "axes.labelsize": 8, "xtick.labelsize": 7.5
 def main():
     pre = list(csv.DictReader(open(PRE, encoding="utf-8-sig")))
     ins = list(csv.DictReader(open(INS, encoding="utf-8")))
-    fig, ax = plt.subplots(figsize=(3.45, 2.45))
+    fig, ax = plt.subplots(figsize=(3.45, 2.4))   # 10/28：2.45 → 2.4（論文超過 6 頁）
     lo_ax, hi_ax = 0.2, 25
     ax.plot([lo_ax, hi_ax], [lo_ax, hi_ax], color="black", lw=0.6, zorder=1)
     ax.fill_between([lo_ax, hi_ax], [lo_ax * 0.9, hi_ax * 0.9], [lo_ax * 1.1, hi_ax * 1.1], color="0.9", lw=0, zorder=0)

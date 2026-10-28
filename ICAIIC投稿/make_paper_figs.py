@@ -143,7 +143,7 @@ def tag_panel(ax, s):
 
 
 def main():
-    fig, (a, b) = plt.subplots(2, 1, figsize=(3.45, 2.95), gridspec_kw={"height_ratios": [1.2, 1]})
+    fig, (a, b) = plt.subplots(2, 1, figsize=(3.45, 2.7), gridspec_kw={"height_ratios": [1.2, 1]})   # 10/28：2.95 → 2.7（論文超過 6 頁）
     panel_idle(a, compact=True)
     tag_panel(a, "(a)")
     panel_clock(b, compact=True)

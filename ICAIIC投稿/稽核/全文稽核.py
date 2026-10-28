@@ -168,10 +168,32 @@ def queue_files():
 
 
 def sec_generator():
+    pw = json.load(open(os.path.join(EXP, "plan_win.json"), encoding="utf-8"))          # 10/28：III-A 補的 M1／HP 排隊組
+    tc = open(os.path.join(EXP, "prompts", "token_counts.txt"), encoding="utf-8").read()
+    n_short = re.search(r"short\.txt\s+目標 \d+ tokens\s+實際 (\d+) tokens", tc).group(1)
+    C("III-A", f"with a {n_short}-token prompt on the HP laptop" if pw["prompt_file"] == "short.txt" else "（HP 不是用 short.txt）",
+      "plan_win.json（prompt_file）、prompts/token_counts.txt", "紀錄")
+    tags = lambda p: [r["tag"] for r in json.load(open(os.path.join(EXP, p), encoding="utf-8"))["runs"]]
+    ok = tags("plan_m1.json") == ["m1_rho30", "m1_rho50", "m1_rho70"] and tags("plan_win.json") == ["win_rho30", "win_rho50", "win_rho70"]
+    C("III-A", "the M1 and the MX250 also ran queueing runs at ρ = 0.3, 0.5 and 0.7" if ok
+      else "（M1／HP 的排隊組不對）", "plan_m1.json、plan_win.json（runs）", "紀錄")
     late01 = code_has(os.path.join(EXP, "analyze_strengthen.py"), r"max_lateness_s'\]\) < 0\.01")
     late1 = code_has(os.path.join(KIT, "queue_test.py"), r'max_lateness_s"\] <= 1\.0 and res\["late_gt_1s"\] == 0')
     C("III-B", "we detect this as a send late by more than 0.01 s on the RTX 4050, or 1 s in the volunteer kit",
       "analyze_strengthen.py（送出延誤 < 0.01 秒）、queue_test.py（late_gt_1s）", "紀錄" if late01 and late1 else "⚠️")
+    lates = []                     # 10/28：留下的 LLM 排隊組送出延誤最多多少（不含假伺服器的驗證組 my_／val_，和睡著作廢的 var_C_rho75）
+    for p in glob.glob(os.path.join(OUT, "*.csv")):
+        b = os.path.basename(p)
+        rows = [] if b.startswith(("my_", "val_")) or b == "var_C_rho75.csv" else list(csv.DictReader(open(p, encoding="utf-8")))
+        if rows and "t_scheduled" in rows[0]:
+            lates += [float(r["t_send"]) - float(r["t_scheduled"]) for r in rows if r.get("t_send")]
+    for z in glob.glob(os.path.join(FRIENDS, "*", "排隊測試_*", "*.zip")):
+        zz = zipfile.ZipFile(z)
+        for nm in [x for x in zz.namelist() if x.startswith("queue_")]:
+            lates += [float(r["t_send"]) - float(r["t_scheduled"])
+                      for r in csv.DictReader(io.StringIO(zz.read(nm).decode("utf-8"))) if r.get("t_send")]
+    C("III-B", f"no send in the runs we kept was over {int(np.ceil(1000 * max(lates)))} ms late",
+      "out/*.csv 的 t_send − t_scheduled（不含 my_／val_、var_C_rho75）、志願者排隊測試 zip")
     n_req, swaps, gaps = 0, 0, []
     for _, name, rows in queue_files():
         ok = sorted((r for r in rows if r.get("status", "ok") == "ok"), key=lambda r: float(r["t_send"]))
@@ -237,7 +259,7 @@ def sec_statistics(waiting):
     bt = re.search(r"^BATCHES = (\d+)", open(os.path.join(EXP, "analyze_strengthen.py"), encoding="utf-8").read(), re.M).group(1)
     C("III-E", f"so 95% confidence intervals of the mean wait come from {bt} batch means", "analyze_strengthen.py（BATCHES、T975_9）", "紀錄")
     agree, n, diff = friend_round_agreement()
-    C("III-E", f"they agreed with request-level intervals in {agree} of {n} device tests",
+    C("III-E", f"which gave the same conclusion in {agree} of {n} device tests",
       f"重跑 summarize_all.py（暫存資料夾）：每組「以輪算」和「以請求算」的 95% CI 是否都排除 0；不同的：{'、'.join(diff) or '沒有'}")
     fk = FAKE
     C("III-F", f"its mean waits of {f3(fk['w'][0])} s at ρ = 0.5 and {f3(fk['w'][1])} s at ρ = 0.8 fell inside the 95% ranges of "
@@ -397,7 +419,8 @@ def sec_idle():
     b128 = np.mean(pools[128])
     C("V-A", f"Across the {len(rc.A_RUNS + rc.C_RUNS)} runs, requests that found the server idle took longer than back-to-back requests "
              f"({f2(b128)} s) by {f2(res[gaps < 1].mean())} s after idle periods shorter than 1 s, "
-             f"{f2(res[(gaps >= 1) & (gaps < 2)].mean())} s after 1–2 s, and {f2(res[gaps >= 2].mean())} s after 2 s or more, "
+             f"{f2(res[(gaps >= 1) & (gaps < 2)].mean())} s after 1–2 s, {f2(res[(gaps >= 2) & (gaps < 5)].mean())} s after 2–5 s and "
+             f"{f2(res[gaps >= 5].mean())} s after 5 s or more, "
              f"close to the {f2(avg)} s of the probes", "17 組 out/*.csv")
     ca, cc = rc.run("mix_cal_A"), rc.run("var_cal_C")
     iso_c = (cc["S"][cc["tok"] == 32].mean() + cc["S"][cc["tok"] == 224].mean()) / 2
@@ -436,7 +459,7 @@ def sec_waiting(w):
 
 
 # ------------------------------------------------------------------ V-C 事前預測、表 I、Fig. 2
-WORDS = {1: "one", 2: "two", 3: "three", 7: "seven", 9: "nine", 17: "Seventeen"}
+WORDS = {1: "one", 2: "two", 3: "three", 5: "five", 6: "six", 7: "seven", 9: "nine", 17: "Seventeen"}
 
 
 def sec_prereg():
@@ -445,7 +468,15 @@ def sec_prereg():
         rows = pr.collect()
     n = len(rows)
     e = np.array([abs(r["err"]) for r in rows])
-    C("V-C", f"For {n} further runs, we wrote down a prediction in advance", "稽核/事前預測彙整.py（各組當時的預測檔）", "紀錄")
+    C("V-C", f"For {n} runs, we wrote down a prediction in advance", "稽核/事前預測彙整.py（各組當時的預測檔）", "紀錄")
+    fit = [r["run"] for r in csv.DictReader(open(os.path.join(OUT, "strengthen_summary.csv"), encoding="utf-8"))]   # 10/28：擬合的 17 組
+    b3 = [r for r in rows if r["device"] == "RTX 4050" and r["group"].startswith("3B")]
+    b7 = [r for r in rows if r["device"] == "RTX 4050" and r["group"].startswith("7B")]
+    ov = sum(r["tag"] in fit for r in b3)
+    n_pl = len({r["group"] for r in b7})
+    C("V-C", f"On the RTX 4050, these were {WORDS[len(b3)]} 3B runs ({WORDS[ov]} also among the {len(fit)} fitted ones) and "
+             f"{WORDS[len(b7)]} 7B runs" if not any(r["tag"] in fit for r in b7) and n_pl == 2
+      else "（7B 也在擬合的組裡？）", "稽核/事前預測彙整.py（各組的機器、組別）、out/strengthen_summary.csv（擬合的 17 組）")
     order = []                     # 10/24 晚：志願者的預測寫在測試跑完之後、比對實測（打開排隊資料）之前
     for d, pat, _ in pr.QUEUE:
         pf = glob.glob(os.path.join(FRIENDS, d, pat))[0]
@@ -897,7 +928,7 @@ def sec_front():
     words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
     C("摘要", f"{words[V['nv_has']].capitalize()} of the {V['nv']} NVIDIA GPUs we tested showed a similar penalty of {V['sh_lo']} to {V['sh_hi']} "
               "of the service time", "同 V-D")
-    C("摘要", f"For {V['n_pre']} runs predicted in advance, the median error was {V['median']}, the model was closer to the measurement than "
+    C("摘要", f"In {V['n_pre']} blind predictions, the median error was {V['median']}, the model was closer to the measurement than "
               f"the P-K formula in {V['closer']}, and {V['hits']} measurements fell inside the narrow simulation ranges", "同 V-C")
     C("摘要", f"but costs {V['energy']} more GPU energy per request", "同 VI")
     C("I", f"requests after 3 s or more of idleness took {V['pen']} s longer on average than requests served back to back", "同 V-A")
@@ -907,7 +938,7 @@ def sec_front():
            f"similar penalty of {V['sh_lo']} to {V['sh_hi']} of the service time", "同 V-D")
     C("VII", f"{V['pen']} s after 3 s or more on our RTX 4050, and {V['sh_lo'].rstrip('%')}–{V['sh_hi']} of the service time on "
              f"{V['nv_has']} of the {V['nv']} NVIDIA GPUs we tested", "同 V-A、V-D")
-    C("VII", f"predicted the mean wait of {V['n_pre']} runs in advance with a median error of {V['median']}, closer than the P-K formula in "
+    C("VII", f"predicted the mean wait of {V['n_pre']} runs blind, with a median error of {V['median']}, closer than the P-K formula in "
              f"{V['closer']} of them", "同 V-C")
     C("VII", f"Locking the clock nearly removes the penalty at {V['energy']} more GPU energy per request", "同 VI")
     C("VII", f"overstated the service time under load by {V['iso']} on the RTX 4050", "同 V-A（工作負載 A、C）")

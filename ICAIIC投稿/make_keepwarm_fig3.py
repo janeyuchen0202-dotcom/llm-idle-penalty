@@ -45,7 +45,7 @@ plt.rcParams.update({"font.size": 8, "axes.labelsize": 8, "xtick.labelsize": 7.5
                      "legend.fontsize": 6.6, "axes.linewidth": 0.6, "font.family": "serif",
                      "font.serif": ["Times New Roman", "DejaVu Serif"], "mathtext.fontset": "stix",
                      "pdf.fonttype": 42})   # 10/24：字型和 Fig. 1、2 相同；不用 Type 3 字型（IEEE PDF eXpress 可能不收）
-fig, ax = plt.subplots(figsize=(3.45, 2.75))
+fig, ax = plt.subplots(figsize=(3.45, 2.5))   # 10/28：2.75 → 2.5（論文超過 6 頁）
 for name, s, col, mk, ls in SESS:
     d, l = s["meas"]["0"], s["meas"]["inf"]
     ax.plot([d[0], l[0]], [d[1], l[1]], color=col, lw=0.9, ls=ls, zorder=1)
