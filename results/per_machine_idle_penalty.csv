@@ -1,5 +1,5 @@
 machine,type,device,test,power_setting,valid_rounds,requests,back_to_back_s,back_to_back_cv,penalty_3s_plus_s,ci95_lo_s,ci95_hi_s,share_of_back_to_back,extra_at_2s_s,extra_at_3s_s,extra_at_5s_s,extra_at_8s_s,round_mean_s,round_ci95_lo_s,round_ci95_hi_s,clear_from_s,single_requests_dropped,source
-author,laptop,RTX 4050 Laptop 6GB,GPU,,3 probe runs,184,1.823,,0.286,0.264,0.309,0.157,,,,,,,,2,,author's probes (LLM延遲實驗/out/probe_idle_3b*.csv); CI pooled by inverse variance
+author,laptop,RTX 4050 Laptop 6GB,GPU,,3 probe runs,184,1.823,,0.286,0.264,0.309,0.157,,,,,0.290,0.238,0.341,2,,author's probes (LLM延遲實驗/out/probe_idle_3b*.csv); ci95_*: pooled over requests by inverse variance; round_*: t interval across the three probe runs (the interval in the paper)
 01,desktop,Ryzen 7 9700X,CPU,,10/10,600,1.059,0.014,0.003,0.0,0.006,0.003,0.007,0.004,0.0,0.005,0.003,-0.001,0.007,none,0,volunteer kit (Vulkan; Metal on Apple)
 02,laptop,Ryzen 9 8940HX,CPU,,5/5,300,1.545,0.032,-0.011,-0.026,0.005,-0.007,-0.007,-0.011,-0.01,-0.011,-0.011,-0.022,0.001,none,0,volunteer kit (Vulkan; Metal on Apple)
 03,laptop,Ryzen 9 7940H,CPU,Silent,35/35,2100,1.221,0.02,0.004,0.002,0.007,0.004,0.007,0.005,0.005,0.003,0.004,0.002,0.007,none,0,volunteer kit (Vulkan; Metal on Apple)

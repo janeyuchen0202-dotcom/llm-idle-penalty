@@ -42,7 +42,7 @@ Glossary: 閒置 idle · 排隊 queueing · 保溫 keep-warm · 校正 calibrati
 | `penalty_3s_plus_s`, `ci95_lo_s`, `ci95_hi_s` | Extra service time after 3 s or more of idleness, with a Welch 95% confidence interval over requests |
 | `share_of_back_to_back` | The penalty divided by the back-to-back service time |
 | `extra_at_2s_s` … `extra_at_8s_s` | Extra service time after 2, 3, 5 and 8 s of idleness |
-| `round_mean_s`, `round_ci95_lo_s`, `round_ci95_hi_s` | The penalty and its 95% interval computed from round means |
+| `round_mean_s`, `round_ci95_lo_s`, `round_ci95_hi_s` | The penalty and its 95% interval computed from round means (for the RTX 4050, from its three probe runs; this is the interval given in the paper) |
 | `clear_from_s` | The first idle time whose 95% interval lies above zero and whose mean is at least 20 ms; `none` if there is none |
 | `single_requests_dropped` | Requests more than three times slower than the median of their round and idle time, removed one by one under the exclusion rules |
 | `source` | Where the row comes from |
